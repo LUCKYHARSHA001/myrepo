@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillHance | Your Engineering Career Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Variables for easy theme management */
+        :root {
+            --bg-color: #0c0c14;
+            --primary-color: #8a2be2; /* A vibrant purple */
+            --secondary-color: #4169e1; /* A royal blue */
+            --accent-glow: rgba(138, 43, 226, 0.6);
+            --text-color: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --header-height: 70px;
+        }
+
+        /* General Reset and Body Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0c0c14;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Header Styling */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-height);
+            z-index: 1000;
+            transition: background-color 0.4s ease, backdrop-filter 0.4s ease;
+        }
+
+        .main-header.scrolled {
+            background-color: rgba(12, 12, 20, 0.7);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .main-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hamburger Menu for Mobile */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-color);
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Hero Section */
+        #hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        #neural-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-content h1 span {
+            background: -webkit-linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: #fff;
+            box-shadow: 0 0 20px 5px var(--accent-glow);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px 10px var(--accent-glow);
+            color: #fff;
+        }
+
+        /* General Section Styling */
+        .section {
+            padding: 100px 0;
+            background-color: var(--bg-color); /* Add solid background for sections below hero */
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 60px auto;
+        }
+
+        /* Disciplines Section */
+        .disciplines-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .discipline-card-link {
+            text-decoration: none;
+        }
+
+        .discipline-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 30px;
+            height: 100%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .discipline-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.1), transparent 40%);
+            opacity: 0;
+            transition: opacity 0.4s;
+            pointer-events: none;
+        }
+
+        .discipline-card:hover::before {
+            opacity: 1;
+        }
+
+        .discipline-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-color: var(--primary-color);
+        }
+
+        .discipline-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            height: 40px;
+            width: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+        }
+
+        .discipline-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .discipline-card p {
+            color: var(--text-muted);
+        }
+
+        /* About Section */
+        #about .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        #about .about-image {
+            flex: 1;
+        }
+
+        #about .about-image img {
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        #about .about-text {
+            flex: 1.2;
+        }
+        
+        #about .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        /* Contact Section */
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-muted);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(0,0,0,0.2);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-color);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 15px;
+            border-radius: 8px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            color: #fff;
+            font-size: 1.1rem;
+            border: none;
+        }
+
+        .btn-submit:hover {
+            filter: brightness(1.2);
+        }
+
+        /* Footer */
+        .main-footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border-color);
+            margin-top: 50px;
+            background-color: var(--bg-color);
+            position: relative;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            font-size: 1.5rem;
+        }
+
+        /* Scroll Animation */
+        .animated-item {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .animated-item.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: var(--header-height);
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - var(--header-height));
+                background-color: var(--bg-color);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 40px;
+                transition: left 0.4s ease-in-out;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .hamburger {
+                display: flex;
+                z-index: 1001;
+            }
+            
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            #about .about-content {
+                flex-direction: column;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header class="main-header" id="main-header">
+        <nav class="container main-nav">
+            <a href="#" class="logo">Skill<span>Hance</span></a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#disciplines">Disciplines</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <canvas id="neural-canvas"></canvas>
+            <div class="hero-content animated-item">
+                <h1>Your Future in <span>Engineering</span> Starts Here</h1>
+                <p>Unlocking career paths and providing expert guidance for engineers in CSE, ECE, EEE, Mechanical, and Civil.</p>
+                <a href="#disciplines" class="btn btn-primary">Explore Paths</a>
+            </div>
+        </section>
+
+        <section id="disciplines" class="section">
+            <div class="container">
+                <h2 class="section-title animated-item">Explore Engineering Disciplines</h2>
+                <p class="section-subtitle animated-item">Find detailed roadmaps and resources for your specific branch.</p>
+                <div class="disciplines-grid">
+                    <a href="#" class="discipline-card-link">
+                        <div class="discipline-card animated-item" style="transition-delay: 100ms;">
+                            <div class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                            </div>
+                            <h3>Computer Science</h3>
+                            <p>Dive into the world of software development, artificial intelligence, data science, and cybersecurity.</p>
+                        </div>
+                    </a>
+                    <a href="#" class="discipline-card-link">
+                        <div class="discipline-card animated-item" style="transition-delay: 200ms;">
+                            <div class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a8 8 0 0 1 14.08 0"></path><path d="M1.42 9.5a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a4 4 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12" y2="22"></line></svg>
+                            </div>
+                            <h3>Electronics & Comm.</h3>
+                            <p>Explore careers in telecommunications, embedded systems, IoT, and VLSI design.</p>
+                        </div>
+                    </a>
+                    <a href="#" class="discipline-card-link">
+                        <div class="discipline-card animated-item" style="transition-delay: 300ms;">
+                            <div class="icon">
+                               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 13 9 22 9 11 22 11 15 2 15 13 2"></polyline></svg>
+                            </div>
+                            <h3>Electrical & Electronics</h3>
+                            <p>Power the future with knowledge in power systems, renewable energy, and control systems.</p>
+                        </div>
+                    </a>
+                    <a href="#" class="discipline-card-link">
+                        <div class="discipline-card animated-item" style="transition-delay: 400ms;">
+                            <div class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                            </div>
+                            <h3>Mechanical</h3>
+                            <p>Design and build the machines of tomorrow in robotics, automotive, and advanced manufacturing.</p>
+                        </div>
+                    </a>
+                    <a href="#" class="discipline-card-link">
+                        <div class="discipline-card animated-item" style="transition-delay: 500ms;">
+                            <div class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path><path d="M22 19h-2"></path><path d="M2 13h2"></path><path d="M19 13h-2"></path><path d="M13 7h-2"></path><path d="M13 1h-2"></path></svg>
+                            </div>
+                            <h3>Civil</h3>
+                            <p>Shape the world by building sustainable infrastructure, smart cities, and resilient structures.</p>
+                        </div>
+                    </a>
+                    <div class="discipline-card animated-item" style="transition-delay: 600ms;">
+                        <div class="icon">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                        </div>
+                        <h3>And More...</h3>
+                        <p>We are constantly expanding our guides to include more branches and specializations.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-image animated-item">
+                        <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=1887&auto=format&fit=crop"
+                            onerror="this.onerror=null;this.src='https://placehold.co/450x300/1a2a3a/6ed3cf?text=Our+Mission';"
+                            alt="A diverse group of students collaborating and learning">
+                    </div>
+                    <div class="about-text animated-item">
+                        <h2>Our Mission: To Empower Engineers</h2>
+                        <p>SkillHance was founded to bridge the critical gap between academic theory and real-world
+                            industry demands. We believe every engineering student deserves a clear, comprehensive
+                            roadmap to a successful and fulfilling career.</p>
+                        <p>Our mission is to provide accessible, high-quality guidance, curated resources, and expert
+                            insights to help you navigate your journey from the classroom to your dream job.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="container">
+                <h2 class="section-title animated-item">Have Questions? Reach Out!</h2>
+                <p class="section-subtitle animated-item">Whether you're a student, educator, or industry professional, we'd love to connect.</p>
+                <form class="contact-form animated-item">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Question or Feedback</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-submit">Send Message</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <p>&copy; 2025 SkillHance. All Rights Reserved.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Twitter">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                </a>
+                <a href="#" aria-label="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg>
+                </a>
+                <a href="#" aria-label="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- 1. Header Scroll Effect ---
+            const header = document.getElementById('main-header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // --- 2. Hamburger Menu ---
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('nav-links');
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+
+            // --- 3. Scroll Animations ---
+            const animatedItems = document.querySelectorAll('.animated-item');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            animatedItems.forEach(item => {
+                observer.observe(item);
+            });
+            
+            // --- 4. Discipline Card Hover Effect ---
+            const cards = document.querySelectorAll('.discipline-card');
+            cards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    card.style.setProperty('--mouse-x', `${x}px`);
+                    card.style.setProperty('--mouse-y', `${y}px`);
+                });
+            });
+
+            // --- 5. Flow Field Canvas Animation ---
+            const canvas = document.getElementById('neural-canvas');
+            const ctx = canvas.getContext('2d');
+            
+            let particles = [];
+            let flowField = [];
+            const scale = 20; // Resolution of the flow field grid
+            let cols, rows;
+            let zoff = 0; // 3rd dimension for noise to make it animate over time
+
+            const mouse = {
+                x: window.innerWidth / 2,
+                y: window.innerHeight / 2,
+                prevX: window.innerWidth / 2,
+                prevY: window.innerHeight / 2,
+                velX: 0,
+                velY: 0,
+            };
+            let lastMoveTime = Date.now();
+
+            window.addEventListener('mousemove', (e) => {
+                mouse.prevX = mouse.x;
+                mouse.prevY = mouse.y;
+                mouse.x = e.clientX;
+                mouse.y = e.clientY;
+                mouse.velX = mouse.x - mouse.prevX;
+                mouse.velY = mouse.y - mouse.prevY;
+                lastMoveTime = Date.now();
+            });
+            
+            function setCanvasSize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                cols = Math.floor(canvas.width / scale);
+                rows = Math.floor(canvas.height / scale);
+            }
+            setCanvasSize();
+
+            window.addEventListener('resize', () => {
+                setCanvasSize();
+                init();
+            });
+
+            // Simple Perlin Noise Generator
+            const noise = (() => {
+                const p = new Uint8Array(512);
+                for (let i = 0; i < 256; i++) p[i] = p[i + 256] = Math.floor(Math.random() * 256);
+                const fade = t => t * t * t * (t * (t * 6 - 15) + 10);
+                const lerp = (t, a, b) => a + t * (b - a);
+                const grad = (hash, x, y, z) => {
+                    const h = hash & 15;
+                    const u = h < 8 ? x : y;
+                    const v = h < 4 ? y : h === 12 || h === 14 ? x : z;
+                    return ((h & 1) === 0 ? u : -u) + ((h & 2) === 0 ? v : -v);
+                };
+                return {
+                    noise: (x, y, z) => {
+                        const X = Math.floor(x) & 255, Y = Math.floor(y) & 255, Z = Math.floor(z) & 255;
+                        x -= Math.floor(x); y -= Math.floor(y); z -= Math.floor(z);
+                        const u = fade(x), v = fade(y), w = fade(z);
+                        const A = p[X] + Y, AA = p[A] + Z, AB = p[A + 1] + Z;
+                        const B = p[X + 1] + Y, BA = p[B] + Z, BB = p[B + 1] + Z;
+                        return lerp(w, lerp(v, lerp(u, grad(p[AA], x, y, z), grad(p[BA], x - 1, y, z)),
+                                        lerp(u, grad(p[AB], x, y - 1, z), grad(p[BB], x - 1, y - 1, z))),
+                                lerp(v, lerp(u, grad(p[AA + 1], x, y, z - 1), grad(p[BA + 1], x - 1, y, z - 1)),
+                                        lerp(u, grad(p[AB + 1], x, y - 1, z - 1), grad(p[BB + 1], x - 1, y - 1, z - 1))));
+                    }
+                };
+            })();
+
+            class Particle {
+                constructor() {
+                    this.pos = { x: Math.random() * canvas.width, y: Math.random() * canvas.height };
+                    this.vel = { x: 0, y: 0 };
+                    this.acc = { x: 0, y: 0 };
+                    this.maxSpeed = 2;
+                    this.prevPos = { ...this.pos };
+                }
+
+                update() {
+                    this.vel.x += this.acc.x;
+                    this.vel.y += this.acc.y;
+                    
+                    const speed = Math.sqrt(this.vel.x * this.vel.x + this.vel.y * this.vel.y);
+                    if (speed > this.maxSpeed) {
+                        this.vel.x = (this.vel.x / speed) * this.maxSpeed;
+                        this.vel.y = (this.vel.y / speed) * this.maxSpeed;
+                    }
+
+                    this.pos.x += this.vel.x;
+                    this.pos.y += this.vel.y;
+                    this.acc.x = 0;
+                    this.acc.y = 0;
+                }
+                
+                applyForce(force) {
+                    this.acc.x += force.x;
+                    this.acc.y += force.y;
+                }
+
+                follow(vectors) {
+                    const x = Math.floor(this.pos.x / scale);
+                    const y = Math.floor(this.pos.y / scale);
+                    const index = x + y * cols;
+                    const force = vectors[index];
+                    if (force) {
+                        this.applyForce(force);
+                    }
+                }
+
+                edges() {
+                    if (this.pos.x > canvas.width) { this.pos.x = 0; this.updatePrev(); }
+                    if (this.pos.x < 0) { this.pos.x = canvas.width; this.updatePrev(); }
+                    if (this.pos.y > canvas.height) { this.pos.y = 0; this.updatePrev(); }
+                    if (this.pos.y < 0) { this.pos.y = canvas.height; this.updatePrev(); }
+                }
+                
+                updatePrev() {
+                    this.prevPos.x = this.pos.x;
+                    this.prevPos.y = this.pos.y;
+                }
+
+                draw() {
+                    const hue = (this.pos.x / canvas.width) * 100 + 240;
+                    ctx.strokeStyle = `hsla(${hue}, 100%, 70%, 0.4)`;
+                    ctx.lineWidth = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(this.prevPos.x, this.prevPos.y);
+                    ctx.lineTo(this.pos.x, this.pos.y);
+                    ctx.stroke();
+                    this.updatePrev();
+                }
+            }
+
+            function init() {
+                particles = [];
+                const numberOfParticles = (canvas.width * canvas.height) / 2500;
+                for (let i = 0; i < numberOfParticles; i++) {
+                    particles.push(new Particle());
+                }
+            }
+            
+            function animate() {
+                // Dampen mouse velocity when mouse stops moving
+                if (Date.now() - lastMoveTime > 50) {
+                    mouse.velX *= 0.95;
+                    mouse.velY *= 0.95;
+                }
+
+                let yoff = 0;
+                for (let y = 0; y < rows; y++) {
+                    let xoff = 0;
+                    for (let x = 0; x < cols; x++) {
+                        const index = x + y * cols;
+                        const angle = noise.noise(xoff, yoff, zoff) * Math.PI * 2;
+                        const v = { x: Math.cos(angle), y: Math.sin(angle) };
+                        
+                        // Add influence from mouse velocity
+                        const dx = (x * scale) - mouse.x;
+                        const dy = (y * scale) - mouse.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+
+                        if (distance < 200) {
+                            const mouseForceMagnitude = (200 - distance) / 200;
+                            const maxVel = 15;
+                            const clampedVelX = Math.max(-maxVel, Math.min(maxVel, mouse.velX));
+                            const clampedVelY = Math.max(-maxVel, Math.min(maxVel, mouse.velY));
+                            
+                            // Blend the noise vector with the mouse velocity vector
+                            v.x = v.x * (1 - mouseForceMagnitude) + (clampedVelX * 0.1) * mouseForceMagnitude;
+                            v.y = v.y * (1 - mouseForceMagnitude) + (clampedVelY * 0.1) * mouseForceMagnitude;
+                        }
+                        
+                        // Normalize the final vector
+                        const mag = Math.sqrt(v.x * v.x + v.y * v.y);
+                        if (mag > 0) {
+                            v.x /= mag;
+                            v.y /= mag;
+                        }
+
+                        flowField[index] = v;
+                        xoff += 0.1;
+                    }
+                    yoff += 0.1;
+                }
+                zoff += 0.005;
+
+                ctx.fillStyle = 'rgba(12, 12, 20, 0.1)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                particles.forEach(p => {
+                    p.follow(flowField);
+                    p.update();
+                    p.edges();
+                    p.draw();
+                });
+
+                requestAnimationFrame(animate);
+            }
+
+            init();
+            animate();
+        });
+    </script>
+</body>
+
+</html>
