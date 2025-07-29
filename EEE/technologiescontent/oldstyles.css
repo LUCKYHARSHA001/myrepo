@@ -1,0 +1,283 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins';
+}
+
+body {
+  background: #f4f7f8;
+  color: #333;
+  font-family: 'Poppins';
+}
+
+.sidebar {
+  position: fixed;
+  width: 220px;
+  height: 100vh;
+  background-color: #2c3e50;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  /* gap: 15px; */
+  z-index: 999;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  max-width: 100%;
+  overflow-y: scroll;
+  white-space: nowrap;
+  scrollbar-width: none;
+  padding: 10px;
+}
+
+.sidebar h2 {
+  color: white;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.h2-div {
+  position: fixed;
+}
+
+.h2-div h2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.inner-sidebar {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  max-width: 100%;
+  overflow-y: scroll;
+  white-space: nowrap;
+  scrollbar-width: none;
+  /* padding: 10px; */
+}
+
+.inner-sidebar a {
+  margin: 7px;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: #bdc3c7;
+  font-size: 18px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.sidebar a:hover {
+  background-color: #34495e;
+  color: #fff;
+}
+
+.sidebar a.active {
+  background-color: #16a085;
+  color: white;
+}
+
+.container {
+  max-width: 960px;
+  margin-left: 240px;
+  padding: 30px 20px;
+}
+
+.title {
+  text-align: center;
+  font-size: 45px;
+  color: #009933;
+  margin-bottom: 40px;
+  font-weight: 800;
+}
+
+.level {
+  margin-bottom: 50px;
+}
+
+.level-title {
+  font-size: 26px;
+  margin-bottom: 20px;
+  border-left: 6px solid #009933;
+  padding-left: 15px;
+  font-weight: 600;
+}
+
+.level-title.beginner {
+  color: #0066ff;
+}
+
+.level-title.intermediate {
+  color: #f39c12;
+}
+
+.level-title.advanced {
+  color: red;
+}
+
+.level-title.stl {
+  color: #32cd32;
+}
+
+.level-title.expert {
+  color: #ffe100;
+}
+
+.level-title.oop-java {
+  color: indigo;
+}
+
+.level-title.collections {
+  color: chartreuse;
+}
+
+.level-title.tools {
+  color: chocolate;
+}
+
+.level-title.gui {
+  color: violet;
+}
+
+.level-title.real-world {
+  color: darkslateblue;
+}
+
+.level-title.web-dev-py {
+  color: #ffe100;
+}
+
+.level-title.bonus {
+  color: #34495e;
+}
+
+.card-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-size: 1.05rem;
+  font-weight: 500;
+  border-left: 4px solid #32cd32;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  background-color: #e8f5e9;
+  cursor: pointer;
+}
+
+.project-ideas .title {
+  font-size: 26px;
+  margin-bottom: 20px;
+  padding-left: 15px;
+  font-weight: 600;
+}
+
+.project-ideas p {
+  margin-bottom: 20px;
+  font-size: 23px;
+  margin-left: 230px;
+}
+
+.home-button {
+  font-size: 28px;
+  text-decoration: none;
+  color: green;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: white;
+  padding: 10px 14px;
+  border-radius: 30%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, background 0.3s;
+  z-index: 1000;
+}
+
+.home-button:hover {
+  background: #e0ffe0;
+  transform: scale(1.1);
+}
+
+@media (max-width: 1024px) {
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .container {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .card-list {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  .title {
+    font-size: 36px;
+  }
+
+  .home-button {
+    font-size: 22px;
+    top: 15px;
+    right: 15px;
+  }
+}
+
+@media (max-width: 769px) {
+
+  .sidebar,
+  .inner-sidebar,
+  .h2-div,
+  .h2-div .divider {
+    display: none;
+  }
+
+  .card-list {
+    grid-template-columns: 1fr;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .home-button {
+    font-size: 20px;
+    top: 10px;
+    right: 10px;
+    padding: 8px 10px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .sidebar {
+    display: none;
+  }
+}
