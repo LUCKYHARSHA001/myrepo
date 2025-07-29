@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dynamic Nmap Progress Tracker</title>
+  <link rel="stylesheet" href="nmapcheat.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <h1 class="heading">N-map CheatSheet</h1>
+    <!-- Section  -->
+    <div class="step" data-total="8">
+      <div class="header" onclick="toggleStep(this)">
+        Target Specification
+        <span class="right">
+          <span class="progress-count">0 / 8</span>
+          <span class="arrow">&#9660;</span>
+        </span>
+      </div>
+      <div class="progress-bar">
+        <div></div>
+      </div>
+      <div class="content">
+        <table>
+          <thead>
+            <tr>
+              <th>Check</th>
+              <th>Switch</th>
+              <th>Example</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>(none)</td>
+              <td>nmap 192.168.1.1</td>
+              <td>Scan a single IP</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>(none)</td>
+              <td>nmap 192.168.1.1 192.168.2.1</td>
+              <td>Scan specific IPs</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>(none)</td>
+              <td>nmap 192.168.1.1-254</td>
+              <td>Scan a range</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>(none)</td>
+              <td>nmap scanme.nmap.org</td>
+              <td>Scan a domain</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>(none)</td>
+              <td>nmap 192.168.1.0/24</td>
+              <td>Scan using CIDR notation</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-iL</td>
+              <td>nmap -iL targets.txt</td>
+              <td>Scan targets from a file</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-iR</td>
+              <td>nmap -iR 100</td>
+              <td>Scan 100 random hosts</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-exclude</td>
+              <td>nmap -exclude 192.168.1.1</td>
+              <td>Exclude listed hosts</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Section 3: Nmap Port Scan Techniques -->
+    <div class="step" data-total="6">
+      <div class="header" onclick="toggleStep(this)">
+        Nmap Scan Techniques
+        <span><span class="progress-count">0 / 6</span>
+          <span class="arrow">&#9660;</span></span>
+
+      </div>
+      <div class="progress-bar">
+        <div></div>
+      </div>
+      <div class="content">
+        <table>
+          <thead>
+            <tr>
+              <th>Check</th>
+              <th>Switch</th>
+              <th>Example</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-sS</td>
+              <td>nmap 192.168.1.1 -sS</td>
+              <td>TCP SYN port scan (Default)</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-sT</td>
+              <td>nmap 192.168.1.1 -sT</td>
+              <td>TCP connect port scan (Default without root privilege)</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-sU</td>
+              <td>nmap 192.168.1.1 -sU</td>
+              <td>UDP port scan</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-sA</td>
+              <td>nmap 192.168.1.1 -sA</td>
+              <td>TCP ACK port scan</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-sW</td>
+              <td>nmap 192.168.1.1 -sW</td>
+              <td>TCP Window port scan</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-sM</td>
+              <td>nmap 192.168.1.1 -sM</td>
+              <td>TCP Maimon port scan</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- Section  -->
+    <div class="step" data-total="8">
+      <div class="header" onclick="toggleStep(this)">
+        Host Discovery
+        <span><span class="progress-count">0 / 8</span>
+          <span class="arrow">&#9660;</span></span>
+
+      </div>
+      <div class="progress-bar">
+        <div></div>
+      </div>
+      <div class="content">
+        <table>
+          <thead>
+            <tr>
+              <th>Check</th>
+              <th>Switch</th>
+              <th>Example</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-sL</td>
+              <td>nmap 192.168.1.1-3 -sL</td>
+              <td>No Scan. List targets only.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-sn</td>
+              <td>nmap 192.168.1.1/24 -sn</td>
+              <td>Disable port scanning. Host discovery only.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-Pn</td>
+              <td>nmap 192.168.1.1-5 -Pn</td>
+              <td>Disable host discovery. Port scan only.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-PS</td>
+              <td>nmap 192.168.1.1-5 -PS22-25,80</td>
+              <td>TCP SYN discovery on port x. Port 80 by default.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-PA</td>
+              <td>nmap 192.168.1.1-5 -PA22-25,80</td>
+              <td>TCP ACK discovery on port x. Port 80 by default.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-PU</td>
+              <td>nmap 192.168.1.1-5 -PU53</td>
+              <td>UDP discovery on port x. Port 40125 by default.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-PR</td>
+              <td>nmap 192.168.1.1/24 -PR</td>
+              <td>ARP discovery on local network</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-n</td>
+              <td>nmap 192.168.1.1 -n</td>
+              <td>Never do DNS resolution</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- Section 4: Nmap Port Scan Ranges -->
+    <div class="step" data-total="9">
+      <div class="header" onclick="toggleStep(this)">
+        Port Specification
+        <span><span class="progress-count">0 / 9</span>
+          <span class="arrow">&#9660;</span></span>
+
+      </div>
+      <div class="progress-bar">
+        <div></div>
+      </div>
+      <div class="content">
+        <table>
+          <thead>
+            <tr>
+              <th>Check</th>
+              <th>Switch</th>
+              <th>Example</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-p</td>
+              <td>nmap 192.168.1.1 -p 21</td>
+              <td>Port scan for port x</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-p</td>
+              <td>nmap 192.168.1.1 -p 21-100</td>
+              <td>Port range</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-p</td>
+              <td>nmap 192.168.1.1 -p U:53,T:21-25,80</td>
+              <td>Port scan multiple TCP and UDP ports</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-p</td>
+              <td>nmap 192.168.1.1 -p-</td>
+              <td>Port scan all ports</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-p</td>
+              <td>nmap 192.168.1.1 -p http,https</td>
+              <td>Port scan from service name</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-F</td>
+              <td>nmap 192.168.1.1 -F</td>
+              <td>Fast port scan (100 ports)</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-top-ports</td>
+              <td>nmap 192.168.1.1 -top-ports 2000</td>
+              <td>Port scan the top x ports</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-p-65535</td>
+              <td>nmap 192.168.1.1 -p-65535</td>
+              <td>Leaving off initial port in range makes the scan start at port 1</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-p0-</td>
+              <td>nmap 192.168.1.1 -p0-</td>
+              <td>Leaving off end port in range makes the scan go through to port 65535</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Section 5: Nmap Version & OS Detection -->
+    <div class="step" data-total="5">
+      <div class="header" onclick="toggleStep(this)">
+        Service and Version Detection
+        <span><span class="progress-count">0 / 5</span>
+          <span class="arrow">&#9660;</span></span>
+
+      </div>
+      <div class="progress-bar">
+        <div></div>
+      </div>
+      <div class="content">
+        <table>
+          <thead>
+            <tr>
+              <th>Check</th>
+              <th>Switch</th>
+              <th>Example</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-sV</td>
+              <td>nmap 192.168.1.1 -sV</td>
+              <td>Attempts to determine the version of the service running on port</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-sV -version-intensity</td>
+              <td>nmap 192.168.1.1 -sV -version-intensity 8</td>
+              <td>Intensity level 0 to 9. Higher number increases possibility of correctness</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-sV -version-light</td>
+              <td>nmap 192.168.1.1 -sV -version-light</td>
+              <td>Enable light mode. Lower possibility of correctness. Faster</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-sV -version-all</td>
+              <td>nmap 192.168.1.1 -sV -version-all</td>
+              <td>Enable intensity level 9. Higher possibility of correctness. Slower</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-A</td>
+              <td>nmap 192.168.1.1 -A</td>
+              <td>Enables OS detection, version detection, script scanning, and traceroute</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Section 6: Nmap OS Detection Techniques -->
+    <div class="step" data-total="5">
+      <div class="header" onclick="toggleStep(this)">
+        OS Detection
+        <span><span class="progress-count">0 / 5</span>
+          <span class="arrow">&#9660;</span></span>
+
+      </div>
+      <div class="progress-bar">
+        <div></div>
+      </div>
+      <div class="content">
+        <table>
+          <thead>
+            <tr>
+              <th>Check</th>
+              <th>Switch</th>
+              <th>Example</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-O</td>
+              <td>nmap 192.168.1.1 -O</td>
+              <td><strong>Remote OS detection</strong> using TCP/IP stack fingerprinting</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-O -osscan-limit</td>
+              <td>nmap 192.168.1.1 -O -osscan-limit</td>
+              <td>If at least one open and one closed TCP port are not found it will not try OS detection</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-O -osscan-guess</td>
+              <td>nmap 192.168.1.1 -O -osscan-guess</td>
+              <td>Makes Nmap guess more aggressively</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-O -max-os-tries</td>
+              <td>nmap 192.168.1.1 -O -max-os-tries 1</td>
+              <td>Set the maximum number x of OS detection tries against a target</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-A</td>
+              <td>nmap 192.168.1.1 -A</td>
+              <td>Enables OS detection, version detection, script scanning, and traceroute</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Section 7: Nmap Timing Templates -->
+    <div class="step" data-total="6">
+      <div class="header" onclick="toggleStep(this)">
+        Timing and Performance
+        <span><span class="progress-count">0 / 6</span>
+          <span class="arrow">&#9660;</span></span>
+
+      </div>
+      <div class="progress-bar">
+        <div></div>
+      </div>
+      <div class="content">
+        <table>
+          <thead>
+            <tr>
+              <th>Check</th>
+              <th>Switch</th>
+              <th>Example</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-T0</td>
+              <td>nmap 192.168.1.1 -T0</td>
+              <td>Paranoid (0) Intrusion Detection System evasion</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-T1</td>
+              <td>nmap 192.168.1.1 -T1</td>
+              <td>Sneaky (1) Intrusion Detection System evasion</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-T2</td>
+              <td>nmap 192.168.1.1 -T2</td>
+              <td>Polite (2) slows down the scan to use less bandwidth and use less target machine resources</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-T3</td>
+              <td>nmap 192.168.1.1 -T3</td>
+              <td>Normal (3) which is default speed</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-T4</td>
+              <td>nmap 192.168.1.1 -T4</td>
+              <td>Aggressive (4) speeds scans; assumes you are on a reasonably fast and reliable network</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-T5</td>
+              <td>nmap 192.168.1.1 -T5</td>
+              <td>Insane (5) speeds scan; assumes you are on an extraordinarily fast network</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Section 8: Nmap Performance & Timeout Controls -->
+    <div class="step" data-total="8">
+      <div class="header" onclick="toggleStep(this)">
+        Timing and Performance Switches
+        <span><span class="progress-count">0 / 8</span>
+          <span class="arrow">&#9660;</span></span>
+
+      </div>
+      <div class="progress-bar">
+        <div></div>
+      </div>
+      <div class="content">
+        <table>
+          <thead>
+            <tr>
+              <th>Check</th>
+              <th>Switch</th>
+              <th>Example Input</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-host-timeout &lt;time&gt;</td>
+              <td>1s; 4m; 2h</td>
+              <td>Give up on target after this long</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-min-rtt-timeout / -max-rtt-timeout / initial-rtt-timeout &lt;time&gt;</td>
+              <td>1s; 4m; 2h</td>
+              <td>Specifies probe round trip time</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-min-hostgroup / -max-hostgroup &lt;size&gt;</td>
+              <td>50; 1024</td>
+              <td>Parallel host scan group sizes</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-min-parallelism / -max-parallelism &lt;numprobes&gt;</td>
+              <td>10; 1</td>
+              <td>Probe parallelization</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-max-retries &lt;tries&gt;</td>
+              <td>3</td>
+              <td>Specify the maximum number of port scan probe retransmissions</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-min-rate &lt;number&gt;</td>
+              <td>100</td>
+              <td>Send packets no slower than &lt;number&gt; per second</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-max-rate &lt;number&gt;</td>
+              <td>100</td>
+              <td>Send packets no faster than &lt;number&gt; per second</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Section 9: Nmap NSE (Script Engine) Options -->
+    <div class="step" data-total="8">
+      <div class="header" onclick="toggleStep(this)">
+        NSE Scripts
+        <span><span class="progress-count">0 / 8</span>
+          <span class="arrow">&#9660;</span></span>
+
+      </div>
+      <div class="progress-bar">
+        <div></div>
+      </div>
+      <div class="content">
+        <table>
+          <thead>
+            <tr>
+              <th>Check</th>
+              <th>Switch</th>
+              <th>Example</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-sC</td>
+              <td>nmap 192.168.1.1 -sC</td>
+              <td>Scan with default NSE scripts. Considered useful for discovery and safe</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-script default</td>
+              <td>nmap 192.168.1.1 -script default</td>
+              <td>Scan with default NSE scripts. Considered useful for discovery and safe</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-script=banner</td>
+              <td>nmap 192.168.1.1 -script=banner</td>
+              <td>Scan with a single script. Example banner</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-script=http*</td>
+              <td>nmap 192.168.1.1 -script=http*</td>
+              <td>Scan with a wildcard. Example http</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-script=http,banner</td>
+              <td>nmap 192.168.1.1 -script=http,banner</td>
+              <td>Scan with two scripts. Example http and banner</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-script "not intrusive"</td>
+              <td>nmap 192.168.1.1 -script "not intrusive"</td>
+              <td>Scan default, but remove intrusive scripts</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-script-args</td>
+              <td>nmap -script snmp-sysdescr -script-args snmpcommunity=admin 192.168.1.1</td>
+              <td>NSE script with arguments</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="step" data-total="8">
+      <div class="header" onclick="toggleStep(this)">
+        Useful NSE Script Examples
+        <span><span class="progress-count">0 / 8</span>
+          <span class="arrow">&#9660;</span></span>
+
+      </div>
+      <div class="progress-bar">
+        <div></div>
+      </div>
+      <div class="content">
+        <table>
+          <thead>
+            <tr>
+              <th>Check</th>
+              <th>Switch</th>
+              <th>Example</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>(none)</td>
+              <td>nmap 192.168.1.1</td>
+              <td>Scan a single IP</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>(none)</td>
+              <td>nmap 192.168.1.1 192.168.2.1</td>
+              <td>Scan specific IPs</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>(none)</td>
+              <td>nmap 192.168.1.1-254</td>
+              <td>Scan a range</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>(none)</td>
+              <td>nmap scanme.nmap.org</td>
+              <td>Scan a domain</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>(none)</td>
+              <td>nmap 192.168.1.0/24</td>
+              <td>Scan using CIDR notation</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-iL</td>
+              <td>nmap -iL targets.txt</td>
+              <td>Scan targets from a file</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-iR</td>
+              <td>nmap -iR 100</td>
+              <td>Scan 100 random hosts</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-exclude</td>
+              <td>nmap -exclude 192.168.1.1</td>
+              <td>Exclude listed hosts</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="step" data-total="8">
+      <div class="header" onclick="toggleStep(this)">
+        Firewall / IDS Evasion and Spoofing
+        <span><span class="progress-count">0 / 8</span>
+          <span class="arrow">&#9660;</span></span>
+
+      </div>
+      <div class="progress-bar">
+        <div></div>
+      </div>
+      <div class="content">
+        <table>
+          <thead>
+            <tr>
+              <th>Check</th>
+              <th>Switch</th>
+              <th>Example</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-f</td>
+              <td>nmap 192.168.1.1 -f</td>
+              <td>Requested scan (including ping scans) use tiny fragmented IP packets. Harder for packet filters</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-mtu</td>
+              <td>nmap 192.168.1.1 -mtu 32</td>
+              <td>Set your own offset size</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-D</td>
+              <td>nmap -D 192.168.1.101,192.168.1.102,192.168.1.103,192.168.1.23 192.168.1.1</td>
+              <td>Send scans from spoofed IPs</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-D</td>
+              <td>nmap -D decoy-ip1,decoy-ip2,your-own-ip,decoy-ip3,decoy-ip4 remote-host-ip</td>
+              <td>Above example explained</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-S</td>
+              <td>nmap -S www.microsoft.com www.facebook.com</td>
+              <td>Scan Facebook from Microsoft (-e eth0 -Pn may be required)</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-g</td>
+              <td>nmap -g 53 192.168.1.1</td>
+              <td>Use given source port number</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-proxies</td>
+              <td>nmap -proxies http://192.168.1.1:8080, http://192.168.1.2:8080 192.168.1.1</td>
+              <td>Relay connections through HTTP/SOCKS4 proxies</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-data-length</td>
+              <td>nmap -data-length 200 192.168.1.1</td>
+              <td>Appends random data to sent packets</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Section 3: Nmap Output & Debugging Options -->
+    <div class="step" data-total="13">
+      <div class="header" onclick="toggleStep(this)">
+        Output
+        <span><span class="progress-count">0 / 13</span>
+          <span class="arrow">&#9660;</span></span>
+
+      </div>
+      <div class="progress-bar">
+        <div></div>
+      </div>
+      <div class="content">
+        <table>
+          <thead>
+            <tr>
+              <th>Check</th>
+              <th>Switch</th>
+              <th>Example</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-oN</td>
+              <td>nmap 192.168.1.1 -oN normal.file</td>
+              <td>Normal output to the file normal.file</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-oX</td>
+              <td>nmap 192.168.1.1 -oX xml.file</td>
+              <td>XML output to the file xml.file</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-oG</td>
+              <td>nmap 192.168.1.1 -oG grep.file</td>
+              <td>Grepable output to the file grep.file</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-oA</td>
+              <td>nmap 192.168.1.1 -oA results</td>
+              <td>Output in the three major formats at once</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-oG -</td>
+              <td>nmap 192.168.1.1 -oG -</td>
+              <td>Grepable output to screen. -oN -, -oX - also usable</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-append-output</td>
+              <td>nmap 192.168.1.1 -oN file.file -append-output</td>
+              <td>Append a scan to a previous scan file</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-v</td>
+              <td>nmap 192.168.1.1 -v</td>
+              <td>Increase the verbosity level (use -vv or more for greater effect)</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-d</td>
+              <td>nmap 192.168.1.1 -d</td>
+              <td>Increase debugging level (use -dd or more for greater effect)</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-reason</td>
+              <td>nmap 192.168.1.1 -reason</td>
+              <td>Display the reason a port is in a particular state, same output as -vv</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-open</td>
+              <td>nmap 192.168.1.1 -open</td>
+              <td>Only show open (or possibly open) ports</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-packet-trace</td>
+              <td>nmap 192.168.1.1 -T4 -packet-trace</td>
+              <td>Show all packets sent and received</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-iflist</td>
+              <td>nmap -iflist</td>
+              <td>Shows the host interfaces and routes</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-resume</td>
+              <td>nmap -resume results.file</td>
+              <td>Resume a scan</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Section 4: Nmap Post-Processing -->
+    <div class="step" data-total="6">
+      <div class="header" onclick="toggleStep(this)">
+        Helpful Nmap Output examples
+        <span>
+          <span class="progress-count">0 / 6</span>
+          <span class="arrow">&#9660;</span>
+        </span>
+
+      </div>
+      <div class="progress-bar">
+        <div></div>
+      </div>
+      <div class="content">
+        <table>
+          <thead>
+            <tr>
+              <th>Check</th>
+              <th>Command</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>nmap -p80 -sV -oG - --open 192.168.1.1/24 | grep open</td>
+              <td>Scan for web servers and grep to show which IPs are running web servers</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>nmap -iR 10 -n -oX out.xml | grep "Nmap" | cut -d " " -f5 &gt; live-hosts.txt</td>
+              <td>Generate a list of the IPs of live hosts</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>nmap -iR 10 -n -oX out2.xml | grep "Nmap" | cut -d " " -f5 &gt;&gt; live-hosts.txt</td>
+              <td>Append IP to the list of live hosts</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>ndiff scan1.xml scan2.xml</td>
+              <td>Compare output from nmap using the ndiff</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>xsltproc nmap.xml -o nmap.html</td>
+              <td>Convert nmap xml files to html files</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>grep " open " results.nmap | sed -r ‘s/ +/ /g’ | sort | uniq -c | sort -rn | less</td>
+              <td>Reverse sorted list of how often ports turn up</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Section 5: Miscellaneous Options -->
+    <div class="step" data-total="2">
+      <div class="header" onclick="toggleStep(this)">
+        Miscellaneous Nmap Flags
+        <span><span class="progress-count">0 / 2</span>
+          <span class="arrow">&#9660;</span></span>
+
+      </div>
+      <div class="progress-bar">
+        <div></div>
+      </div>
+      <div class="content">
+        <table>
+          <thead>
+            <tr>
+              <th>Check</th>
+              <th>Switch</th>
+              <th>Example</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-6</td>
+              <td>nmap -6 2607:f0d0:1002:51::4</td>
+              <td>Enable IPv6 scanning</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>-h</td>
+              <td>nmap -h</td>
+              <td>nmap help screen</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- Section 6: Discovery Techniques -->
+    <div class="step" data-total="5">
+      <div class="header" onclick="toggleStep(this)">
+        Other Useful Nmap Commands
+        <span><span class="progress-count">0 / 5</span>
+          <span class="arrow">&#9660;</span></span>
+
+      </div>
+      <div class="progress-bar">
+        <div></div>
+      </div>
+      <div class="content">
+        <table>
+          <thead>
+            <tr>
+              <th>Check</th>
+              <th>Command</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>nmap -iR 10 -PS22-25,80,113,1050,35000 -v -sn</td>
+              <td>Discovery only on ports x, no port scan</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>nmap 192.168.1.1-1/24 -PR -sn -vv</td>
+              <td>Arp discovery only on local network, no port scan</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>nmap -iR 10 -sn -traceroute</td>
+              <td>Traceroute to random targets, no port scan</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>nmap 192.168.1.1-50 -sL --dns-server 192.168.1.1</td>
+              <td>Query the Internal DNS for hosts, list targets only</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" onchange="updateProgress(this)"></td>
+              <td>nmap 192.168.1.1 --packet-trace</td>
+              <td>Show the details of the packets that are sent and received during a scan and capture the traffic.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+
+
+  </div>
+  <a href="../main.html" class="home-button" title="Go to Home">
+    <i class="fas fa-home"></i>
+  <script src="nmap.js"></script>
+</body>
+
+</html>
