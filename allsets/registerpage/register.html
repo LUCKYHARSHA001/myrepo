@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="register.css">
+  <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="login-card">
+    <h1 class="login-let">Create Account</h1>
+    <p class="paracen">Sign up to get started.</p>
+    <form id="registerform" class="register-form">
+      <div class="input-group">
+        <input type="email" id="email" name="email" placeholder="Email Address" required class="input-field">
+
+        <input type="password" id="password" name="password" placeholder="Password" required class="input-field">
+      </div>
+      <div class="confirm-pass">
+        <input type="password" id="repassword" name="repassword" placeholder="Confirm Password" required
+          class="reinput-field">
+      </div>
+      <div class="row-list">
+        <div class="rememberme-box">
+          <input type="checkbox">
+          <label for="i-agree-to">I agree to the</label>
+        </div>
+        <a href="#" class="Terms&conditions">Terms & conditions</a>
+      </div>
+      <button type="submit" class="sign-up" onclick="to_signinpage()">Sign Up</button>
+      <div class="login-last-row">
+        <p>Already have an account?</p>
+        <a href="../loginpage/login.html" class="Log-in">Log in</a>
+      </div>
+    </form>
+  </div>
+  <script src="register.js">
+
+  </script>
+</body>
+
+</html>

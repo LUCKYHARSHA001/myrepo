@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="login.css">
+  <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="login-card">
+    <h1 class="login-let">Welcome Back,</h1>
+    <p class="paracen">Log in to your account to Continue.</p>
+    <form id="loginform" class="login-form">
+      <div class="input-group">
+        <input type="email" id="email" name="email" placeholder="Email Address" required class="input-field">
+
+        <input type="password" id="password" name="password" placeholder="Password" required class="input-field">
+      </div>
+      <div class="row-list">
+        <div class="rememberme-box">
+          <input type="checkbox">
+          <label for="Remember-me">Remember me</label>
+        </div>
+        <a href="#" class="forgot-password">Forget your password?</a>
+      </div>
+      <button type="submit" class="sign-in" onclick="to_mainpage()">Sign In</button>
+      <div class="login-last-row">
+        <p>Don't have an account?</p>
+        <a href="../registerpage/register.html" class="Sign-up-now">Sign up now</a>
+      </div>
+    </form>
+  </div>
+  <script src="login.js">
+
+  </script>
+</body>
+
+</html>

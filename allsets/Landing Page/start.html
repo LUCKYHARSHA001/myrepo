@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Choose Your Tech Path</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="start.css">
+</head>
+
+<body>
+  <canvas id="dots-bg"></canvas>
+  <div class="welcome-section" style="text-align:center; margin-top:40px;">
+    <h2 style="font-size:2.2rem; font-weight:600; color:#333; margin-bottom:10px;">Welcome to Skill Hance!</h2>
+    <p style="font-size:1.1rem; color:#ffffff; margin-bottom:30px;">Explore the departments and start your tech journey. Explore resources, roadmaps, and more!</p>
+  </div>
+  <ul class="symbol-bg">
+    <li class="symbol symbol-cse"></li>
+    <li class="symbol symbol-ece"></li>
+    <li class="symbol symbol-mech"></li>
+    <li class="symbol symbol-eee"></li>
+    <li class="symbol symbol-civil"></li>
+    <li class="symbol symbol-cse"></li>
+    <li class="symbol symbol-ece"></li>
+    <li class="symbol symbol-mech"></li>
+    <li class="symbol symbol-eee"></li>
+    <li class="symbol symbol-civil"></li>
+    <li class="symbol symbol-cse"></li>
+    <li class="symbol symbol-ece"></li>
+    <li class="symbol symbol-mech"></li>
+    <li class="symbol symbol-eee"></li>
+    <li class="symbol symbol-civil"></li>
+    <li class="symbol symbol-cse"></li>
+    <li class="symbol symbol-ece"></li>
+    <li class="symbol symbol-mech"></li>
+    <li class="symbol symbol-eee"></li>
+    <li class="symbol symbol-civil"></li>
+  </ul>
+
+  <div class="container">
+    <h1 class="main-heading" style="font-size:2rem; color:#222; margin-bottom:20px;">Choose Course</h1>
+    <div class="card-grid" style="gap:30px;">
+      <div class="card cse" onclick="window.location.href='../CSE/main.html'" style="border-radius:16px; box-shadow:0 2px 12px rgba(0,0,0,0.08); transition:transform 0.2s;">
+        <h2>CSE</h2>
+      </div>
+      <div class="card ece" onclick="window.location.href='../ECE/main.html'" style="border-radius:16px; box-shadow:0 2px 12px rgba(0,0,0,0.08); transition:transform 0.2s;">
+        <h2>ECE</h2>
+      </div>
+      <div class="card mech"  onclick="window.location.href='../MECH/main.html'" style="border-radius:16px; box-shadow:0 2px 12px rgba(0,0,0,0.08); transition:transform 0.2s;">
+        <h2>MECH</h2>
+      </div>
+      <div class="card eee" onclick="window.location.href='../EEE/main.html'"style="border-radius:16px; box-shadow:0 2px 12px rgba(0,0,0,0.08); transition:transform 0.2s;">
+        <h2>EEE</h2>
+      </div>
+      <div class="card civil"  onclick="window.location.href='../CIVIL/main.html'" style="border-radius:16px; box-shadow:0 2px 12px rgba(0,0,0,0.08); transition:transform 0.2s;">
+        <h2>CIVIL</h2>
+      </div>
+    </div>
+  </div>
+  
+  <style>
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+      cursor: pointer;
+    }
+
+    .card-grid {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .container {
+      /* Remove max-width and margin to avoid white box */
+      width: auto;
+      margin: 0 auto;
+      text-align: center;
+      margin-bottom: 40px;
+      background: none;
+      box-shadow: none;
+      padding: 0;
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: 1.3rem;
+      color: #444;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .main-heading {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .welcome-section h2,
+    .welcome-section p {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    #dots-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      display: block;
+    }
+  </style>
+  <script>
+    // Moving white dots background
+    const canvas = document.getElementById('dots-bg');
+    const ctx = canvas.getContext('2d');
+    let dots = [];
+    const DOTS_COUNT = 60;
+    const DOT_RADIUS = 2;
+    const SPEED = 0.3;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    function initDots() {
+      dots = [];
+      for (let i = 0; i < DOTS_COUNT; i++) {
+        dots.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          dx: (Math.random() - 0.5) * SPEED,
+          dy: (Math.random() - 0.5) * SPEED
+        });
+      }
+    }
+    initDots();
+
+    function animateDots() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let dot of dots) {
+        dot.x += dot.dx;
+        dot.y += dot.dy;
+        if (dot.x < 0 || dot.x > canvas.width) dot.dx *= -1;
+        if (dot.y < 0 || dot.y > canvas.height) dot.dy *= -1;
+        ctx.beginPath();
+        ctx.arc(dot.x, dot.y, DOT_RADIUS, 0, Math.PI * 2);
+        ctx.fillStyle = 'white';
+        ctx.globalAlpha = 0.8;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+      }
+      requestAnimationFrame(animateDots);
+    }
+    animateDots();
+  </script>
+</body>
+
+</html>

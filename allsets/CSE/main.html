@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSE Department - Learn Tech</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" href="main1.css">
+
+    <!-- In your <head> tag -->
+    <script src="https://cdn.botpress.cloud/webchat/v3.1/inject.js"></script>
+</head>
+
+<body>
+    <div class="preheader">
+        <div class="left-actions">
+            <div class="dropdown">
+                <button class="dropbtn">CSE<i class="fa-solid fa-chevron-down"
+                        style="font-size: 12px; margin-left: 8px;"></i></button>
+                <div class="dropdown-content">
+                    <a href="../CSE/main.html">CSE</a>
+                    <a href="../ECE/main.html">ECE</a>
+                    <a href="../MECH/main.html">MECH</a>
+                    <a href="../CIVIL/main.html">CIVIL</a>
+                    <a href="../EEE/main.html">EEE</a>
+                </div>
+            </div>
+            <div class="dropdown-container">
+                <div class="dropdown">
+                    <button class="dropbtn">Technologies
+                        <i class="fa-solid fa-chevron-down" style="font-size: 12px; margin-left: 8px;"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="technologiescontent/ospage.html">OS</a>
+                        <a href="technologiescontent/dbmspage.html">DBMS</a>
+                        <a href="technologiescontent/computernetworkspage.html">Computer Networks</a>
+                        <a href="technologiescontent/oopspage.html">OOPS</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dev-mode-sec">
+                <button id="devmode-button" title="Developer Mode" onclick="to_cheatsheet()">
+                    <i class="fas fa-laptop-code"></i>
+                </button>
+            </div>
+
+            <div class="language-icon">
+                <button id="language-button" title="Programming Languages" onclick="to_languagepage()">
+                    <i class="fas fa-code"></i>
+                </button>
+            </div>
+            <div class="resource-icon">
+                <button id="resources-button" title="Resources" onclick="to_resourcespage()">
+                    <i class="fa-solid fa-file"></i>
+                </button>
+            </div>
+        </div>
+        <div class="main-logo">
+            <a href="#" class="logo">SkillHance</a>
+        </div>
+
+        <div class="preheader-right">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Enter your search here...">
+            </div>
+
+            <div class="theme-button">
+                <button id="theme-toggle" title="Toggle Theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+
+            <div class="feedback-sec">
+                <button id="feedback-button" title="Give Feedback" onclick="to_feedbackpage()">
+                    <i class="fas fa-comment-dots"></i>
+                </button>
+            </div>
+
+            <div class="dashboard-sec">
+                <button id="dashboard-button" title="Dashboard" onclick="to_dashboardpage()">
+                    <i class="fas fa-tachometer-alt"></i>
+                </button>
+            </div>
+
+            <div class="account-sec">
+                <button id="user-button" title="User Profile" onclick="to_registerpage()">
+                    <i class="fas fa-user"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="intro-matter">Hello,What do you want to Learn?</div>
+    <div class="center-container">
+        <div class="larger-input">
+            <input type="text" placeholder="Enter your search here...">
+        </div>
+    </div>
+
+    <div class="Job-courses">
+        <div class="course-cards">
+            <div class="tech-cards-section">
+                <h2 style="margin: 40px 0 20px 0; font-size: 28px; text-align: center;">Explore More Technologies:🔍
+                </h2>
+                <div class="tech-card-container">
+                    <div class="tech-card">
+                        <i class="fas fa-code icon"></i>
+                        <h3>Web Development</h3>
+                        <button onclick="window.location.href='courses/webdev.html'">Explore</button>
+                    </div>
+                    <div class="tech-card">
+                        <i class="fas fa-mobile-alt icon"></i>
+                        <h3>App Development</h3>
+                        <button onclick="window.location.href='courses/appdev.html'">Explore</button>
+                    </div>
+                    <div class="tech-card">
+                        <i class="fas fa-gamepad icon"></i>
+                        <h3>Game Development</h3>
+                        <button onclick="window.location.href='javafullstack.html'">Explore</button>
+                    </div>
+                    <div class="tech-card">
+                        <i class="fas fa-chart-bar icon"></i>
+                        <h3>Data Science</h3>
+                        <button onclick="window.location.href='courses/datascience.html'">Explore</button>
+                    </div>
+                    <div class="tech-card">
+                        <i class="fas fa-brain icon"></i>
+                        <h3>Machine Learning</h3>
+                        <button onclick="window.location.href='courses/mldev.html'">Explore</button>
+                    </div>
+                    <div class="tech-card">
+                        <i class="fas fa-shield-alt icon"></i>
+                        <h3>Cyber Security</h3>
+                        <button onclick="window.location.href='courses/cybersecuritydev.html'">Explore</button>
+                    </div>
+                    <div class="tech-card">
+                        <i class="fas fa-palette icon"></i>
+                        <h3>UI/UX</h3>
+                        <button onclick="window.location.href='courses/uiuxdev.html'">Explore</button>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <h2 class="h2-title">Explore the paths Abroad</h2>
+            <div class="tech-card new-pathways-card">
+                <i class="fas fa-globe icon"></i>
+                <h3>International Engineering Pathways</h3>
+                <button onclick="window.location.href='../abroadplans/democse.html'">Explore</button>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="footer1">
+                <div class="logo">
+                    <a href="#">LOGO</a>
+                </div>
+                <div class="footer-text">
+                    <ul>
+                        <li><a href="#"> ChatBot</li>
+                        <li><a href="feedback/feedback.html">Feedback</a></li>
+                    </ul>
+                </div>
+                <div class="footer-text">
+                    <ul>
+                        <li><a href="#">Home</li>
+                        <li><a href="#">Team</a></li>
+                    </ul>
+                </div>
+                <div class="footer-text">
+                    <ul>
+                        <li><a href="#">About-Us</li>
+                        <li><a href="#">Contact-Us</a></li>
+                        <li><a href="#">Services</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr width="80%" />
+            <div class="footer2">
+                <div class="icons">
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-twitter"></i>
+                    <i class="fa-brands fa-linkedin"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                </div>
+                <div class="copy-right">
+                    <p>&copy 2025 Skill Hance | All rights reserved</p>
+                </div>
+            </div>
+        </footer>
+        <!-- ✅ Floating Chatbot Button -->
+        <div id="open-chatbot-button" style="
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 60px;
+  height: 60px;
+  background-color: #1a2a3a;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 9998;
+">
+            <i class="fas fa-robot" style="color: white; font-size: 24px;"></i>
+        </div>
+
+        <!-- ✅ Chatbot Container -->
+        <div id="webchat" style="
+  position: fixed;
+  bottom: 100px;
+  right: 25px;
+  width: 400px;
+  height: 500px;
+  display: none;
+  z-index: 9999;
+"></div>
+
+        <script src="https://cdn.botpress.cloud/webchat/v3.1/inject.js" defer></script>
+
+        <script defer>
+            document.addEventListener("DOMContentLoaded", function () {
+                let botInitialized = false;
+                const chatbotBtn = document.getElementById("open-chatbot-button");
+                const chatbotWindow = document.getElementById("webchat");
+
+                chatbotBtn.addEventListener("click", function () {
+                    if (!botInitialized) {
+                        window.botpress.init({
+                            botId: "4ce4e113-c704-49fb-80fe-4b49c78fbfb7",
+                            clientId: "befc4948-9589-4dc6-a34b-47145a1adffe",
+                            selector: "#webchat",
+                            configuration: {
+                                botName: "Friday",
+                                themeMode: "dark",
+                                headerVariant: "glass",
+                                color: "#1a2a3a",
+                                fontFamily: "Poppins",
+                                radius: 4,
+                            }
+                        });
+                        botInitialized = true;
+                        chatbotWindow.style.display = "block";
+                    } else {
+                        chatbotWindow.style.display = (chatbotWindow.style.display === "none" ? "block" : "none");
+                    }
+                });
+            });
+        </script>
+        <script src="main.js" defer></script>
+
+</body>
+
+</html>

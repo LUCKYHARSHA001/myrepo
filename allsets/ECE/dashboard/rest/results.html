@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CGPA Line Chart</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="results.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <h1>My Learning Dashboard</h1>
+      <a href="../main.html" class="home-btn">
+        <i class="fas fa-home"></i>
+      </a>
+    </div>
+  </header>
+
+  <div class="sidebar">
+    <div class="h2-div">
+      <h2>Languages</h2>
+      <div class="divider"><hr><hr></div>
+    </div>
+    <div class="inner-sidebar">
+      <a href="heatmap.html">Heatmaps</a>
+      <a href="concepts.html">Concepts</a>
+      <a href="results.html" class="active">Results</a>
+      <a href="technologies.html">Technologies</a>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <h2>⭐ CGPA Trend</h2>
+    <div class="chart-container">
+      <canvas id="cgpaChart"></canvas>
+    </div>
+
+    <div class="estimate">
+      <h2>📈 Estimated CGPA</h2>
+      <p>Enter your mid-1 score:</p>
+      <input type="text" placeholder="Enter your mid-1 marks" />
+      
+      <p>Enter your mid-2 score:</p>
+      <input type="text" placeholder="Enter your mid-2 marks" />
+      
+      <p>Enter your labs score:</p>
+      <input type="text" placeholder="Enter your lab marks" />
+    </div>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('cgpaChart').getContext('2d');
+    const cgpaChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Sem-1', 'Sem-2', 'Sem-3', 'Sem-4', 'Sem-5'],
+        datasets: [{
+          label: 'CGPA Trend',
+          data: [8.1, 8.2, 8.3, 8.6, 8.4, 8.2],
+          fill: false,
+          borderColor: '#FFA726',
+          borderWidth: 2,
+          pointBackgroundColor: '#fff',
+          tension: 0.4
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: true,
+            labels: {
+              color: '#fff'
+            }
+          },
+          tooltip: {
+            callbacks: {
+              label: ctx => `${ctx.raw}`
+            },
+            bodyColor: '#000',
+            backgroundColor: '#fff'
+          }
+        },
+        scales: {
+          x: {
+            ticks: { color: '#ccc' },
+            grid: {
+              color: (context) => {
+                if (
+                  context.tick.value === context.chart.data.labels[0] ||
+                  context.tick.value === context.chart.data.labels[context.chart.data.labels.length - 1]
+                ) {
+                  return '#444';
+                }
+                return 'transparent';
+              },
+              drawTicks: false,
+              borderColor: '#444'
+            }
+          },
+          y: {
+            beginAtZero: false,
+            suggestedMin: 7,
+            suggestedMax: 9.5,
+            ticks: { color: '#ccc' },
+            grid: {
+              color: (context) => {
+                const min = context.chart.scales.y.min;
+                const max = context.chart.scales.y.max;
+                if (context.tick.value === min || context.tick.value === max) {
+                  return '#444';
+                }
+                return 'transparent';
+              },
+              drawTicks: false,
+              borderColor: '#444'
+            }
+          }
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>

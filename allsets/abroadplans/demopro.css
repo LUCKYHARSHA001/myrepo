@@ -1,0 +1,268 @@
+/* Basic Reset & Body Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f7f6;
+    overflow-x: hidden; /* Prevent horizontal scroll from animations */
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header Styling */
+.header-section {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 60px 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header-section h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3em;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+.header-section p {
+    font-size: 1.1em;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+/* Main Content Styling */
+main {
+    padding: 40px 0;
+}
+
+.country-section {
+    background-color: #fff;
+    margin-bottom: 40px;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out; /* Base transition for reveal */
+    opacity: 0; /* Hidden by default for scroll reveal */
+    transform: translateY(50px); /* Initial state for slide-up reveal */
+}
+
+.country-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.country-section[data-animation-direction="left"] {
+    transform: translateX(-100%) translateY(0); /* Start off-screen left */
+}
+.country-section.visible[data-animation-direction="left"] {
+    transform: translateX(0) translateY(0);
+}
+
+.country-section[data-animation-direction="right"] {
+    transform: translateX(100%) translateY(0); /* Start off-screen right */
+}
+.country-section.visible[data-animation-direction="right"] {
+    transform: translateX(0) translateY(0);
+}
+
+
+.country-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5em;
+    color: #34495e;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+}
+
+.details-card {
+    margin-top: 25px;
+    background-color: #ecf0f1;
+    padding: 25px;
+    border-radius: 6px;
+}
+
+.details-card h3 {
+    font-size: 1.6em;
+    color: #2980b9;
+    margin-bottom: 15px;
+}
+
+.details-card ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 20px;
+}
+
+.details-card ul li {
+    background-color: #fff;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    border-left: 4px solid #3498db;
+    font-size: 1.05em;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.details-card ul li:hover {
+    transform: translateX(5px);
+    background-color: #e0f2f7;
+}
+
+.info-block {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px dashed #bdc3c7;
+    transition: opacity 0.8s ease-in, transform 0.8s ease-in; /* For content reveal */
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.info-block.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.info-block h4 {
+    font-size: 1.4em;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.info-block p {
+    margin-bottom: 10px;
+}
+
+.info-block p strong {
+    color: #2980b9;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #34495e;
+    color: #ecf0f1;
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 40px;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Initial Page Load Animations (CSS Keyframes) */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+.fade-in-up.delay-1 {
+    animation-delay: 0.5s;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Highlighting Animations */
+.highlight-text {
+    position: relative;
+    display: inline-block; /* Essential for span to respect padding/margin and for ::before/::after */
+    color: #2c3e50; /* Adjust text color for highlight contrast */
+    font-weight: bold;
+    overflow: hidden; /* Important for some highlight effects */
+}
+
+/* Underline Highlight */
+.highlight-text[data-highlight-animation="underline"]::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0%;
+    height: 4px;
+    background-color: #e67e22; /* Orange highlight */
+    transition: width 0.4s ease-out;
+}
+
+.highlight-text.highlighted[data-highlight-animation="underline"]::after {
+    width: 100%;
+}
+
+/* Wave Highlight (using clip-path for more complex shape) */
+.highlight-text[data-highlight-animation="wave"] {
+    background: linear-gradient(120deg, #f1c40f 0%, #f39c12 100%); /* Yellow/Orange gradient */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent; /* Make text color transparent to show background */
+    font-weight: bold;
+}
+
+@keyframes waveAnimation {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+.highlight-text[data-highlight-animation="wave"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%; /* Wider than text to allow movement */
+    height: 100%;
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%);
+    opacity: 0;
+    transform: translateX(100%); /* Start off-screen right */
+}
+
+.highlight-text.highlighted[data-highlight-animation="wave"]::before {
+    animation: waveEffect 1.5s forwards ease-out;
+}
+
+@keyframes waveEffect {
+    0% { transform: translateX(100%); opacity: 0; }
+    50% { opacity: 1; transform: translateX(0%); }
+    100% { transform: translateX(-100%); opacity: 0; }
+}
+
+
+/* List Item Reveal */
+.list-item-reveal {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.country-section.visible .list-item-reveal {
+    opacity: 1;
+    transform: translateX(0);
+}
+/* Stagger list items using custom properties and JavaScript */
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .header-section h1 {
+        font-size: 2.2em;
+    }
+    .country-heading {
+        font-size: 2em;
+    }
+    .details-card {
+        padding: 15px;
+    }
+}

@@ -1,0 +1,195 @@
+ body {
+   font-family: 'Inter', sans-serif;
+   background-color: #121212;
+   color: #E5E7EB;
+   margin: 0;
+   padding: 2rem 1rem;
+ }
+
+ .roadmap-container {
+   width: 100%;
+   max-width: 56rem;
+   margin: auto;
+ }
+
+ .main-header {
+   text-align: center;
+   margin-bottom: 2rem;
+ }
+
+ .main-header h1 {
+   font-size: 2.25rem;
+   font-weight: 700;
+   color: #ffffff;
+   margin: 0 0 0.5rem 0;
+ }
+
+ .main-header p {
+   font-size: 1rem;
+   color: #9CA3AF;
+   margin: 0;
+ }
+
+ /* --- Accordion Container --- */
+ .accordion-container {
+   display: flex;
+   flex-direction: column;
+   gap: 1rem;
+ }
+
+ /* --- Accordion Item Styling --- */
+ .accordion-item {
+   background-color: #282828;
+   border-radius: 0.75rem;
+   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+   padding-bottom: 1.25rem;
+ }
+
+ /* --- Header / Toggle Button --- */
+ .accordion-header {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 1.25rem;
+   padding-bottom: 0.75rem;
+   cursor: pointer;
+ }
+
+ .accordion-title {
+   font-size: 1.125rem;
+   font-weight: 600;
+   color: #ffffff;
+ }
+
+ .header-right {
+   display: flex;
+   align-items: center;
+   gap: 1rem;
+ }
+
+ .accordion-counter {
+   font-size: 0.875rem;
+   font-weight: 500;
+   color: #9CA3AF;
+ }
+
+ .chevron-icon {
+   width: 1.25rem;
+   height: 1.25rem;
+   color: #9CA3AF;
+   transition: transform 0.3s ease-in-out;
+ }
+
+ .progress-container {
+   height: 8px;
+   background-color: #4A5568;
+   /* Same as checkbox background *//
+   border-radius: 4px;
+   margin: 0 1.25rem;
+   overflow: hidden;
+ }
+
+ .progress-bar {
+   height: 100%;
+   width: 0%;
+   /* Initial width */
+   /* background-color: #2DD4BF; */
+   background-color: red;
+   /* Same as checkbox checkmark */
+   border-radius: 4px;
+   transition: width 0.4s ease-in-out;
+ }
+
+
+ /* --- Dropdown Content --- */
+ .accordion-content {
+   padding: 0 1.25rem;
+   padding-top: 1.25rem;
+ }
+
+ .problem-list {
+   list-style: none;
+   padding: 0;
+   margin: 0;
+   display: flex;
+   flex-direction: column;
+   gap: 1rem;
+ }
+
+ .problem-item {
+   display: flex;
+   align-items: center;
+   gap: 1rem;
+ }
+
+ .problem-item a {
+   color: #ffffff;
+   text-decoration: none;
+   transition: color 0.2s ease-in-out;
+ }
+
+ .problem-item a:hover {
+   color: #2DD4BF;
+ }
+
+ /* --- Utility Classes --- */
+ .hidden {
+   display: none;
+ }
+
+ .rotate-180 {
+   transform: rotate(180deg);
+ }
+
+ /* --- Custom Checkbox Styles --- */
+ .custom-checkbox {
+   -webkit-appearance: none;
+   appearance: none;
+   background-color: #4A5568;
+   margin: 0;
+   font: inherit;
+   color: currentColor;
+   width: 1.15em;
+   height: 1.15em;
+   border: 0.1em solid #4A5568;
+   border-radius: 0.25rem;
+   transform: translateY(-0.075em);
+   display: grid;
+   place-content: center;
+   cursor: pointer;
+ }
+
+ .custom-checkbox::before {
+   content: "";
+   width: 0.65em;
+   height: 0.65em;
+   transform: scale(0);
+   transition: 120ms transform ease-in-out;
+   box-shadow: inset 1em 1em #2DD4BF;
+   transform-origin: bottom left;
+   clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+ }
+
+ .custom-checkbox:checked::before {
+   transform: scale(1);
+ }
+
+ .home-button {
+   font-size: 28px;
+   text-decoration: none;
+   color: black;
+   position: absolute;
+   top: 20px;
+   right: 20px;
+   background: white;
+   padding: 10px 14px;
+   border-radius: 30%;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+   transition: transform 0.3s ease, background 0.3s;
+   z-index: 1000;
+ }
+
+ .home-button:hover {
+   background: #e0ffe0;
+   transform: scale(1.1);
+ }
