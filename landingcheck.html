@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillHance - Your Career Pathway</title>
+
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- Base Styles & Variables --- */
+        :root {
+            --primary-bg: #1a2a3a;
+            --primary-text: #e1e8f0;
+            --accent-color: #6ed3cf;
+            --glass-bg: rgba(26, 42, 58, 0.6);
+            --glass-border: rgba(110, 211, 207, 0.3);
+            --glow-shadow: 0 0 25px rgba(110, 211, 207, 0.5);
+            --card-bg: rgba(225, 232, 240, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--primary-text);
+            overflow-x: hidden;
+        }
+
+        /* --- Animated Background --- */
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 0;
+        }
+
+        /* --- Section Animation --- */
+        .section {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Hero Section --- */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            perspective: 1000px;
+        }
+
+        .hero-image-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 450px;
+            transition: transform 0.1s linear;
+            filter: drop-shadow(0 0 30px rgba(110, 211, 207, 0.3));
+        }
+
+        .hero-content {
+            flex: 1.2;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px var(--accent-color);
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            padding: 15px 30px;
+            border-radius: 10px;
+            border: none;
+            background: var(--accent-color);
+            color: var(--primary-bg);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(110, 211, 207, 0.2);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--glow-shadow);
+        }
+        
+        /* --- General Section Styling --- */
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 60px;
+            color: var(--accent-color);
+            text-shadow: var(--glow-shadow);
+        }
+
+        /* --- Staggered Card Animation --- */
+        .animated-card {
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .section.visible .animated-card {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* --- Branches Section --- */
+        .branches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            align-items: start; /* Prevents items in other rows from stretching */
+        }
+
+        .branch-card {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 30px 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+            overflow: hidden; /* Important for the expanding effect */
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .branch-card:hover {
+            transform: translateY(-10px) !important;
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        .branch-card i {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            text-shadow: var(--glow-shadow);
+            transition: all 0.4s ease;
+        }
+        
+        .branch-card:hover i {
+            transform: scale(1.1);
+        }
+
+        .branch-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        
+        .card-intro {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-bottom: 20px;
+            transition: all 0.4s ease;
+        }
+        
+        .branch-card:hover .card-intro {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        .expanded-content {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out 0.2s;
+        }
+        
+        .branch-card:hover .expanded-content {
+            max-height: 200px; /* Adjust as needed */
+            opacity: 1;
+        }
+        
+        .expanded-content p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+
+        /* --- Resources Section --- */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .resource-card {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .resource-card i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+        
+        .resource-card h3 {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+        
+        .resource-card p {
+            font-size: 1rem;
+            flex-grow: 1;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        /* --- International Pathways Section --- */
+        .pathways-container {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+
+        .pathways-selector {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .pathways-selector label {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        #branch-select {
+            padding: 12px 20px;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            color: var(--primary-text);
+            font-size: 1rem;
+            outline: none;
+            cursor: pointer;
+        }
+
+        #pathways-results {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        
+        .country-advert-card {
+            background: var(--primary-bg);
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid var(--glass-border);
+            width: 150px;
+            text-align: center;
+        }
+        
+        .country-advert-card i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+        
+        .country-advert-card h3 {
+            font-size: 1.2rem;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 900px) {
+            .hero-section {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 100px;
+                min-height: auto;
+            }
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="particle-canvas"></canvas>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero-section" class="hero-section section">
+            <div class="hero-image-container">
+                <img src="src/AI_ML_Intern.png" alt="A student with a backpack and cap, ready for their career journey" class="hero-image">
+            </div>
+            <div class="hero-content">
+                <h1>We help you get personalized roadmaps.</h1>
+                <p>Your branch. Your path. Your future.</p>
+                <a href="#branches-section" class="cta-button">Start Your Journey</a>
+            </div>
+        </section>
+
+        <!-- Branches Section -->
+        <section id="branches-section" class="section">
+            <div class="container">
+                <h2 class="section-title">One Platform, Every Branch.</h2>
+                <div class="branches-grid">
+                    <div class="branch-card animated-card">
+                        <i class="fas fa-laptop-code"></i>
+                        <h3>CSE</h3>
+                        <p class="card-intro">Software, AI, and data.</p>
+                        <div class="expanded-content">
+                            <p>Dive into software development, artificial intelligence, and data science. Build the next generation of applications and systems.</p>
+                        </div>
+                    </div>
+                    <div class="branch-card animated-card">
+                        <i class="fas fa-microchip"></i>
+                        <h3>ECE</h3>
+                        <p class="card-intro">Circuits, chips, and communication.</p>
+                        <div class="expanded-content">
+                            <p>Master the design of electronics, from microchips to global communication networks. Innovate in IoT, robotics, and embedded systems.</p>
+                        </div>
+                    </div>
+                    <div class="branch-card animated-card">
+                        <i class="fas fa-cogs"></i>
+                        <h3>MECH</h3>
+                        <p class="card-intro">Design, machines, and robotics.</p>
+                        <div class="expanded-content">
+                            <p>Engineer the future of motion. Specialize in automotive design, robotics, thermodynamics, and manufacturing processes.</p>
+                        </div>
+                    </div>
+                    <div class="branch-card animated-card">
+                        <i class="fas fa-bolt"></i>
+                        <h3>EEE</h3>
+                        <p class="card-intro">Power, systems, and automation.</p>
+                        <div class="expanded-content">
+                            <p>Harness the power of electricity. Focus on power generation, control systems, and renewable energy to electrify the world.</p>
+                        </div>
+                    </div>
+                    <div class="branch-card animated-card">
+                        <i class="fas fa-hard-hat"></i>
+                        <h3>CIVIL</h3>
+                        <p class="card-intro">Structures, infrastructure, and environment.</p>
+                        <div class="expanded-content">
+                            <p>Build the world we live in. Design and manage everything from skyscrapers and bridges to sustainable urban environments.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resources Section -->
+        <section id="resources-section" class="section">
+            <div class="container">
+                <h2 class="section-title">Unlock Your Potential.</h2>
+                <div class="resources-grid">
+                    <div class="resource-card animated-card">
+                        <i class="fas fa-file-alt"></i>
+                        <h3>Cheat Sheets</h3>
+                        <p>Ace your interviews and exams with our curated, easy-to-understand cheat sheets for every core subject.</p>
+                        <a href="#" class="cta-button">Get Access</a>
+                    </div>
+                    <div class="resource-card animated-card">
+                        <i class="fas fa-book-open"></i>
+                        <h3>Curated PDFs</h3>
+                        <p>Dive deep into complex topics with our library of popular PDFs and quick-start guides, all in one place.</p>
+                        <a href="#" class="cta-button">Explore Guides</a>
+                    </div>
+                    <div class="resource-card animated-card">
+                        <i class="fas fa-map-signs"></i>
+                        <h3>Custom Roadmaps</h3>
+                        <p>Don't just learn, build a career. Follow our role-specific learning paths from beginner to pro.</p>
+                        <a href="#" class="cta-button">View Paths</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- International Pathways Section -->
+        <section id="international-section" class="section">
+            <div class="container">
+                <h2 class="section-title">Go Global. Your Dream Awaits.</h2>
+                <div class="pathways-container">
+                    <p style="max-width: 600px; margin: -20px auto 40px; opacity: 0.8;">Select your branch to discover the top international destinations for your higher education, complete with college insights and cost estimates.</p>
+                    <div class="pathways-selector">
+                        <label for="branch-select">I am a student of:</label>
+                        <select name="branch" id="branch-select">
+                            <option value="cse">Computer Science (CSE)</option>
+                            <option value="ece">Electronics & Comm. (ECE)</option>
+                            <option value="mech">Mechanical (MECH)</option>
+                            <option value="eee">Electrical & Electronics (EEE)</option>
+                            <option value="civil">Civil Engineering</option>
+                        </select>
+                    </div>
+                    <div id="pathways-results">
+                        <!-- Dynamic content will be injected here by JS -->
+                    </div>
+                     <a href="#" class="cta-button" style="margin-top: 40px;">Unlock Full Country Reports</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Particle Canvas Animation ---
+            const canvas = document.getElementById('particle-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            let particlesArray;
+
+            class Particle {
+                constructor(x, y, dirX, dirY, size, color) {
+                    this.x = x; this.y = y; this.directionX = dirX; this.directionY = dirY; this.size = size; this.color = color;
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                    ctx.fillStyle = this.color; ctx.fill();
+                }
+                update() {
+                    if (this.x > canvas.width || this.x < 0) { this.directionX = -this.directionX; }
+                    if (this.y > canvas.height || this.y < 0) { this.directionY = -this.directionY; }
+                    this.x += this.directionX; this.y += this.directionY;
+                    this.draw();
+                }
+            }
+
+            function initParticles() {
+                particlesArray = [];
+                let num = (canvas.height * canvas.width) / 9000;
+                for (let i = 0; i < num; i++) {
+                    let size = (Math.random() * 2) + 1;
+                    let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
+                    let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
+                    let dirX = (Math.random() * .4) - .2;
+                    let dirY = (Math.random() * .4) - .2;
+                    particlesArray.push(new Particle(x, y, dirX, dirY, size, 'rgba(110, 211, 207, 0.5)'));
+                }
+            }
+
+            function animateParticles() {
+                requestAnimationFrame(animateParticles);
+                ctx.clearRect(0, 0, innerWidth, innerHeight);
+                for (let i = 0; i < particlesArray.length; i++) {
+                    particlesArray[i].update();
+                }
+            }
+            initParticles();
+            animateParticles();
+            window.addEventListener('resize', () => {
+                canvas.width = innerWidth;
+                canvas.height = innerHeight;
+                initParticles();
+            });
+
+            // --- Hero Image Hover Effect ---
+            const heroSection = document.querySelector('.hero-section');
+            const heroImage = document.querySelector('.hero-image');
+            heroSection.addEventListener('mousemove', (e) => {
+                const { clientX, clientY } = e;
+                const { offsetWidth, offsetHeight } = heroSection;
+                const x = (clientX / offsetWidth) - 0.5;
+                const y = (clientY / offsetHeight) - 0.5;
+                
+                const rotateY = x * 20;
+                const rotateX = -y * 20;
+                
+                heroImage.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+            });
+            heroSection.addEventListener('mouseleave', () => {
+                heroImage.style.transform = 'rotateX(0) rotateY(0) scale(1)';
+            });
+
+            // --- Section Scroll Animation ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        const children = entry.target.querySelectorAll('.animated-card');
+                        children.forEach((child, index) => {
+                            child.style.transitionDelay = `${index * 100}ms`;
+                        });
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.section').forEach(section => observer.observe(section));
+
+            // --- International Pathways Logic ---
+            const branchSelect = document.getElementById('branch-select');
+            const resultsContainer = document.getElementById('pathways-results');
+            const pathwaysData = {
+                cse: [
+                    { country: 'USA', icon: 'fas fa-flag-usa' },
+                    { country: 'Germany', icon: 'fas fa-flag' },
+                    { country: 'Canada', icon: 'fab fa-canadian-maple-leaf' },
+                    { country: 'UK', icon: 'fas fa-flag' },
+                    { country: 'Australia', icon: 'fas fa-flag' }
+                ],
+                ece: [
+                    { country: 'USA', icon: 'fas fa-flag-usa' },
+                    { country: 'Germany', icon: 'fas fa-flag' },
+                    { country: 'S. Korea', icon: 'fas fa-flag' },
+                    { country: 'Japan', icon: 'fas fa-flag' },
+                    { country: 'Singapore', icon: 'fas fa-flag' }
+                ],
+                mech: [
+                    { country: 'Germany', icon: 'fas fa-flag' },
+                    { country: 'USA', icon: 'fas fa-flag-usa' },
+                    { country: 'UK', icon: 'fas fa-flag' },
+                    { country: 'Japan', icon: 'fas fa-flag' },
+                    { country: 'Canada', icon: 'fab fa-canadian-maple-leaf' }
+                ],
+                eee: [
+                    { country: 'USA', icon: 'fas fa-flag-usa' },
+                    { country: 'Germany', icon: 'fas fa-flag' },
+                    { country: 'China', icon: 'fas fa-flag' },
+                    { country: 'UK', icon: 'fas fa-flag' },
+                    { country: 'Switzerland', icon: 'fas fa-flag' }
+                ],
+                civil: [
+                    { country: 'USA', icon: 'fas fa-flag-usa' },
+                    { country: 'Netherlands', icon: 'fas fa-flag' },
+                    { country: 'UK', icon: 'fas fa-flag' },
+                    { country: 'Canada', icon: 'fab fa-canadian-maple-leaf' },
+                    { country: 'Australia', icon: 'fas fa-flag' }
+                ]
+            };
+
+            function updatePathways(branch) {
+                resultsContainer.innerHTML = '';
+                const data = pathwaysData[branch];
+                if (!data) return;
+
+                data.forEach((country, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'country-advert-card animated-card';
+                    card.style.transitionDelay = `${index * 100}ms`;
+                    card.innerHTML = `
+                        <i class="${country.icon}"></i>
+                        <h3>${country.country}</h3>
+                    `;
+                    resultsContainer.appendChild(card);
+                });
+            }
+
+            branchSelect.addEventListener('change', (e) => {
+                updatePathways(e.target.value);
+            });
+
+            // Initial load
+            updatePathways(branchSelect.value);
+        });
+    </script>
+</body>
+</html>

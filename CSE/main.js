@@ -1,5 +1,5 @@
 function to_registerpage(){
-  window.location.href="../loginpage/login.html";
+  window.location.href="../logincheck.html";
 }
 function to_feedbackpage(){
   window.location.href="feedback/feedback.html";
