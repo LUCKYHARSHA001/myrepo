@@ -47,5 +47,5 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function to_mainpage() {
-  window.location.href = "../Landing Page/start.html";
+  window.location.href = "../check.html";
 }

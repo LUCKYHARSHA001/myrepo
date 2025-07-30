@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account - SkillHance</title>
+    
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- Base Styles & Variables --- */
+        :root {
+            --primary-bg: #1a2a3a;
+            --primary-text: #e1e8f0;
+            --accent-color: #6ed3cf;
+            --glass-bg: rgba(26, 42, 58, 0.6);
+            --glass-border: rgba(110, 211, 207, 0.3);
+            --glow-shadow: 0 0 25px rgba(110, 211, 207, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--primary-text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* --- Animated Background --- */
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+        }
+
+        /* --- Register Card Styling --- */
+        .register-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            z-index: 1;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            animation: slideUpFadeIn 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        @keyframes slideUpFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .register-card-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .register-card-header h1 {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px var(--accent-color);
+        }
+
+        .register-card-header p {
+            font-size: 1rem;
+            color: var(--primary-text);
+            opacity: 0.8;
+        }
+
+        /* --- Form Styling --- */
+        .register-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* --- Input Group Styling (Side-by-Side and Single) --- */
+        .input-group {
+            display: flex;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            background: rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .input-group:focus-within {
+            border-color: var(--accent-color);
+            box-shadow: var(--glow-shadow);
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .dual-input-group .input-wrapper:first-child::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 25%;
+            height: 50%;
+            width: 1px;
+            background-color: var(--glass-border);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .dual-input-group:focus-within .input-wrapper:first-child::after {
+            background-color: var(--accent-color);
+            box-shadow: 0 0 4px var(--accent-color);
+        }
+
+        .dual-input-group .input-wrapper.expanded-width:first-child::after {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+        
+        .input-field {
+            width: 100%;
+            padding: 15px 20px 15px 45px;
+            background: transparent;
+            border: none;
+            color: var(--primary-text);
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .input-field::placeholder {
+            color: rgba(225, 232, 240, 0.5);
+        }
+
+        .input-group i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(225, 232, 240, 0.5);
+            transition: color 0.3s ease;
+        }
+
+        .input-field:focus + i {
+            color: var(--accent-color);
+        }
+        
+        .input-wrapper.default-width { width: 50%; }
+        .input-wrapper.expanded-width { width: 65%; }
+        .input-wrapper.shrunk-width { width: 35%; }
+
+        .form-options {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+            gap: 5px;
+        }
+
+        .terms-agreement {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+        
+        .terms-agreement input { display: none; }
+
+        .terms-agreement .checkbox {
+            width: 18px;
+            height: 18px;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--glass-border);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .terms-agreement .checkbox i {
+            color: var(--accent-color);
+            font-size: 12px;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .terms-agreement input:checked + .checkbox {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        .terms-agreement input:checked + .checkbox i {
+            opacity: 1;
+            transform: scale(1);
+            color: var(--primary-bg);
+        }
+
+        .terms-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: text-shadow 0.3s ease;
+        }
+
+        .terms-link:hover { text-shadow: var(--glow-shadow); }
+
+        .signup-button {
+            padding: 15px;
+            border-radius: 10px;
+            border: none;
+            background: var(--accent-color);
+            color: var(--primary-bg);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(110, 211, 207, 0.2);
+        }
+
+        .signup-button:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--glow-shadow);
+        }
+        
+        .signup-button:active { transform: translateY(0); }
+
+        .login-link {
+            text-align: center;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        .login-link a {
+            color: var(--accent-color);
+            font-weight: 600;
+            text-decoration: none;
+            transition: text-shadow 0.3s ease;
+        }
+
+        .login-link a:hover { text-shadow: var(--glow-shadow); }
+    </style>
+</head>
+
+<body>
+    <!-- Dynamic Particle Background -->
+    <canvas id="particle-canvas"></canvas>
+
+    <div class="register-card">
+        <div class="register-card-header">
+            <h1>Create Account</h1>
+            <p>Sign up to get started on your tech journey.</p>
+        </div>
+
+        <form id="registerform" class="register-form">
+            <div class="input-group">
+                <div class="input-wrapper" style="width: 100%;">
+                    <input type="email" id="email" name="email" placeholder="Email Address" required class="input-field">
+                    <i class="fas fa-envelope"></i>
+                </div>
+            </div>
+
+            <div class="input-group dual-input-group" id="password-group">
+                <div class="input-wrapper" id="password-wrapper">
+                    <input type="password" id="password" name="password" placeholder="Password" required class="input-field">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <div class="input-wrapper" id="repassword-wrapper">
+                    <input type="password" id="repassword" name="repassword" placeholder="Confirm Password" required class="input-field">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+            </div>
+
+            <div class="form-options">
+                <label class="terms-agreement">
+                    <input type="checkbox" name="terms" required>
+                    <span class="checkbox"><i class="fas fa-check"></i></span>
+                    I agree to the
+                </label>
+                <a href="#" class="terms-link">Terms & Conditions</a>
+            </div>
+
+            <button type="submit" class="signup-button" onclick="window.location.href='logincheck.html'">Sign Up</button>
+
+            <div class="login-link">
+                <p>Already have an account? <a href="logincheck.html">Log In</a></p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // --- Particle Canvas Animation Script ---
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let particlesArray;
+
+        class Particle {
+            constructor(x, y, directionX, directionY, size, color) {
+                this.x = x; this.y = y; this.directionX = directionX; this.directionY = directionY; this.size = size; this.color = color;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+            update() {
+                if (this.x > canvas.width || this.x < 0) { this.directionX = -this.directionX; }
+                if (this.y > canvas.height || this.y < 0) { this.directionY = -this.directionY; }
+                this.x += this.directionX;
+                this.y += this.directionY;
+                this.draw();
+            }
+        }
+
+        function init() {
+            particlesArray = [];
+            let numberOfParticles = (canvas.height * canvas.width) / 9000;
+            for (let i = 0; i < numberOfParticles; i++) {
+                let size = (Math.random() * 2) + 1;
+                let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
+                let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
+                let directionX = (Math.random() * .4) - .2;
+                let directionY = (Math.random() * .4) - .2;
+                let color = 'rgba(110, 211, 207, 0.5)';
+                particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
+            }
+        }
+
+        function connect() {
+            let opacityValue = 1;
+            for (let a = 0; a < particlesArray.length; a++) {
+                for (let b = a; b < particlesArray.length; b++) {
+                    let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+                    if (distance < (canvas.width / 7) * (canvas.height / 7)) {
+                        opacityValue = 1 - (distance / 20000);
+                        ctx.strokeStyle = `rgba(110, 211, 207, ${opacityValue})`;
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, innerWidth, innerHeight);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+            }
+            connect();
+        }
+
+        window.addEventListener('resize', () => {
+            canvas.width = innerWidth;
+            canvas.height = innerHeight;
+            init();
+        });
+
+        init();
+        animate();
+
+        // --- Side-by-Side Input Animation Logic ---
+        const passwordInput = document.getElementById("password");
+        const repasswordInput = document.getElementById("repassword");
+        const passwordWrapper = document.getElementById("password-wrapper");
+        const repasswordWrapper = document.getElementById("repassword-wrapper");
+        const passwordGroup = document.getElementById("password-group");
+
+        function updatePasswordStyles(focusedElementId) {
+            passwordWrapper.classList.remove("expanded-width", "shrunk-width", "default-width");
+            repasswordWrapper.classList.remove("expanded-width", "shrunk-width", "default-width");
+
+            if (focusedElementId === "password") {
+                passwordWrapper.classList.add("expanded-width");
+                repasswordWrapper.classList.add("shrunk-width");
+            } else if (focusedElementId === "repassword") {
+                repasswordWrapper.classList.add("expanded-width");
+                passwordWrapper.classList.add("shrunk-width");
+            } else {
+                passwordWrapper.classList.add("default-width");
+                repasswordWrapper.classList.add("default-width");
+            }
+        }
+
+        updatePasswordStyles(null);
+
+        passwordInput.addEventListener("focus", () => updatePasswordStyles("password"));
+        repasswordInput.addEventListener("focus", () => updatePasswordStyles("repassword"));
+
+        passwordGroup.addEventListener('focusout', (e) => {
+            if (!passwordGroup.contains(e.relatedTarget)) {
+                updatePasswordStyles(null);
+            }
+        });
+
+        // --- Form Submission Logic ---
+        document.getElementById('registerform').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const password = document.getElementById('password').value;
+            const repassword = document.getElementById('repassword').value;
+
+            if (password !== repassword) {
+                alert("Passwords do not match!");
+                return;
+            }
+            
+            console.log('Registration form submitted!');
+            window.location.href = "logincheck.html";
+        });
+    </script>
+</body>
+</html>
