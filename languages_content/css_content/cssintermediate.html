@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CSS Intermediate Guide</title>
+  <link rel="stylesheet" href="../lang_content.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <nav>
+    <h2>CSS Intermediate</h2>
+    <ul>
+      <li><a href="#variables">💡 CSS Variables</a></li>
+      <li><a href="#positioning">📍 Positioning</a></li>
+      <li><a href="#grid">🔲 CSS Grid</a></li>
+      <li><a href="#transitions">⚡ Transitions & Effects</a></li>
+      <li><a href="#zindex">🧱 Z-Index & Stacking</a></li>
+      <li><a href="#media">📐 Media Queries</a></li>
+      <li><a href="#pseudo">🎭 Pseudo-classes & Elements</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="content">
+
+    <section id="variables">
+      <div class="content-box">
+        <h2>💡 CSS Variables</h2>
+        <p>CSS variables (custom properties) allow you to store reusable values.</p>
+        <ul>
+          <li>Defined using <code>--var-name</code></li>
+          <li>Accessed with <code>var(--var-name)</code></li>
+          <li>Can be updated with JavaScript</li>
+        </ul>
+        <img src="./css_variables.jpg" alt="CSS Variables">
+        <p class="quote">"Variables help keep your code DRY and maintainable."</p>
+      </div>
+    </section>
+
+    <section id="positioning">
+      <div class="content-box">
+        <h2>📍 CSS Positioning</h2>
+        <p>Positioning lets you control where elements appear on the page.</p>
+        <ul>
+          <li><code>static</code> – default flow</li>
+          <li><code>relative</code>, <code>absolute</code>, <code>fixed</code>, <code>sticky</code></li>
+          <li>Use <code>top</code>, <code>left</code>, <code>z-index</code> for placement</li>
+        </ul>
+        <img src="./css_positions.jpg" alt="CSS Positioning">
+        <p class="quote">"Mastering position unlocks precise layout control."</p>
+      </div>
+    </section>
+
+    <section id="grid">
+      <div class="content-box">
+        <h2>🔲 CSS Grid</h2>
+        <p>CSS Grid is a 2D layout system for rows and columns.</p>
+        <ul>
+          <li><code>display: grid</code></li>
+          <li><code>grid-template-columns</code>, <code>grid-template-rows</code></li>
+          <li><code>gap</code>, <code>grid-area</code>, <code>place-items</code></li>
+        </ul>
+        <img src="./css_grid.jpg" alt="CSS Grid">
+        <p class="quote">"Grid simplifies complex, responsive layouts."</p>
+      </div>
+    </section>
+
+    <section id="transitions">
+      <div class="content-box">
+        <h2>⚡ Transitions & Effects</h2>
+        <p>Transitions make property changes smooth and animated.</p>
+        <ul>
+          <li><code>transition: all 0.3s ease</code></li>
+          <li>Works with hover, focus, active, etc.</li>
+          <li>Pair with transforms for interactive UIs</li>
+        </ul>
+        <img src="./css_transistion.jpg" alt="CSS Transitions">
+        <p class="quote">"Smooth transitions create a better user experience."</p>
+      </div>
+    </section>
+
+    <section id="zindex">
+      <div class="content-box">
+        <h2>🧱 Z-Index & Stacking</h2>
+        <p>The <code>z-index</code> controls stacking order of overlapping elements.</p>
+        <ul>
+          <li>Higher z-index = on top</li>
+          <li>Only works on positioned elements</li>
+          <li>Helps with modals, dropdowns, and tooltips</li>
+        </ul>
+        <img src="./css_zindex.jpg" alt="CSS Z-Index">
+        <p class="quote">"Think in layers — z-index helps you organize them."</p>
+      </div>
+    </section>
+
+    <section id="media">
+      <div class="content-box">
+        <h2>📐 Media Queries</h2>
+        <p>Media queries adapt styles to different screen sizes.</p>
+        <ul>
+          <li><code>@media (max-width: 768px)</code> for tablets</li>
+          <li>Use breakpoints for phones, desktops, etc.</li>
+          <li>Essential for responsive design</li>
+        </ul>
+        <img src="./css_media.png" alt="CSS Media Queries">
+        <p class="quote">"Media queries make your site device-friendly."</p>
+      </div>
+    </section>
+
+    <section id="pseudo">
+      <div class="content-box">
+        <h2>🎭 Pseudo-classes & Elements</h2>
+        <p>Pseudo-classes and elements target states or parts of elements.</p>
+        <ul>
+          <li><code>:hover</code>, <code>:focus</code>, <code>:nth-child()</code></li>
+          <li><code>::before</code>, <code>::after</code>, <code>::placeholder</code></li>
+          <li>Useful for effects, highlights, and structure</li>
+        </ul>
+        <img src="./css_elements.jpg" alt="CSS Pseudo-classes">
+        <p class="quote">"Target elements in creative and powerful ways."</p>
+      </div>
+    </section>
+
+  </div> <!-- End of .content -->
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Python Advanced</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../lang_content.css">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <nav>
+    <h2>Python Advanced</h2>
+    <ul>
+      <li><a href="#decorators">🎨 Decorators</a></li>
+      <li><a href="#generators">🔁 Generators</a></li>
+      <li><a href="#context">📂 Context Managers</a></li>
+      <li><a href="#threads">🔄 Multithreading</a></li>
+      <li><a href="#oop">🏗 OOP in Python</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="content">
+
+    <section id="decorators">
+      <div class="content-box">
+        <h2>🎨 Decorators</h2>
+        <p>Decorators in Python allow the modification of functions using other functions, enabling powerful and reusable code patterns.</p>
+        <ul>
+          <li>Use <code>@decorator_name</code> above function definitions.</li>
+          <li>Helps with logging, access control, memoization, etc.</li>
+          <li>Supports both function and class decorators.</li>
+        </ul>
+        <img src="./pa1.png" alt="Python Decorators">
+        <p class="quote">"Decorators empower functions to do more with less code."</p>
+      </div>
+    </section>
+
+    <section id="generators">
+      <div class="content-box">
+        <h2>🔁 Generators</h2>
+        <p>Generators are a way to create iterators in Python using the <code>yield</code> keyword, making data processing efficient and lazy.</p>
+        <ul>
+          <li>Save memory by yielding items one at a time.</li>
+          <li>Used in large data pipelines or infinite sequences.</li>
+          <li><code>yield</code> pauses and resumes function state.</li>
+        </ul>
+        <img src="pa2.png" alt="Python Generators">
+        <p class="quote">"Why store everything in memory when you can yield it smartly?"</p>
+      </div>
+    </section>
+
+    <section id="context">
+      <div class="content-box">
+        <h2>📂 Context Managers</h2>
+        <p>Context managers manage resources like files or network connections using the <code>with</code> statement.</p>
+        <ul>
+          <li>Ensures proper acquisition and release of resources.</li>
+          <li>Custom context managers use <code>__enter__</code> and <code>__exit__</code>.</li>
+          <li>Use <code>contextlib</code> module for lightweight solutions.</li>
+        </ul>
+        <img src="./pa3.jpeg" alt="Context Manager">
+        <p class="quote">"Control your resources like a pro — never forget to close."</p>
+      </div>
+    </section>
+
+    <section id="threads">
+      <div class="content-box">
+        <h2>🔄 Multithreading</h2>
+        <p>Multithreading in Python allows concurrent execution using threads — ideal for I/O-bound tasks.</p>
+        <ul>
+          <li>Use <code>threading</code> module to create and manage threads.</li>
+          <li>GIL limits CPU-bound performance — use <code>multiprocessing</code> instead.</li>
+          <li>Combine with queues for thread-safe communication.</li>
+        </ul>
+        <img src="./pa4.webp">
+        <p class="quote">"Run multiple tasks smoothly — even in a single core world."</p>
+      </div>
+    </section>
+
+    <section id="oop">
+      <div class="content-box">
+        <h2>🏗 OOP in Python</h2>
+        <p>Object-Oriented Programming (OOP) allows you to build modular, reusable, and scalable code using classes and objects.</p>
+        <ul>
+          <li>Key concepts: classes, objects, inheritance, encapsulation, and polymorphism.</li>
+          <li>Special methods like <code>__init__</code>, <code>__str__</code> define behavior.</li>
+          <li>Supports multiple inheritance and duck typing.</li>
+        </ul>
+        <img src="./pa5.jpeg" alt="OOP in Python">
+        <p class="quote">"With OOP, Python becomes more than a scripting language — it becomes a framework."</p>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>

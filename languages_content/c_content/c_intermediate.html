@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>C Intermediate</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../lang_content.css">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <nav>
+    <h2>C Intermediate</h2>
+    <ul>
+      <li><a href="#functions">🧠 Functions & Recursion</a></li>
+      <li><a href="#arrays">🗃️ Arrays & Strings</a></li>
+      <li><a href="#pointers">📌 Pointers</a></li>
+      <li><a href="#structures">📄 Structures & Unions</a></li>
+      <li><a href="#memory">🛢 Dynamic Memory</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="content">
+    <section id="functions">
+      <div class="content-box">
+        <h2>🧠 Functions & Recursion</h2>
+        <p>Functions are blocks of code designed to perform a specific task, while recursion is when a function calls itself.</p>
+        <ul>
+          <li>Improves code reusability and readability.</li>
+          <li>Function declaration, definition, and calling are key steps.</li>
+          <li>Recursive functions solve problems via repeated self-calls.</li>
+          <li>Used in problems like factorial, Fibonacci, etc.</li>
+        </ul>
+        <img src="./ci1.png" alt="Functions">
+        <p class="quote">"Recursion is the art of solving problems by solving smaller versions of the same problem."</p>
+      </div>
+    </section>
+
+    <section id="arrays">
+      <div class="content-box">
+        <h2>🗃️ Arrays & Strings</h2>
+        <p>Arrays store multiple values of the same type. Strings are arrays of characters ending with a null character.</p>
+        <ul>
+          <li>Arrays have fixed size and type consistency.</li>
+          <li>Access elements using index (starting from 0).</li>
+          <li>Strings are handled using character arrays and string functions.</li>
+          <li>Useful in data grouping and manipulation.</li>
+        </ul>
+        <img src="./ci2.webp" alt="Arrays">
+        <p class="quote">"Strings are not just text—they are data structures."</p>
+      </div>
+    </section>
+
+    <section id="pointers">
+      <div class="content-box">
+        <h2>📌 Pointers</h2>
+        <p>Pointers store the memory addresses of variables and enable dynamic memory management and efficient array handling.</p>
+        <ul>
+          <li>Use <code>*</code> to declare and dereference pointers.</li>
+          <li>Use <code>&</code> to get the address of a variable.</li>
+          <li>Essential for dynamic memory, arrays, and function arguments.</li>
+        </ul>
+        <img src="./ci3.png" alt="Pointers">
+        <p class="quote">"Understanding pointers is the key to mastering C."</p>
+      </div>
+    </section>
+
+    <section id="structures">
+      <div class="content-box">
+        <h2>📄 Structures & Unions</h2>
+        <p>Structures group variables of different types. Unions use shared memory for all members, saving space.</p>
+        <ul>
+          <li>Use <code>struct</code> to define a structure.</li>
+          <li>Use <code>union</code> when only one variable is used at a time.</li>
+          <li>Helpful in organizing data logically.</li>
+        </ul>
+        <img src="./ci4.webp" alt="Structures">
+        <p class="quote">"Structure your code like you structure your thoughts."</p>
+      </div>
+    </section>
+
+    <section id="memory">
+      <div class="content-box">
+        <h2>🛢 Dynamic Memory (malloc, free)</h2>
+        <p>Dynamic memory allocation allows you to allocate memory at runtime using <code>malloc()</code>, <code>calloc()</code>, and free it with <code>free()</code>.</p>
+        <ul>
+          <li><code>malloc()</code> allocates memory blocks.</li>
+          <li><code>calloc()</code> allocates and initializes memory.</li>
+          <li><code>free()</code> releases memory back to the system.</li>
+          <li>Essential for creating flexible data structures like linked lists.</li>
+        </ul>
+        <img src="./ci5.png" alt="Dynamic Memory">
+        <p class="quote">"Memory management is what gives C its true power."</p>
+      </div>
+    </section>
+  </div>
+
+</body>
+</html>

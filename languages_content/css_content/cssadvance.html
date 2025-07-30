@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CSS Advanced Guide</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../lang_content.css">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <nav>
+    <h2>CSS Advanced</h2>
+    <ul>
+      <li><a href="#animations">🎞️ CSS Animations</a></li>
+      <li><a href="#scrollsnap">🌀 Scroll Snap</a></li>
+      <li><a href="#selectors">🧠 Advanced Selectors</a></li>
+      <li><a href="#customscroll">🎚️ Custom Scrollbars</a></li>
+      <li><a href="#featurequeries">🧪 Feature Queries</a></li>
+      <li><a href="#darkmode">🌙 Dark Mode</a></li>
+      <li><a href="#blend">🎨 Blend Modes & Filters</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="content">
+
+    <section id="animations">
+      <div class="content-box">
+        <h2>🎞️ CSS Animations</h2>
+        <p>CSS animations allow elements to move, change, and transform over time.</p>
+        <ul>
+          <li><code>@keyframes</code> defines animation steps</li>
+          <li><code>animation-name</code>, <code>animation-duration</code>, <code>animation-iteration-count</code></li>
+          <li>Combine with transforms and transitions</li>
+        </ul>
+        <img src="./css_animi.jpg" alt="CSS Animations">
+        <p class="quote">"Bring life to your interfaces with CSS motion."</p>
+      </div>
+    </section>
+
+    <section id="scrollsnap">
+      <div class="content-box">
+        <h2>🌀 Scroll Snap</h2>
+        <p>Scroll snapping locks scrolling to specific positions.</p>
+        <ul>
+          <li><code>scroll-snap-type</code>, <code>scroll-snap-align</code></li>
+          <li>Great for sliders, carousels, or sections</li>
+          <li>Works on overflow containers</li>
+        </ul>
+        <img src="./css_snap.png" alt="Scroll Snap">
+        <p class="quote">"Control scrolling like never before."</p>
+      </div>
+    </section>
+
+    <section id="selectors">
+      <div class="content-box">
+        <h2>🧠 Advanced Selectors</h2>
+        <p>Advanced selectors give precise control over styling.</p>
+        <ul>
+          <li><code>:not()</code>, <code>:is()</code>, <code>:has()</code></li>
+          <li><code>[attribute*=value]</code>, <code>[data-attr]</code></li>
+          <li>Chained combinators: <code>div > p + span</code></li>
+        </ul>
+        <img src="./css_Advsel.png" alt="Advanced Selectors">
+        <p class="quote">"Advanced selectors let you style with precision."</p>
+      </div>
+    </section>
+
+    <section id="customscroll">
+      <div class="content-box">
+        <h2>🎚️ Custom Scrollbars</h2>
+        <p>You can style scrollbars to match your theme.</p>
+        <ul>
+          <li>Use <code>::-webkit-scrollbar</code>, <code>::-webkit-scrollbar-thumb</code></li>
+          <li>Define width, color, hover effects</li>
+          <li>Mostly supported in WebKit browsers</li>
+        </ul>
+        <img src="./css_scroll.png" alt="Custom Scrollbar">
+        <p class="quote">"Even scrollbars deserve a little style."</p>
+      </div>
+    </section>
+
+    <section id="featurequeries">
+      <div class="content-box">
+        <h2>🧪 Feature Queries</h2>
+        <p>Feature queries let you apply styles based on browser support.</p>
+        <ul>
+          <li>Use <code>@supports (property: value)</code></li>
+          <li>Fallback for older browsers</li>
+          <li>Combine with modern layout techniques</li>
+        </ul>
+        <img src="./css_feature.png" alt="Feature Queries">
+        <p class="quote">"Gracefully degrade your styles across browsers."</p>
+      </div>
+    </section>
+
+    <section id="darkmode">
+      <div class="content-box">
+        <h2>🌙 Dark Mode</h2>
+        <p>Adapt your design for light and dark system themes.</p>
+        <ul>
+          <li>Use <code>@media (prefers-color-scheme: dark)</code></li>
+          <li>Define separate variables or styles for dark mode</li>
+          <li>Enhances accessibility and comfort</li>
+        </ul>
+        <img src="./css_darkmode.png" alt="Dark Mode CSS">
+        <p class="quote">"Modern sites respond to user preferences."</p>
+      </div>
+    </section>
+
+    <section id="blend">
+      <div class="content-box">
+        <h2>🎨 Blend Modes & Filters</h2>
+        <p>Use blend modes and filters for creative effects.</p>
+        <ul>
+          <li><code>mix-blend-mode</code>, <code>background-blend-mode</code></li>
+          <li><code>filter: blur()</code>, <code>brightness()</code>, <code>grayscale()</code></li>
+          <li>Create dramatic or subtle visual enhancements</li>
+        </ul>
+        <img src="./css_blend.png" alt="Blend Modes">
+        <p class="quote">"Visual magic with blend modes and filters."</p>
+      </div>
+    </section>
+
+  </div> <!-- End of .content -->
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>C Advanced</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../lang_content.css">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <nav>
+    <h2>C Advanced</h2>
+    <ul>
+      <li><a href="#file">📂 File Handling</a></li>
+      <li><a href="#macros">⚙ Preprocessors & Macros</a></li>
+      <li><a href="#cli">🖥 Command Line Arguments</a></li>
+      <li><a href="#linked">⛓ Linked Lists</a></li>
+      <li><a href="#ds">⏫ Data Structures</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="content">
+    <section id="file">
+      <div class="content-box">
+        <h2>📂 File Handling</h2>
+        <p>File handling in C allows reading and writing data to files stored on the disk.</p>
+        <ul>
+          <li>Use <code>fopen()</code>, <code>fclose()</code> for opening and closing files.</li>
+          <li><code>fprintf()</code> and <code>fscanf()</code> for formatted I/O.</li>
+          <li>Binary operations with <code>fread()</code>, <code>fwrite()</code>.</li>
+          <li>Important modes: <code>"r"</code>, <code>"w"</code>, <code>"a"</code>, etc.</li>
+        </ul>
+        <img src="./ca1(d).png" alt="File Handling">
+        <p class="quote">"Reading and writing files is like speaking to your program's memory."</p>
+      </div>
+    </section>
+
+    <section id="macros">
+      <div class="content-box">
+        <h2>⚙ Preprocessors & Macros</h2>
+        <p>Preprocessors in C handle directives like macros before compilation begins.</p>
+        <ul>
+          <li><code>#define</code> creates constants or inline functions.</li>
+          <li><code>#include</code> includes header files.</li>
+          <li><code>#ifdef</code>, <code>#ifndef</code> used for conditional compilation.</li>
+        </ul>
+        <img src="./ca2.png" alt="Preprocessors">
+        <p class="quote">"Macros are powerful tools that shape your code at compile time."</p>
+      </div>
+    </section>
+
+    <section id="cli">
+      <div class="content-box">
+        <h2>🖥 Command Line Arguments</h2>
+        <p>Command-line arguments allow passing parameters to your program from the shell.</p>
+        <ul>
+          <li>Use <code>int main(int argc, char *argv[])</code>.</li>
+          <li><code>argc</code> stores argument count.</li>
+          <li><code>argv</code> is an array of argument strings.</li>
+        </ul>
+        <img src="./ca3.JPG" alt="CLI">
+        <p class="quote">"Command-line arguments make your program versatile and dynamic."</p>
+      </div>
+    </section>
+
+    <section id="linked">
+      <div class="content-box">
+        <h2>⛓ Linked Lists</h2>
+        <p>A linked list is a linear data structure where each element points to the next.</p>
+        <ul>
+          <li>Types: singly, doubly, and circular linked lists.</li>
+          <li>Nodes contain data and a pointer to the next node.</li>
+          <li>Used in dynamic memory allocation, stacks, and queues.</li>
+        </ul>
+        <img src="./ca4.webp" alt="Linked Lists">
+        <p class="quote">"Linked lists are the foundation of dynamic memory structures."</p>
+      </div>
+    </section>
+
+    <section id="ds">
+      <div class="content-box">
+        <h2>⏫ Data Structures (Stacks, Queues, Trees)</h2>
+        <p>Advanced data structures help in organizing and processing data efficiently.</p>
+        <ul>
+          <li><strong>Stack</strong>: LIFO structure using <code>push()</code> and <code>pop()</code>.</li>
+          <li><strong>Queue</strong>: FIFO structure with <code>enqueue()</code> and <code>dequeue()</code>.</li>
+          <li><strong>Trees</strong>: Hierarchical structure useful in searching and sorting.</li>
+        </ul>
+        <img src="./ca5.jpeg" alt="Data Structures">
+        <p class="quote">"Data structures define the efficiency of your logic."</p>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

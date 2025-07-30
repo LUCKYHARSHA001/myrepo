@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>C++ Advanced</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../lang_content.css">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <nav>
+    <h2>C++ Advanced</h2>
+    <ul>
+      <li><a href="#templates">📦 Templates</a></li>
+      <li><a href="#lambda">🔧 Lambda Functions</a></li>
+      <li><a href="#exceptions">🚨 Exception Handling</a></li>
+      <li><a href="#smart">🧠 Smart Pointers</a></li>
+      <li><a href="#threads">🧵 Multithreading</a></li>
+      <li><a href="#modules">📦 Modules (C++20)</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="content">
+    <section id="templates">
+      <div class="content-box">
+        <h2>📦 Templates</h2>
+        <p>Templates allow writing generic and reusable code in C++.</p>
+        <ul>
+          <li><code>template&lt;typename T&gt;</code> allows type abstraction.</li>
+          <li>Supports both function and class templates.</li>
+          <li>Reduces code duplication for similar logic with different data types.</li>
+        </ul>
+        <img src="./cp-a1.jpg" alt="Templates">
+        <p class="quote">"Write once, use for all types—templates make your code universal."</p>
+      </div>
+    </section>
+
+    <section id="lambda">
+      <div class="content-box">
+        <h2>🔧 Lambda Functions</h2>
+        <p>Lambda functions are anonymous functions used for short, inline operations.</p>
+        <ul>
+          <li>Useful for passing functions as arguments.</li>
+          <li>Syntax: <code>[capture](params) { body }</code></li>
+          <li>Improves code readability in STL and functional programming.</li>
+        </ul>
+        <img src="./cp-a2.png" alt="Lambda Functions">
+        <p class="quote">"Lambda functions bring elegance to inline operations."</p>
+      </div>
+    </section>
+
+    <section id="exceptions">
+      <div class="content-box">
+        <h2>🚨 Exception Handling</h2>
+        <p>Exception handling deals with runtime errors in a structured way.</p>
+        <ul>
+          <li>Uses <code>try</code>, <code>catch</code>, and <code>throw</code> keywords.</li>
+          <li>Improves program stability and error reporting.</li>
+          <li>Custom exception classes can be created for specific cases.</li>
+        </ul>
+        <img src="./cp-a3.png" alt="Exception Handling">
+        <p class="quote">"Handle errors gracefully, not fearfully."</p>
+      </div>
+    </section>
+
+    <section id="smart">
+      <div class="content-box">
+        <h2>🧠 Smart Pointers</h2>
+        <p>Smart pointers help manage memory automatically to prevent leaks.</p>
+        <ul>
+          <li><code>unique_ptr</code>: exclusive ownership.</li>
+          <li><code>shared_ptr</code>: shared ownership.</li>
+          <li><code>weak_ptr</code>: avoids circular reference with <code>shared_ptr</code>.</li>
+        </ul>
+        <img src="./cp-a4.jpg" alt="Smart Pointers">
+        <p class="quote">"Smart pointers think for you—about memory."</p>
+      </div>
+    </section>
+
+    <section id="threads">
+      <div class="content-box">
+        <h2>🧵 Multithreading (C++11 onwards)</h2>
+        <p>Multithreading allows executing multiple tasks concurrently.</p>
+        <ul>
+          <li>Use <code>#include &lt;thread&gt;</code> and <code>std::thread</code> class.</li>
+          <li>Functions run in parallel using thread objects.</li>
+          <li>Use <code>join()</code> and <code>detach()</code> to manage threads.</li>
+        </ul>
+        <img src="./cp-a5.png" alt="Multithreading">
+        <p class="quote">"Concurrency is not magic, it's power—use it wisely."</p>
+      </div>
+    </section>
+
+    <section id="modules">
+      <div class="content-box">
+        <h2>📦 Modules (C++20)</h2>
+        <p>Modules are a modern way to organize and import code efficiently.</p>
+        <ul>
+          <li>Improves compile time and reduces dependencies.</li>
+          <li>Syntax: <code>module; export module mymod;</code></li>
+          <li>Encourages encapsulation and clean APIs.</li>
+        </ul>
+        <img src="./cp-a6.png" alt="Modules">
+        <p class="quote">"Modules bring clarity and speed to modern C++ projects."</p>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

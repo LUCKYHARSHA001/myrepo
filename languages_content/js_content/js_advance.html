@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Advanced JavaScript</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../lang_content.css">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <nav>
+    <h2>JS Advanced</h2>
+    <ul>
+      <li><a href="#closures">🎭 Closures</a></li>
+      <li><a href="#modules">📦 Modules</a></li>
+      <li><a href="#async">⚡ Asynchronous JS</a></li>
+      <li><a href="#fetch">📡 Fetch API & AJAX</a></li>
+      <li><a href="#error">🔧 Error Handling</a></li>
+      <li><a href="#apis">🌐 Working with APIs</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="content">
+
+    <section id="closures">
+      <div class="content-box">
+        <h2>🎭 Closures</h2>
+        <p>Closures allow functions to access variables from an outer function even after that function has returned.</p>
+        <ul>
+          <li>Functions "remember" the scope in which they were created.</li>
+          <li>Used in callbacks, event handlers, and encapsulation.</li>
+          <li>Helps maintain state in asynchronous code.</li>
+        </ul>
+        <img src="./jsadvance1.png" alt="Closures">
+        <p class="quote">"A closure is the combination of a function bundled together with references to its lexical environment."</p>
+      </div>
+    </section>
+
+    <section id="modules">
+      <div class="content-box">
+        <h2>📦 Modules (ES6 Import/Export)</h2>
+        <p>JavaScript modules allow you to break code into reusable files and maintain separation of concerns.</p>
+        <ul>
+          <li><code>export</code> and <code>import</code> keywords for modularity</li>
+          <li>Helps structure large applications cleanly</li>
+          <li>Each module has its own scope</li>
+        </ul>
+        <img src="./js_advance2.jpg" alt="Modules">
+        <p class="quote">"Think modular. Keep it simple, clean, and separated."</p>
+      </div>
+    </section>
+
+    <section id="async">
+      <div class="content-box">
+        <h2>⚡ Asynchronous JavaScript</h2>
+        <p>Handle asynchronous operations using callbacks, promises, and <code>async/await</code>.</p>
+        <ul>
+          <li>Callbacks were the first method</li>
+          <li>Promises simplify chaining operations</li>
+          <li><code>async/await</code> makes asynchronous code readable</li>
+        </ul>
+        <img src="./jsadvance3.png" alt="Asynchronous JS">
+        <p class="quote">"Master async JS to unlock non-blocking web magic."</p>
+      </div>
+    </section>
+
+    <section id="fetch">
+      <div class="content-box">
+        <h2>📡 Fetch API & AJAX</h2>
+        <p>Used to make network requests to servers and APIs asynchronously.</p>
+        <ul>
+          <li><code>fetch()</code> is the modern way</li>
+          <li>Replaces older <code>XMLHttpRequest</code></li>
+          <li>Returns a Promise with response data</li>
+        </ul>
+        <img src="./jsadvance4.png" alt="Fetch API">
+        <p class="quote">"Fetching data fuels dynamic web experiences."</p>
+      </div>
+    </section>
+
+    <section id="error">
+      <div class="content-box">
+        <h2>🔧 Error Handling & Debugging</h2>
+        <p>JavaScript provides tools to catch and handle errors gracefully.</p>
+        <ul>
+          <li><code>try</code>, <code>catch</code>, <code>finally</code> blocks</li>
+          <li><code>throw</code> custom errors</li>
+          <li>Use browser dev tools for debugging</li>
+        </ul>
+        <img src="./js_advance5.jpg" alt="Error Handling">
+        <p class="quote">"Every bug has a reason. Find it, fix it, learn from it."</p>
+      </div>
+    </section>
+
+    <section id="apis">
+      <div class="content-box">
+        <h2>🌐 Working with APIs</h2>
+        <p>APIs let you connect and interact with external services over the web.</p>
+        <ul>
+          <li>RESTful APIs are most common</li>
+          <li>Use <code>fetch()</code> or libraries like Axios</li>
+          <li>Parse JSON responses and handle errors</li>
+        </ul>
+        <img src="./jsadvance6.jpg" alt="APIs">
+        <p class="quote">"APIs are the bridges between your app and the world."</p>
+      </div>
+    </section>
+
+  </div>
+
+</body>
+</html>

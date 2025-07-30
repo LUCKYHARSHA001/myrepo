@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Java Advanced</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../lang_content.css">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <nav>
+    <h2>Java Advanced</h2>
+    <ul>
+      <li><a href="#streams">📥 Java Streams</a></li>
+      <li><a href="#lambdas">🔁 Lambda Expressions</a></li>
+      <li><a href="#generics">📦 Generics</a></li>
+      <li><a href="#jdbc">🔗 JDBC & Database</a></li>
+      <li><a href="#patterns">🏗 Design Patterns</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="content">
+    
+    <section id="streams">
+      <div class="content-box">
+        <h2>📥 Java Streams</h2>
+        <p>Java Streams provide a modern way to process data declaratively using a pipeline of operations.</p>
+        <ul>
+          <li>Supports functional-style operations on collections.</li>
+          <li>Common methods: <code>filter()</code>, <code>map()</code>, <code>collect()</code>, <code>reduce()</code>.</li>
+          <li>Lazy evaluation improves performance.</li>
+        </ul>
+        <img src="./ja1.png" alt="Java Streams">
+        <p class="quote">"Streams help you write clean and efficient data pipelines."</p>
+      </div>
+    </section>
+
+    <section id="lambdas">
+      <div class="content-box">
+        <h2>🔁 Lambda Expressions</h2>
+        <p>Lambda expressions bring functional programming to Java by allowing anonymous functions.</p>
+        <ul>
+          <li>Syntax: <code>(args) -> expression</code>.</li>
+          <li>Used with functional interfaces like <code>Predicate</code>, <code>Consumer</code>, <code>Function</code>.</li>
+          <li>Improves readability and reduces boilerplate code.</li>
+        </ul>
+        <img src="./ja2.png" alt="Lambda Expressions">
+        <p class="quote">"Write concise, expressive code with lambdas."</p>
+      </div>
+    </section>
+
+    <section id="generics">
+      <div class="content-box">
+        <h2>📦 Generics</h2>
+        <p>Generics allow classes, interfaces, and methods to operate on objects of various types while providing compile-time type safety.</p>
+        <ul>
+          <li>Syntax: <code>List&lt;String&gt;</code>, <code>&lt;T&gt;</code>, etc.</li>
+          <li>Prevents runtime ClassCastExceptions.</li>
+          <li>Common in collections and user-defined classes.</li>
+        </ul>
+        <img src="./ja3.png" alt="Generics in Java">
+        <p class="quote">"Type safety and reusability — the core of generics."</p>
+      </div>
+    </section>
+
+    <section id="jdbc">
+      <div class="content-box">
+        <h2>🔗 JDBC & Database Connectivity</h2>
+        <p>JDBC (Java Database Connectivity) enables Java applications to interact with relational databases.</p>
+        <ul>
+          <li>Steps: Load driver, establish connection, create statement, execute query.</li>
+          <li>Use <code>PreparedStatement</code> to prevent SQL injection.</li>
+          <li>Connect with MySQL, PostgreSQL, SQLite, etc.</li>
+        </ul>
+        <img src="./ja4.webp" alt="JDBC">
+        <p class="quote">"Database interaction is the backbone of enterprise applications."</p>
+      </div>
+    </section>
+
+    <section id="patterns">
+      <div class="content-box">
+        <h2>🏗 Design Patterns</h2>
+        <p>Design patterns provide proven solutions to common object-oriented software design problems.</p>
+        <ul>
+          <li>Creational patterns: Singleton, Factory.</li>
+          <li>Structural patterns: Adapter, Decorator.</li>
+          <li>Behavioral patterns: Observer, Strategy.</li>
+        </ul>
+        <img src="./ja5.webp" alt="Design Patterns">
+        <p class="quote">"Design patterns turn good code into great architecture."</p>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>

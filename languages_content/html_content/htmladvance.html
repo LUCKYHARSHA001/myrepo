@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HTML Advanced</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../lang_content.css">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <nav>
+    <h2>HTML Advanced</h2>
+    <ul>
+      <li><a href="#webcomponents">🧩 Web Components</a></li>
+      <li><a href="#aria">♿ ARIA & Accessibility</a></li>
+      <li><a href="#custom-elements">🔧 Custom Elements</a></li>
+      <li><a href="#svg">📐 SVG Graphics</a></li>
+      <li><a href="#api">🔌 HTML & APIs</a></li>
+      <li><a href="#performance">⚡ Performance Tips</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="content">
+
+    <section id="webcomponents">
+      <div class="content-box">
+        <h2>🧩 Web Components</h2>
+        <p>Web Components allow you to create reusable custom elements with their own encapsulated functionality.</p>
+        <ul>
+          <li><code>&lt;template&gt;</code> – Defines reusable HTML structures.</li>
+          <li><code>Shadow DOM</code> – Isolates styles and logic.</li>
+          <li>Use with JavaScript to define and register custom elements.</li>
+        </ul>
+        <img src="./html_ele.png" alt="Web Components">
+        <p class="quote">"Web Components help build scalable, modular UIs."</p>
+      </div>
+    </section>
+
+    <section id="aria">
+      <div class="content-box">
+        <h2>♿ ARIA & Accessibility</h2>
+        <p>ARIA (Accessible Rich Internet Applications) enhances accessibility for users with assistive technologies.</p>
+        <ul>
+          <li><code>role</code>, <code>aria-label</code>, <code>aria-hidden</code></li>
+          <li>Improve screen reader behavior and navigation.</li>
+          <li>Critical for inclusive web development.</li>
+        </ul>
+        <img src="./html_aria.png" alt="ARIA Roles">
+        <p class="quote">"Accessibility isn't a feature — it's a responsibility."</p>
+      </div>
+    </section>
+
+    <section id="custom-elements">
+      <div class="content-box">
+        <h2>🔧 Custom Elements</h2>
+        <p>Create your own HTML elements using JavaScript class-based definitions.</p>
+        <ul>
+          <li><code>customElements.define('my-element', class {})</code></li>
+          <li>Useful for design systems and reusable UIs.</li>
+          <li>Combines with Shadow DOM for isolation.</li>
+        </ul>
+        <img src="./html_custom.png" alt="Custom Elements">
+        <p class="quote">"Custom elements future-proof your HTML components."</p>
+      </div>
+    </section>
+
+    <section id="svg">
+      <div class="content-box">
+        <h2>📐 SVG Graphics</h2>
+        <p>Scalable Vector Graphics (SVG) are used for resolution-independent, lightweight visuals.</p>
+        <ul>
+          <li>Use inline <code>&lt;svg&gt;</code> for custom drawings.</li>
+          <li>Shapes: <code>&lt;circle&gt;</code>, <code>&lt;rect&gt;</code>, <code>&lt;path&gt;</code></li>
+          <li>Animatable and styleable with CSS and JavaScript.</li>
+        </ul>
+        <img src="./html_svg.png" alt="SVG Example">
+        <p class="quote">"SVG gives pixel-perfect visuals that scale beautifully."</p>
+      </div>
+    </section>
+
+    <section id="api">
+      <div class="content-box">
+        <h2>🔌 HTML & APIs</h2>
+        <p>HTML5 introduces several APIs for advanced functionality.</p>
+        <ul>
+          <li><code>Geolocation API</code> – Get user's location.</li>
+          <li><code>Drag and Drop API</code> – Native drag-and-drop interface.</li>
+          <li><code>Web Storage API</code> – Store data in the browser.</li>
+        </ul>
+        <img src="./html_api.png" alt="HTML APIs">
+        <p class="quote">"APIs give HTML the power to interact with the environment."</p>
+      </div>
+    </section>
+
+    <section id="performance">
+      <div class="content-box">
+        <h2>⚡ Performance & Best Practices</h2>
+        <p>Build fast, efficient, and accessible HTML documents.</p>
+        <ul>
+          <li>Use semantic tags and lazy loading for images.</li>
+          <li>Minimize DOM size and nesting.</li>
+          <li>Defer non-critical scripts and minimize inline CSS/JS.</li>
+        </ul>
+        <img src="./html_performance.png" alt="HTML Performance Tips">
+        <p class="quote">"Good HTML leads to great UX and blazing speed."</p>
+      </div>
+    </section>
+
+  </div> <!-- End of .content -->
+
+</body>
+</html>

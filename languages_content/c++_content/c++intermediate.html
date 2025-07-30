@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>C++ Intermediate</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../lang_content.css">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <nav>
+    <h2>C++ Intermediate</h2>
+    <ul>
+      <li><a href="#arrays">🗃️ Arrays & Strings</a></li>
+      <li><a href="#pointers">📌 Pointers</a></li>
+      <li><a href="#structures">📄 Structures & Unions</a></li>
+      <li><a href="#memory">🛢 Dynamic Memory</a></li>
+      <li><a href="#oop">👨‍🏫 Object-Oriented Programming</a></li>
+      <li><a href="#inheritance">🔗 Inheritance</a></li>
+      <li><a href="#polymorphism">🌀 Polymorphism</a></li>
+      <li><a href="#file">📁 File Handling</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="content">
+    <section id="arrays">
+      <div class="content-box">
+        <h2>🗃️ Arrays & Strings</h2>
+        <p>Arrays in C++ are collections of elements of the same type. Strings are objects of the string class or character arrays.</p>
+        <ul>
+          <li>Accessed using indices (0-based).</li>
+          <li>Standard library provides the <code>string</code> class for easier string handling.</li>
+          <li>Can perform operations like concatenation, comparison, and substring extraction.</li>
+        </ul>
+        <img src="./cp-i1.webp" alt="Arrays">
+        <p class="quote">"In C++, strings come alive with power and elegance."</p>
+      </div>
+    </section>
+
+    <section id="pointers">
+      <div class="content-box">
+        <h2>📌 Pointers</h2>
+        <p>Pointers are variables that store memory addresses. In C++, they are crucial for dynamic memory, object management, and low-level system access.</p>
+        <ul>
+          <li>Use <code>*</code> and <code>&</code> for dereferencing and referencing.</li>
+          <li>Can be used with new/delete for memory management.</li>
+          <li>Used in polymorphism via virtual functions.</li>
+        </ul>
+        <img src="cp-i2.png" alt="Pointers">
+        <p class="quote">"Pointers are the bridge between high-level logic and machine-level control."</p>
+      </div>
+    </section>
+
+    <section id="structures">
+      <div class="content-box">
+        <h2>📄 Structures & Unions</h2>
+        <p>Structures allow grouping different types of data. C++ extends this by enabling methods inside structures. Unions share memory between members.</p>
+        <ul>
+          <li>Structures support member functions.</li>
+          <li>Unions are efficient when only one member is used at a time.</li>
+        </ul>
+        <img src="cp-i3.png" alt="Structures">
+        <p class="quote">"Design data that reflects your domain—use structs wisely."</p>
+      </div>
+    </section>
+
+    <section id="memory">
+      <div class="content-box">
+        <h2>🛢 Dynamic Memory</h2>
+        <p>C++ allows memory management through operators <code>new</code> and <code>delete</code>.</p>
+        <ul>
+          <li><code>new</code> allocates memory dynamically.</li>
+          <li><code>delete</code> releases the allocated memory.</li>
+          <li>Smart pointers in C++11 automate memory handling.</li>
+        </ul>
+        <img src="cp-i4.png" alt="Dynamic Memory">
+        <p class="quote">"Dynamic memory gives your code the power to adapt."</p>
+      </div>
+    </section>
+
+    <section id="oop">
+      <div class="content-box">
+        <h2>👨‍🏫 Object-Oriented Programming (OOP)</h2>
+        <p>OOP is a paradigm where code is organized into objects—instances of classes encapsulating data and behavior.</p>
+        <ul>
+          <li>Supports Encapsulation, Inheritance, and Polymorphism.</li>
+          <li>Improves code modularity and reusability.</li>
+          <li>Classes define structure, objects are real-world instances.</li>
+        </ul>
+        <img src="cp-i5.jpg" alt="Object-Oriented Programming (OOP)">
+        <p class="quote">"OOP is the heart of modern C++ programming."</p>
+      </div>
+    </section>
+
+    <section id="inheritance">
+      <div class="content-box">
+        <h2>🔗 Inheritance</h2>
+        <p>Inheritance allows a class to acquire properties and behaviors of another class.</p>
+        <ul>
+          <li>Base class: the original class; Derived class: the extending class.</li>
+          <li>Supports single, multiple, and hierarchical inheritance.</li>
+          <li>Promotes code reuse.</li>
+        </ul>
+        <img src="cp-i6.png" alt="Inheritance">
+        <p class="quote">"Inheritance builds bridges across your class hierarchies."</p>
+      </div>
+    </section>
+
+    <section id="polymorphism">
+      <div class="content-box">
+        <h2>🌀 Polymorphism</h2>
+        <p>Polymorphism means many forms. It enables one interface to control access to different types of objects.</p>
+        <ul>
+          <li>Compile-time: Function overloading, operator overloading.</li>
+          <li>Runtime: Virtual functions and dynamic dispatch.</li>
+        </ul>
+        <img src="cp-i7.png" alt="Polymorphism">
+        <p class="quote">"Polymorphism makes your code flexible and scalable."</p>
+      </div>
+    </section>
+
+    <section id="file">
+      <div class="content-box">
+        <h2>📁 File Handling</h2>
+        <p>C++ provides file stream classes like <code>ifstream</code>, <code>ofstream</code>, and <code>fstream</code> for file operations.</p>
+        <ul>
+          <li>Open files using <code>open()</code> or constructor.</li>
+          <li>Read and write using stream operators.</li>
+          <li>Always close files with <code>close()</code>.</li>
+        </ul>
+        <img src="cp-i8.webp" alt="File Handling">
+        <p class="quote">"With file handling, your programs can remember."</p>
+      </div>
+    </section>
+  </div>
+
+</body>
+</html>
