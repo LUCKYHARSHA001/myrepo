@@ -63,13 +63,13 @@ body {
   align-items: center;
   background: #3A2A1A;
   box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  border-radius: 32px; /* More rounded edges */
+  border-radius: 32px;
   margin: 48px 0;
-  padding: 32px 48px;  /* More inner padding */
+  padding: 32px 48px;
   transition: box-shadow 0.3s, transform 0.3s;
 }
 .fullwidth-tech-card:hover {
-  box-shadow: 0 0 40px 0 #6ed3cf, 0 8px 32px rgba(0,0,0,0.18); /* Glow effect */
+  box-shadow: 0 0 40px 0 #6ed3cf, 0 8px 32px rgba(0,0,0,0.18);
   transform: translateY(-8px) scale(1.02);
 }
 .fullwidth-tech-card.reverse .icon {
@@ -108,7 +108,6 @@ body {
   color: #1a2a3a;
   transition: box-shadow 0.3s, background 0.3s, color 0.3s;
 }
-/* Alternate (reverse) layout */
 .fullwidth-tech-card.reverse {
   flex-direction: row-reverse;
 }
