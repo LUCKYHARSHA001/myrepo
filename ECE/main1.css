@@ -138,9 +138,8 @@ body {
   border-color: rgba(110, 211, 207, 0.5);
 }
 
-.tech-card .icon {
+ .tech-card .icon {
   font-size: 40px;
-  /* color: #6ed3cf; */
   margin-bottom: 20px;
   text-shadow: 0 0 15px #6ed3cf;
 }
@@ -203,7 +202,7 @@ body {
   border-color: #6ed3cf;
 }
 
-.dropdown-content {
+ .dropdown-content {
   display: none;
   position: absolute;
   background: rgba(26, 42, 58, 0.8);
@@ -213,7 +212,6 @@ body {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 99;
   border-radius: 8px;
-  /* margin-top: 5px; */
   border: 1px solid rgba(225, 232, 240, 0.2);
   overflow: hidden;
 }
@@ -482,13 +480,12 @@ body {
     flex: 0 0 calc(25% - 20px);
     max-width: 280px;
 }
-.h2-title {
+ .h2-title {
     font-size: 24px;
     margin-bottom: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* text-align: center; */
 }
 
 @media (max-width: 1200px) {

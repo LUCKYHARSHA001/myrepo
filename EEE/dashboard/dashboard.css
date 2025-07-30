@@ -32,7 +32,6 @@ body {
   overflow: hidden;
 }
 
-/* Sidebar Styling */
 .sidebar {
   width: 80px;
   background-color: var(--sidebar-bg);
@@ -86,7 +85,6 @@ body {
   transition: fill 0.3s;
 }
 
-/* Main Content Wrapper */
 .content-wrapper {
   flex: 1;
   display: flex;
@@ -94,7 +92,6 @@ body {
   overflow: hidden;
 }
 
-/* Top Bar Styling */
 .top-bar {
   display: flex;
   justify-content: space-between;
@@ -127,7 +124,6 @@ body {
   font-size: 1rem;
 }
 
-/* Page Content Styling */
 .main-content {
   flex-grow: 1;
   overflow-y: auto;
@@ -184,7 +180,6 @@ body {
   text-decoration: underline;
 }
 
-/* Main Dashboard Grid */
 .dashboard-grid {
   flex-grow: 1;
   display: grid;
@@ -284,7 +279,6 @@ body {
   font-size: 0.9rem;
 }
 
-/* Heatmap Styles */
 .heatmap-nav {
   display: flex;
   align-items: center;
@@ -336,7 +330,6 @@ body {
   background-color: var(--heatmap-color-4);
 }
 
-/* Badges Styles */
 .badges-container {
   display: flex;
   gap: 1rem;
@@ -360,7 +353,6 @@ body {
   margin-top: 0.5rem;
 }
 
-/* Detailed Page Layout */
 .detailed-grid {
   flex-grow: 1;
   display: grid;

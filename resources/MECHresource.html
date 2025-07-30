@@ -9,12 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* CSS Reset and Basic Setup */
         :root {
             --primary-color: #6ed3cf;
-            /* Teal accent */
             --bg-color: #1a2a3a;
-            /* Dark blue/black */
             --card-bg-color: rgba(225, 232, 240, 0.1);
             --border-color: rgba(225, 232, 240, 0.2);
             --text-color: #FFFFFF;
@@ -36,7 +33,6 @@
             color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden;
-            /* Prevents horizontal scroll */
         }
         
         /* Neural Canvas Background */
@@ -46,24 +42,21 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 0; /* Behind content, but visible */
+            z-index: 0;
             opacity: 0.6;
         }
 
-        /* All page content should be in a wrapper with a higher z-index */
         .page-wrapper {
             position: relative;
             z-index: 1;
         }
 
-        /* Container for consistent spacing */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
         }
 
-        /* Header and Navigation */
         .main-header {
             position: fixed;
             top: 0;
@@ -491,7 +484,8 @@
 </head>
 
 <body>
-    <!-- Neural Network Canvas Background -->
+    
+    <canvas id="neural-canvas"></canvas>
     <canvas id="neural-canvas"></canvas>
 
     <div class="page-wrapper">
@@ -604,7 +598,8 @@
         </main>
     </div>
 
-    <!-- PDF Modal -->
+    
+    <div id="pdfModal">
     <div id="pdfModal">
         <div id="pdfModalContainer">
             <div class="modal-header">
@@ -621,7 +616,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // --- Mobile Navigation ---
+            
             const hamburger = document.getElementById('hamburger');
             const navLinks = document.getElementById('nav-links');
             hamburger.addEventListener('click', () => {
@@ -629,7 +624,7 @@
                 navLinks.classList.toggle('active');
             });
 
-            // --- Scroll Animations ---
+            
             const animatedItems = document.querySelectorAll('.animated-item');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -640,7 +635,7 @@
             }, { threshold: 0.1 });
             animatedItems.forEach(item => observer.observe(item));
 
-            // --- PDF Modal Logic ---
+            
             const viewPdfButtons = document.querySelectorAll('.view-pdf-btn');
             const modal = document.getElementById('pdfModal');
             const closeModalBtn = document.getElementById('closeModalBtn');
@@ -676,7 +671,7 @@
                 if (event.key === 'Escape') closeModal();
             });
 
-            // --- Neural Network Canvas Animation ---
+            
             const canvas = document.getElementById('neural-canvas');
             const ctx = canvas.getContext('2d');
             let particlesArray;

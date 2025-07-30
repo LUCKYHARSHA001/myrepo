@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EngiPaths | Your Engineering Career Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Variables for the "Zenitsu" theme */
+        :root {
+            --bg-color: #0d0d1a; /* Deep night sky */
+            --primary-color: #ffc947; /* Zenitsu Yellow */
+            --secondary-color: #ff9a00; /* Zenitsu Orange */
+            --accent-glow: rgba(255, 201, 71, 0.6);
+            --text-color: #a8a8b5; /* Muted gray for text */
+            --heading-color: #e0e0e0; /* Brighter white for headings */
+            --card-bg: rgba(20, 20, 40, 0.4); 
+            --border-color: rgba(255, 201, 71, 0.3);
+            --header-height: 70px;
+        }
+
+        /* Keyframes for animations */
+        @keyframes flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                text-shadow:
+                0 0 4px #fff,
+                0 0 11px var(--primary-color),
+                0 0 19px var(--primary-color),
+                0 0 40px var(--secondary-color),
+                0 0 80px var(--secondary-color);
+            }
+            20%, 24%, 55% {        
+                text-shadow: none;
+            }
+        }
+        
+        @keyframes thunder-strike {
+            0% { transform: scale(1); opacity: 1; }
+            80% { transform: scale(1.2); opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+
+        /* General Reset and Body Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-color);
+            z-index: -2;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary-color);
+            filter: brightness(1.2);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Header Styling */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-height);
+            z-index: 1000;
+            transition: background-color 0.4s ease, backdrop-filter 0.4s ease;
+        }
+
+        .main-header.scrolled {
+            background-color: rgba(13, 13, 26, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .main-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--heading-color);
+        }
+        
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .nav-links a {
+            color: var(--heading-color);
+            font-weight: 400;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        /* NEW: Lightning slash hover effect */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-color);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        
+        .nav-links a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hamburger Menu for Mobile */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Hero Section */
+        #hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        #neural-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            color: var(--heading-color);
+            animation: flicker 3s linear infinite;
+        }
+        
+        .hero-content h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero-content p {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: var(--text-color);
+            margin-bottom: 40px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--primary-color);
+            cursor: pointer;
+            background: transparent;
+            color: var(--primary-color);
+            font-family: 'Roboto Mono', monospace;
+        }
+        
+        .btn-primary:hover {
+            background: rgba(255, 201, 71, 0.1);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        /* General Section Styling */
+        .section {
+            padding: 100px 0;
+            background-color: var(--bg-color);
+            position: relative;
+        }
+        
+        .section > .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--heading-color);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-color);
+            max-width: 600px;
+            margin: 0 auto 60px auto;
+        }
+
+        /* Disciplines Section */
+        .disciplines-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .discipline-card-link {
+            text-decoration: none;
+        }
+
+        .discipline-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 30px;
+            height: 100%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        /* NEW: Crackling energy hover effect */
+        .discipline-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: radial-gradient(circle at center, var(--primary-color), transparent);
+            transform: scale(0);
+            transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+            opacity: 0;
+        }
+        
+        .discipline-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 40px var(--accent-glow);
+        }
+        
+        .discipline-card:hover::before {
+            transform: scale(3);
+            opacity: 0.1;
+        }
+
+        .discipline-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            height: 40px;
+            width: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+        }
+
+        .discipline-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--heading-color);
+        }
+
+        .discipline-card p {
+            color: var(--text-color);
+        }
+
+        /* About Section */
+        #about .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        #about .about-image {
+            flex: 1;
+        }
+        
+        .about-image-container {
+            position: relative;
+            padding: 10px;
+        }
+        
+        .about-image-container > img {
+            border-radius: 8px;
+            border: 2px solid var(--border-color);
+        }
+        
+        /* NEW: Lightning tendril effect */
+        .lightning-tendril {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            top: 0; left: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10 C 20 20, 40 20, 50 10 S 70 0, 80 10' stroke='%23ffc947' stroke-width='1' fill='none' stroke-linecap='round'/%3E%3Cpath d='M20 90 C 30 80, 50 80, 60 90 S 80 100, 90 90' stroke='%23ffc947' stroke-width='1' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-size: 0% 2px, 2px 0%;
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+        
+        .about-image-container:hover .lightning-tendril {
+            background-size: 100% 2px, 2px 100%;
+            opacity: 1;
+        }
+
+        #about .about-text {
+            flex: 1.2;
+        }
+        
+        #about .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--heading-color);
+        }
+
+        /* Contact Section */
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-color);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            color: var(--heading-color);
+            font-family: 'Poppins', sans-serif;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .btn-submit {
+            width: 100%;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        /* Footer */
+        .main-footer {
+            padding: 40px 0;
+            margin-top: 50px;
+            background-color: var(--bg-color);
+            position: relative;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            font-size: 1.5rem;
+        }
+
+        /* Scroll Animation */
+        .animated-item {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .animated-item.is-visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: var(--header-height);
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - var(--header-height));
+                background-color: var(--bg-color);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 40px;
+                transition: left 0.4s ease-in-out;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .hamburger {
+                display: flex;
+                z-index: 1001;
+            }
+            
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            #about .about-content {
+                flex-direction: column;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header class="main-header" id="main-header">
+        <nav class="container main-nav">
+            <a href="#" class="logo">Skill<span>Hance</span></a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#disciplines">Disciplines</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <canvas id="neural-canvas"></canvas>
+            <div class="hero-content animated-item">
+                <h1>Your Future in <span>Engineering</span> Starts Here</h1>
+                <p>Unlocking career paths and providing expert guidance for engineers in CSE, ECE, EEE, Mechanical, and Civil.</p>
+                <a href="../Landing Page/start.html" class="btn btn-primary">Explore Paths</a>
+            </div>
+        </section>
+
+        <section id="disciplines" class="section">
+            <div class="container">
+                <h2 class="section-title animated-item">Explore Engineering Disciplines</h2>
+                <p class="section-subtitle animated-item">Find detailed roadmaps and resources for your specific branch.</p>
+                <div class="disciplines-grid">
+                    <a href="../CSE/main.html" class="discipline-card-link">
+                        <div class="discipline-card animated-item" style="transition-delay: 100ms;">
+                            <div class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                            </div>
+                            <h3>Computer Science</h3>
+                            <p>Dive into the world of software development, artificial intelligence, data science, and cybersecurity.</p>
+                        </div>
+                    </a>
+                    <a href="../ECE/main.html" class="discipline-card-link">
+                        <div class="discipline-card animated-item" style="transition-delay: 200ms;">
+                            <div class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a8 8 0 0 1 14.08 0"></path><path d="M1.42 9.5a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a4 4 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12" y2="22"></line></svg>
+                            </div>
+                            <h3>Electronics & Comm.</h3>
+                            <p>Explore careers in telecommunications, embedded systems, IoT, and VLSI design.</p>
+                        </div>
+                    </a>
+                    <a href="../EEE/main.html" class="discipline-card-link">
+                        <div class="discipline-card animated-item" style="transition-delay: 300ms;">
+                            <div class="icon">
+                               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 13 9 22 9 11 22 11 15 2 15 13 2"></polyline></svg>
+                            </div>
+                            <h3>Electrical & Electronics</h3>
+                            <p>Power the future with knowledge in power systems, renewable energy, and control systems.</p>
+                        </div>
+                    </a>
+                    <a href="../MECH/main.html" class="discipline-card-link">
+                        <div class="discipline-card animated-item" style="transition-delay: 400ms;">
+                            <div class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                            </div>
+                            <h3>Mechanical</h3>
+                            <p>Design and build the machines of tomorrow in robotics, automotive, and advanced manufacturing.</p>
+                        </div>
+                    </a>
+                    <a href="../CIVIL/main.html" class="discipline-card-link">
+                        <div class="discipline-card animated-item" style="transition-delay: 500ms;">
+                            <div class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path><path d="M22 19h-2"></path><path d="M2 13h2"></path><path d="M19 13h-2"></path><path d="M13 7h-2"></path><path d="M13 1h-2"></path></svg>
+                            </div>
+                            <h3>Civil</h3>
+                            <p>Shape the world by building sustainable infrastructure, smart cities, and resilient structures.</p>
+                        </div>
+                    </a>
+                    <div class="discipline-card animated-item" style="transition-delay: 600ms;">
+                        <div class="icon">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                        </div>
+                        <h3>And More...</h3>
+                        <p>We are constantly expanding our guides to include more branches and specializations.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-image animated-item">
+                        <div class="about-image-container">
+                            <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=1887&auto=format&fit=crop"
+                                onerror="this.onerror=null;this.src='https://placehold.co/450x300/1a2a3a/6ed3cf?text=Our+Mission';"
+                                alt="A diverse group of students collaborating and learning">
+                            <div class="lightning-tendril"></div>
+                        </div>
+                    </div>
+                    <div class="about-text animated-item">
+                        <h2>Our Mission: To Empower Engineers</h2>
+                        <p>SkillHance was founded to bridge the critical gap between academic theory and real-world industry demands. We believe every engineering student deserves a clear, comprehensive roadmap to a successful and fulfilling career.</p>
+                        <p>Our mission is to provide accessible, high-quality guidance, curated resources, and expert insights to help you navigate your journey from the classroom to your dream job.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="container">
+                <h2 class="section-title animated-item">Have Questions? Reach Out!</h2>
+                <p class="section-subtitle animated-item">Whether you're a student, educator, or industry professional, we'd love to connect.</p>
+                <form class="contact-form animated-item">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Question or Feedback</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-submit">Send Message</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <p>&copy; 2025 SkillHance. All Rights Reserved.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Twitter">X</a>
+                <a href="#" aria-label="GitHub">G</a>
+                <a href="#" aria-label="LinkedIn">L</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- 1. Header Scroll Effect ---
+            const header = document.getElementById('main-header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // --- 2. Hamburger Menu ---
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('nav-links');
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+
+            // --- 3. Scroll Animations ---
+            const animatedItems = document.querySelectorAll('.animated-item');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            animatedItems.forEach(item => {
+                observer.observe(item);
+            });
+            
+            // --- 4. Lightning Canvas Animation ---
+            const canvas = document.getElementById('neural-canvas');
+            const ctx = canvas.getContext('2d');
+            let bolts = [];
+            let particles = [];
+
+            function setCanvasSize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            setCanvasSize();
+
+            window.addEventListener('resize', setCanvasSize);
+
+            class Particle {
+                constructor(x, y, color) {
+                    this.x = x;
+                    this.y = y;
+                    this.color = color;
+                    this.size = Math.random() * 2 + 1;
+                    this.life = 1;
+                    this.vx = (Math.random() - 0.5) * 2;
+                    this.vy = (Math.random() - 0.5) * 2;
+                }
+
+                update() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    this.life -= 0.02;
+                }
+
+                draw() {
+                    ctx.globalAlpha = this.life;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = this.color;
+                    ctx.fill();
+                    ctx.globalAlpha = 1;
+                }
+            }
+            
+            class LightningBolt {
+                constructor(x, y, endY) {
+                    this.x = x;
+                    this.y = y;
+                    this.endY = endY;
+                    this.segments = [];
+                    this.life = 1;
+                    this.color = `hsla(50, 100%, 80%, ${this.life})`;
+                    
+                    let currentY = this.y;
+                    while(currentY < this.endY) {
+                        const segment = {
+                            x: this.x + (Math.random() - 0.5) * 20,
+                            y: currentY,
+                        };
+                        this.segments.push(segment);
+                        currentY += Math.random() * 20 + 5;
+                    }
+                    this.segments.push({x: this.x + (Math.random() - 0.5) * 20, y: this.endY});
+                }
+                
+                update() {
+                    this.life -= 0.05;
+                    this.color = `hsla(50, 100%, 80%, ${this.life})`;
+                }
+                
+                draw() {
+                    ctx.beginPath();
+                    ctx.moveTo(this.x, this.y);
+                    ctx.strokeStyle = this.color;
+                    ctx.lineWidth = 2;
+                    ctx.shadowBlur = 20;
+                    ctx.shadowColor = this.color;
+
+                    this.segments.forEach(seg => {
+                        ctx.lineTo(seg.x, seg.y);
+                        // Create branching lightning
+                        if (Math.random() > 0.95) {
+                            const branch = new LightningBolt(seg.x, seg.y, seg.y + Math.random() * 100 + 50);
+                            branch.life = this.life * 0.5;
+                            bolts.push(branch);
+                        }
+                    });
+
+                    ctx.stroke();
+                    ctx.shadowBlur = 0;
+                }
+            }
+
+            function animate() {
+                ctx.fillStyle = 'rgba(13, 13, 26, 0.2)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                if (Math.random() > 0.98) {
+                    const x = Math.random() * canvas.width;
+                    const endY = Math.random() * canvas.height;
+                    bolts.push(new LightningBolt(x, 0, endY));
+                }
+
+                bolts = bolts.filter(b => b.life > 0);
+                particles = particles.filter(p => p.life > 0);
+
+                bolts.forEach(b => {
+                    b.update();
+                    b.draw();
+                    // Add particles at the end of the bolt
+                    const lastSeg = b.segments[b.segments.length - 1];
+                    if (lastSeg && b.life > 0.8) {
+                        for(let i=0; i<3; i++) {
+                            particles.push(new Particle(lastSeg.x, lastSeg.y, b.color));
+                        }
+                    }
+                });
+
+                particles.forEach(p => {
+                    p.update();
+                    p.draw();
+                });
+                
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+        });
+    </script>
+</body>
+
+</html>
