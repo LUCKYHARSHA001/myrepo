@@ -499,73 +499,84 @@
         }
 
         /* Toggle switch specific styles */
-        .toggle-checkbox {
-            display: none; /* Hide the default checkbox */
-        }
+/* Toggle switch specific styles */
+.toggle-checkbox {
+    display: none; /* Hide the default checkbox */
+}
 
-        .toggle-label {
-            background-color: var(--primary-bg);
-            border-radius: 3.125rem; /* Converted from 50px */
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0.3125rem; /* Converted from 5px */
-            position: relative;
-            height: 1.625rem; /* Converted from 26px */
-            width: 3.125rem; /* Converted from 50px */
-            transform: scale(1.5);
-            border: 0.0625rem solid var(--accent-color); /* Converted from 1px */
-            transition: background-color 0.3s ease, border-color 0.3s ease;
-        }
+.toggle-label {
+    background-color: var(--primary-bg);
+    border-radius: 3.125rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* This will still influence ball movement */
+    padding: 0.3125rem;
+    position: relative;
+    height: 1.625rem;
+    width: 3.125rem;
+    transform: scale(1.5);
+    border: 0.0625rem solid var(--accent-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    overflow: hidden; /* Important to hide icon when ball covers it if needed */
+}
 
-        .toggle-label .ball {
-            background-color: #fff;
-            border-radius: 50%;
-            position: absolute;
-            top: 0.125rem; /* Converted from 2px */
-            left: 0.125rem; /* Converted from 2px */
-            height: 1.25rem; /* Converted from 20px */
-            width: 1.25rem; /* Converted from 20px */
-            transition: transform 0.2s linear;
-        }
+.toggle-label .ball {
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 0.125rem;
+    left: 0.125rem;
+    height: 1.25rem;
+    width: 1.25rem;
+    transition: transform 0.2s linear;
+    z-index: 2; /* Ensure the ball is above the icon if they overlap */
+}
 
-        .toggle-checkbox:checked + .toggle-label .ball {
-            transform: translateX(1.5rem); /* Converted from 24px */
-        }
+.toggle-checkbox:checked + .toggle-label .ball {
+    transform: translateX(1.5rem);
+}
 
-        /* Icons for the toggle switch */
-        .toggle-label .fa-moon,
-        .toggle-label .fa-sun {
-            font-size: 0.8rem; /* Adjusted for scale */
-            position: absolute;
-            left: 0.4rem;
-            top: 50%;
-            transform: translateY(-50%);
-            transition: opacity 0.2s ease;
-        }
-        .toggle-label .fa-sun {
-            left: unset;
-            right: 0.4rem;
-            opacity: 0; /* Hidden by default in light mode */
-        }
+/* Icon styling */
+#theme-icon {
+    font-size: 0.8rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); /* Adjust for vertical centering */
+    transition: all 0.3s ease; /* Transition for position and color */
+    z-index: 1; /* Icon below the ball */
+}
 
-        .toggle-checkbox:checked + .toggle-label .fa-moon {
-            opacity: 0;
-        }
-        .toggle-checkbox:checked + .toggle-label .fa-sun {
-            opacity: 1;
-        }
+/* Initial state for sun icon (light theme) */
+body.light-theme #theme-icon {
+    right: 0.3125rem; /* Position sun on the right for light theme */
+    color: #f39c12; /* Orange for sun */
+    opacity: 1; /* Ensure sun is visible in light theme */
+}
 
-        /* Light/Dark Mode Specific Icon Colors */
-        .fa-moon {
-            color: #f1c40f; /* Yellow for moon */
-        }
+/* State for moon icon (dark theme) */
+body.dark-theme #theme-icon {
+    left: 0.3125rem; /* Position moon on the left for dark theme */
+    color: #f1c40f; /* Yellow for moon */
+    opacity: 1; /* Ensure moon is visible in dark theme */
+}
 
-        .fa-sun {
-            color: #f39c12; /* Orange for sun */
-        }
-        
+/* Hide the icon that is not active */
+body.light-theme #theme-icon.fa-moon {
+    opacity: 0;
+}
+body.dark-theme #theme-icon.fa-sun {
+    opacity: 0;
+}
+
+    /* Light/Dark Mode Specific Icon Colors */
+    .fa-moon {
+        color: #f1c40f; /* Yellow for moon */
+    }
+
+    .fa-sun {
+        color: #f39c12; /* Orange for sun */
+    }
         /* --- Responsive Design --- */
         @media (max-width: 56.25rem) { /* Converted from 900px */
             .hero-section {
@@ -864,9 +875,8 @@
         <div class="toggle-container">
             <input type="checkbox" id="theme-toggle" class="toggle-checkbox">
             <label for="theme-toggle" class="toggle-label">
-                <i class="fas fa-moon"></i>
-                <i class="fas fa-sun"></i>
-                <span class="ball"></span>
+                <div class="ball"></div>
+                <i id="theme-icon" class="fas fa-sun"></i>
             </label>
         </div>
     </header>
@@ -1088,29 +1098,47 @@
         });
 
 
-        // --- Theme Toggle Switch Logic ---
-        document.addEventListener('DOMContentLoaded', function() {
-            const themeToggle = document.getElementById('theme-toggle');
-            const body = document.body;
-            const currentTheme = localStorage.getItem('theme');
+document.addEventListener('DOMContentLoaded', function() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+    const themeIcon = document.getElementById('theme-icon'); // Get the theme icon element
+    const currentTheme = localStorage.getItem('theme');
 
-            // Apply stored theme on load
-            if (currentTheme) {
-                body.classList.add(currentTheme);
-                if (currentTheme === 'dark-theme') {
-                    themeToggle.checked = true;
-                }
-            }
+    // Function to set the theme and icon
+    function setThemeAndIcon(theme) {
+        if (theme === 'dark-theme') {
+            body.classList.remove('light-theme');
+            body.classList.add('dark-theme');
+            themeToggle.checked = true;
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+        } else {
+            body.classList.remove('dark-theme');
+            body.classList.add('light-theme');
+            themeToggle.checked = false;
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+        localStorage.setItem('theme', theme);
+    }
 
-            // Listen for changes on the toggle switch
-            themeToggle.addEventListener('change', function() {
-                body.classList.toggle('dark-theme'); // Toggle the dark-theme class on the body
-                if (body.classList.contains('dark-theme')) {
-                    localStorage.setItem('theme', 'dark-theme'); // Save preference
-                } else {
-                    localStorage.setItem('theme', ''); // Clear preference for light theme
-                }
-            });
+    // Apply stored theme on load
+    if (currentTheme) {
+        setThemeAndIcon(currentTheme);
+    } else {
+        // Default to light theme if no theme is stored
+        setThemeAndIcon('light-theme');
+    }
+
+    // You'll also need an event listener to handle the actual toggling
+    themeToggle.addEventListener('change', function() {
+        if (themeToggle.checked) {
+            setThemeAndIcon('dark-theme');
+        } else {
+            setThemeAndIcon('light-theme');
+        }
+    });
+});
 
             // --- Hero Image Click Animation Logic ---
             const heroImage = document.querySelector('.hero-image');
@@ -1125,7 +1153,6 @@
                     }, { once: true }); // Use { once: true } to remove the listener after it runs once
                 });
             }
-        });
 
         // --- International Pathways Dynamic Content ---
         document.addEventListener('DOMContentLoaded', () => {
