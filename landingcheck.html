@@ -71,20 +71,42 @@
         
         /* --- Header --- */
         .site-header {
-            position: fixed;
-            top: 0;
-            left: 0;
             width: 100%;
-            padding: 1.25rem 5%; /* Converted from 20px */
+            padding: 1.25rem 5%;
             background: var(--glass-bg);
-            backdrop-filter: blur(0.625rem); /* Converted from 10px */
-            border-bottom: 0.0625rem solid var(--glass-border); /* Converted from 1px */
+            backdrop-filter: blur(0.625rem);
             z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            border-bottom: 0.0625rem solid var(--glass-border); 
+            border-radius: 0;
         }
-
+        
+        @media (min-width: 769px) {
+            .site-header {
+                position: fixed;
+                top: 1.25rem; 
+                left: 0; 
+                right: 0; 
+                width: 100%; 
+                border-radius: 0.625rem;
+                border: 0.0625rem solid var(--glass-border);
+                border-bottom: none; 
+            }
+        }
+        body {
+            padding-top: 0;
+        }
+        
+        @media (min-width: 769px) {
+            body {
+                padding-top: calc(1.25rem + 1.25rem + 0.625rem);
+            }
+        }
         .logo-container {
             display: flex;
             align-items: center;
