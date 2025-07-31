@@ -13,12 +13,13 @@ body {
   overflow-x: hidden;
   position: relative;
 }
+
 hr {
-    border: 0;
-    height: 1px;
-    background-image: linear-gradient(to right, rgba(225, 232, 240, 0), rgba(225, 232, 240, 0.2), rgba(225, 232, 240, 0));
-    margin: 20px auto 40px auto;
-    width: 80%;
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(225, 232, 240, 0), rgba(225, 232, 240, 0.2), rgba(225, 232, 240, 0));
+  margin: 20px auto 40px auto;
+  width: 80%;
 }
 
 @keyframes fadeIn {
@@ -484,57 +485,59 @@ hr {
   z-index: -1;
   display: block;
 }
+
 .tech-card.new-pathways-card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 40%;
-    margin-top: 20px;
-    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
-     animation: fadeInUp 1s ease-out 0.2s;
-    animation-fill-mode: backwards;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 40%;
+  margin-top: 20px;
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+  animation: fadeInUp 1s ease-out 0.2s;
+  animation-fill-mode: backwards;
 }
 
 .tech-card.new-pathways-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
 }
 
 .tech-card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
-    padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  padding: 20px;
 }
 
 .tech-card {
-    flex: 0 0 calc(25% - 20px);
-    max-width: 280px;
+  flex: 0 0 calc(25% - 20px);
+  max-width: 280px;
 }
+
 .h2-title {
-    font-size: 24px;
-    margin-bottom: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-   
+  font-size: 24px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
 
 @media (max-width: 1200px) {
-    .tech-card {
-        flex: 0 0 calc(33.33% - 20px);
-    }
+  .tech-card {
+    flex: 0 0 calc(33.33% - 20px);
+  }
 }
 
 @media (max-width: 768px) {
-    .tech-card {
-        flex: 0 0 calc(50% - 20px);
-    }
+  .tech-card {
+    flex: 0 0 calc(50% - 20px);
+  }
 }
 
 @media (max-width: 480px) {
-    .tech-card {
-        flex: 0 0 calc(100% - 20px);
-    }
+  .tech-card {
+    flex: 0 0 calc(100% - 20px);
+  }
 }

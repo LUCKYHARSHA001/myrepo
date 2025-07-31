@@ -126,6 +126,7 @@ body {
 .level-title.bonus {
   color: #6ed3cf;
 }
+
 .card-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
@@ -151,13 +152,14 @@ body {
   background-color: rgba(225, 232, 240, 0.15);
   cursor: pointer;
 }
+
 .project-ideas {
-    background: rgba(225, 232, 240, 0.1);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    padding: 30px;
-    border-radius: 15px;
-    margin-top: 40px;
+  background: rgba(225, 232, 240, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  padding: 30px;
+  border-radius: 15px;
+  margin-top: 40px;
 }
 
 .project-ideas .title {
@@ -177,6 +179,7 @@ body {
   margin-left: 230px;
   color: #e1e8f0;
 }
+
 .home-button {
   font-size: 28px;
   text-decoration: none;
@@ -259,9 +262,12 @@ body {
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
-  .sidebar, .inner-sidebar {
+
+  .sidebar,
+  .inner-sidebar {
     display: flex;
   }
+
   .home-button {
     font-size: 24px;
     top: 0px;
@@ -270,25 +276,32 @@ body {
 }
 
 @media (min-width: 320px) and (max-width: 767px) {
-  .sidebar, .inner-sidebar {
+
+  .sidebar,
+  .inner-sidebar {
     display: none;
   }
+
   .container {
     margin-left: 0;
     padding: 15px;
   }
+
   .card-list {
     grid-template-columns: 1fr;
     gap: 15px;
   }
+
   .card {
     padding: 15px;
     font-size: 0.95rem;
   }
+
   .title {
     font-size: 24px;
     margin-top: 60px;
   }
+
   .home-button {
     font-size: 21px;
     padding: 5px 8px;
@@ -296,15 +309,18 @@ body {
     right: 5px;
     margin: 10px;
   }
+
   .project-ideas {
-      margin-left: 0;
-      padding: 20px;
+    margin-left: 0;
+    padding: 20px;
   }
+
   .project-ideas p {
     font-size: 20px;
     margin-left: 0;
     padding: 0 10px;
   }
+
   .hamburger-container {
     display: block;
     position: absolute;
@@ -312,6 +328,7 @@ body {
     top: 10px;
     right: 60px;
   }
+
   .home-hamburger-wrapper {
     top: 10px;
     right: -14px;
@@ -327,16 +344,20 @@ body {
     justify-content: flex-start;
     flex-wrap: nowrap;
   }
+
   .container {
     margin-left: 240px;
     padding: 30px 20px;
   }
+
   .card-list {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
+
   .title {
     font-size: 36px;
   }
+
   .home-button {
     font-size: 22px;
     top: 15px;

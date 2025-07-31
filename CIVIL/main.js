@@ -1,17 +1,17 @@
-function to_registerpage(){
-  window.location.href="../loginpage/login.html";
+function to_registerpage() {
+  window.location.href = "../loginpage/login.html";
 }
-function to_feedbackpage(){
-  window.location.href="feedback/feedback.html";
+function to_feedbackpage() {
+  window.location.href = "feedback/feedback.html";
 }
-function to_dashboardpage(){
-  window.location.href="dashboard/dashboard.html";
+function to_dashboardpage() {
+  window.location.href = "dashboard/dashboard.html";
 }
-function to_cheatsheet(){
-  window.location.href="cheatsheets/intro.html";
+function to_cheatsheet() {
+  window.location.href = "cheatsheets/intro.html";
 }
-function to_languagepage(){
-  window.location.href="languages/cpage.html";
+function to_languagepage() {
+  window.location.href = "languages/cpage.html";
 }
 const canvas = document.getElementById("dots-bg");
 const ctx = canvas.getContext("2d");

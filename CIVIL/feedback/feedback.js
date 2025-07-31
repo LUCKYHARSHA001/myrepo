@@ -39,4 +39,6 @@ function addFeedback(text) {
   feedbackList.prepend(feedbackBox);
 }
 
-["Great service!", "Website is a bit slow.", "Loved the support team!"].forEach(fb => addFeedback(fb));
+["Great service!", "Website is a bit slow.", "Loved the support team!"].forEach(
+  (fb) => addFeedback(fb)
+);
