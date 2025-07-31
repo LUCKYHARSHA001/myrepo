@@ -76,13 +76,14 @@ body {
 }
 
 .like-btn:hover {
-    background-color: #6ed3cf;
-    color: #1a2a3a;
+  background-color: #6ed3cf;
+  color: #1a2a3a;
 }
 
 .like-count {
   font-size: 14px;
 }
+
 .home-button {
   font-size: 28px;
   text-decoration: none;

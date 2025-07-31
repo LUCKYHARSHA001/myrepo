@@ -11,7 +11,9 @@ function toggleStep(header) {
 function updateProgress(checkbox) {
   const step = checkbox.closest(".step");
   const checkboxes = step.querySelectorAll("input[type='checkbox']");
-  const checked = step.querySelectorAll("input[type='checkbox']:checked").length;
+  const checked = step.querySelectorAll(
+    "input[type='checkbox']:checked"
+  ).length;
   const total = checkboxes.length;
 
   const percent = (checked / total) * 100;

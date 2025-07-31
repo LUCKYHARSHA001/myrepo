@@ -3,6 +3,7 @@
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -26,12 +27,22 @@ body {
   text-shadow: 0 0 20px rgba(110, 211, 207, 0.5);
 }
 
+#dots-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  display: block;
+}
+
 hr {
-    border: 0;
-    height: 1px;
-    background-image: linear-gradient(to right, rgba(225, 232, 240, 0), rgba(225, 232, 240, 0.2), rgba(225, 232, 240, 0));
-    margin: 20px auto 40px auto;
-    width: 80%;
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(225, 232, 240, 0), rgba(225, 232, 240, 0.2), rgba(225, 232, 240, 0));
+  margin: 20px auto 40px auto;
+  width: 80%;
 }
 
 .card-containers {
@@ -65,21 +76,21 @@ hr {
 }
 
 .carding h1 {
-    color: #ffffff;
-    margin-bottom: 20px;
-    font-size: 22px;
-    flex-grow: 1;
+  color: #ffffff;
+  margin-bottom: 20px;
+  font-size: 22px;
+  flex-grow: 1;
 }
 
 .icon {
-    font-size: 50px;
-    margin-bottom: 25px;
-    color: #6ed3cf;
-    text-shadow: 0 0 15px #6ed3cf;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  font-size: 50px;
+  margin-bottom: 25px;
+  color: #6ed3cf;
+  text-shadow: 0 0 15px #6ed3cf;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .learning {

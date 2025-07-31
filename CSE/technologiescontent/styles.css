@@ -2,19 +2,23 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif; /* Changed font for consistency */
+  font-family: 'Poppins', sans-serif;
+  /* Changed font for consistency */
 }
 
 body {
-  background: #1a2a3a; /* Target background color */
-  color: #e1e8f0; /* Target text color */
+  background: #1a2a3a;
+  /* Target background color */
+  color: #e1e8f0;
+  /* Target text color */
 }
 
 .sidebar {
   position: fixed;
   width: 220px;
   height: 100vh;
-  background-color: rgba(26, 42, 58, 0.8); /* Glassy dark blue */
+  background-color: rgba(26, 42, 58, 0.8);
+  /* Glassy dark blue */
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-right: 1px solid rgba(225, 232, 240, 0.2);
@@ -37,8 +41,10 @@ body {
 
 .h2-div {
   position: fixed;
-  background-color: #1a2a3a; /* Match body to hide scrolling content */
-  width: 200px; /* Ensure it covers the width */
+  background-color: #1a2a3a;
+  /* Match body to hide scrolling content */
+  width: 200px;
+  /* Ensure it covers the width */
   z-index: 10;
 }
 
@@ -74,7 +80,8 @@ body {
 }
 
 .sidebar a:hover {
-  background-color: rgba(110, 211, 207, 0.2); /* Teal hover */
+  background-color: rgba(110, 211, 207, 0.2);
+  /* Teal hover */
   color: #fff;
 }
 
@@ -105,10 +112,12 @@ body {
 .level-title {
   font-size: 26px;
   margin-bottom: 20px;
-  border-left: 6px solid #6ed3cf; /* Teal accent */
+  border-left: 6px solid #6ed3cf;
+  /* Teal accent */
   padding-left: 15px;
   font-weight: 600;
-  color: #6ed3cf; /* Unified color */
+  color: #6ed3cf;
+  /* Unified color */
 }
 
 /* Unifying all level title colors to the new accent color */
@@ -134,7 +143,8 @@ body {
 }
 
 .card {
-  background-color: rgba(225, 232, 240, 0.1); /* Glassy card */
+  background-color: rgba(225, 232, 240, 0.1);
+  /* Glassy card */
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   padding: 20px;
@@ -153,13 +163,14 @@ body {
   background-color: rgba(225, 232, 240, 0.15);
   cursor: pointer;
 }
+
 .project-ideas {
-    background: rgba(225, 232, 240, 0.1);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    padding: 30px;
-    border-radius: 15px;
-    margin-top: 40px;
+  background: rgba(225, 232, 240, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  padding: 30px;
+  border-radius: 15px;
+  margin-top: 40px;
 }
 
 .project-ideas .title {
@@ -178,6 +189,7 @@ body {
   margin-left: 230px;
   color: #e1e8f0;
 }
+
 .home-button {
   font-size: 28px;
   text-decoration: none;
@@ -259,9 +271,12 @@ body {
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
-  .sidebar, .inner-sidebar {
+
+  .sidebar,
+  .inner-sidebar {
     display: flex;
   }
+
   .home-button {
     font-size: 24px;
     top: 0px;
@@ -270,25 +285,32 @@ body {
 }
 
 @media (min-width: 320px) and (max-width: 767px) {
-  .sidebar, .inner-sidebar {
+
+  .sidebar,
+  .inner-sidebar {
     display: none;
   }
+
   .container {
     margin-left: 0;
     padding: 15px;
   }
+
   .card-list {
     grid-template-columns: 1fr;
     gap: 15px;
   }
+
   .card {
     padding: 15px;
     font-size: 0.95rem;
   }
+
   .title {
     font-size: 24px;
     margin-top: 60px;
   }
+
   .home-button {
     font-size: 21px;
     padding: 5px 8px;
@@ -296,15 +318,18 @@ body {
     right: 5px;
     margin: 10px;
   }
+
   .project-ideas {
-      margin-left: 0;
-      padding: 20px;
+    margin-left: 0;
+    padding: 20px;
   }
+
   .project-ideas p {
     font-size: 20px;
     margin-left: 0;
     padding: 0 10px;
   }
+
   .hamburger-container {
     display: block;
     position: absolute;
@@ -312,6 +337,7 @@ body {
     top: 10px;
     right: 60px;
   }
+
   .home-hamburger-wrapper {
     top: 10px;
     right: -14px;
@@ -327,16 +353,20 @@ body {
     justify-content: flex-start;
     flex-wrap: nowrap;
   }
+
   .container {
     margin-left: 240px;
     padding: 30px 20px;
   }
+
   .card-list {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
+
   .title {
     font-size: 36px;
   }
+
   .home-button {
     font-size: 22px;
     top: 15px;
