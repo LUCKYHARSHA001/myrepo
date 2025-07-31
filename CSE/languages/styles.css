@@ -161,6 +161,7 @@ body {
 }
 
 .project-ideas .title {
+  margin-left: 50%;
   font-size: 26px;
   margin-bottom: 20px;
   padding-left: 15px;
