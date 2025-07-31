@@ -9,42 +9,19 @@
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link rel="stylesheet" href="main1.css">
 
-    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
-
-    <script type="module">
-    import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
-
-    const chatWidget = createChat({
-        webhookUrl: 'http://localhost:5678/webhook/4edc1bc4-e57b-4bd9-a2d2-fc58422f897c/chat',
-       theme: {
-        mode: 'dark',
-        color: '#6ed3cf',
-        fontFamily: 'Poppins',
-        borderRadius: '12px',
-        textColor: '#ffffff',
-        inputBackground: '#1a2a3a',
-        headerBackground: '#1a2a3a',
-        },
-        visibility: 'hidden'
-    });
-
-    document.getElementById("open-chatbot-button").addEventListener("click", () => {
-        if (chatWidget.isVisible()) {
-            chatWidget.hide();
-        } else {
-            chatWidget.show();
-        }
-    });
-</script>
+    <script src="https://cdn.botpress.cloud/webchat/v3.1/inject.js"></script>
 </head>
 
 <body>
     <canvas id="dots-bg"></canvas>
     <div class="preheader">
         <div class="left-actions">
+            <div class="bars" onclick="openM()">
+                <i class="fa-solid fa-bars"></i>
+            </div>
             <div class="dropdown">
                 <button class="dropbtn">CSE<i class="fa-solid fa-chevron-down"
-                        style="font-size: 12px; margin-left: 8px;"></i></button>
+                            style="font-size: 12px; margin-left: 8px;"></i></button>
                 <div class="dropdown-content">
                     <a href="../CSE/main.html">CSE</a>
                     <a href="../ECE/main.html">ECE</a>
@@ -119,6 +96,32 @@
             </div>
         </div>
     </div>
+
+    <div class="mobiles-options">
+        <span onclick="closeM()">&times;</span>
+
+        <h3>Branches</h3>
+        <a href="../CSE/main.html">CSE</a>
+        <a href="../ECE/main.html">ECE</a>
+        <a href="../EEE/main.html">EEE</a>
+        <a href="../MECH/main.html">MECH</a>
+        <a href="../CIVIL/main.html">CIVIL</a>
+
+        <h3>Technologies</h3>
+        <a href="technologiescontent/ospage.html">OS</a>
+        <a href="technologiescontent/dbmspage.html">DBMS</a>
+        <a href="technologiescontent/computernetworkspage.html">Computer Networks</a>
+        <a href="technologiescontent/oopspage.html">OOPS</a>
+
+        <hr class="sidebar-hr">
+
+        <button onclick="to_cheatsheet()">Developer Mode</button>
+        <button onclick="to_languagepage()">Programming Languages</button>
+        <button onclick="to_resourcespage()">Resources</button>
+        <button onclick="to_feedbackpage()">Feedback</button>
+        <button onclick="to_dashboardpage()">Dashboard</button>
+        </div>
+
 
     <div class="intro-matter">Hello,What do you want to Learn?</div>
     <div class="center-container">
@@ -216,37 +219,66 @@
                 </div>
             </div>
         </footer>
-        <!-- ✅ Floating Chatbot Button -->
         <div id="open-chatbot-button" style="
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            width: 60px;
-            height: 60px;
-            background-color: #1a2a3a;
-            border-radius: 50%;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 9998;
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    background-color: #1a2a3a;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 9998;
 ">
             <i class="fas fa-robot" style="color: white; font-size: 24px;"></i>
         </div>
 
-        <!-- ✅ Chatbot Container -->
         <div id="webchat" style="
-            position: fixed;
-            bottom: 100px;
-            right: 25px;
-            width: 400px;
-            height: 500px;
-            display: none;
-            z-index: 9999;
-            "></div>
+    position: fixed;
+    bottom: 100px;
+    right: 25px;
+    width: 400px;
+    height: 500px;
+    display: none;
+    z-index: 9999;
+"></div>
 
-    <script src="main.js" defer></script>
+        <script src="https://cdn.botpress.cloud/webchat/v3.1/inject.js" defer></script>
+
+        <script defer>
+            document.addEventListener("DOMContentLoaded", function () {
+                let botInitialized = false;
+                const chatbotBtn = document.getElementById("open-chatbot-button");
+                const chatbotWindow = document.getElementById("webchat");
+
+                chatbotBtn.addEventListener("click", function () {
+                    if (!botInitialized) {
+                        window.botpress.init({
+                            botId: "4ce4e113-c704-49fb-80fe-4b49c78fbfb7",
+                            clientId: "befc4948-9589-4dc6-a34b-47145a1adffe",
+                            selector: "#webchat",
+                            configuration: {
+                                botName: "Friday",
+                                themeMode: "dark",
+                                headerVariant: "glass",
+                                color: "#1a2a3a",
+                                fontFamily: "Poppins",
+                                radius: 4,
+                            }
+                        });
+                        botInitialized = true;
+                        chatbotWindow.style.display = "block";
+                    } else {
+                        chatbotWindow.style.display = (chatbotWindow.style.display === "none" ? "block" : "none");
+                    }
+                });
+            });
+        </script>
+        <script src="main.js" defer></script>
 
 </body>
 

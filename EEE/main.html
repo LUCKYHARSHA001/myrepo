@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,17 +10,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="main.css">
-
-        <!-- In your <head> tag -->
     <script src="https://cdn.botpress.cloud/webchat/v3.1/inject.js"></script>
 
 </head>
+
 <body>
     <canvas id="dots-bg"></canvas>
     <div class="preheader">
         <div class="left-actions">
+            <div class="bars" onclick="openM()">
+                <i class="fa-solid fa-bars"></i>
+            </div>
             <div class="dropdown">
-                <button class="dropbtn">EEE<i class="fa-solid fa-chevron-down" style="font-size: 12px; margin-left: 8px;"></i></button>
+                <button class="dropbtn">EEE<i class="fa-solid fa-chevron-down"
+                            style="font-size: 12px; margin-left: 8px;"></i></button>
                 <div class="dropdown-content">
                     <a href="../CSE/main.html">CSE</a>
                     <a href="../ECE/main.html">ECE</a>
@@ -28,7 +32,7 @@
                     <a href="../CIVIL/main.html">CIVIL</a>
                 </div>
             </div>
-        <div class="dropdown-container">
+            <div class="dropdown-container">
                 <div class="dropdown">
                     <button class="dropbtn">Technologies
                         <i class="fa-solid fa-chevron-down"
@@ -43,14 +47,14 @@
                 </div>
             </div>
             <div class="resource-icon">
-            <button id="resources-button" title="Resources" onclick="to_resourcespage()">
-                <i class="fa-solid fa-file"></i>
-            </button>
+                <button id="resources-button" title="Resources" onclick="to_resourcespage()">
+                    <i class="fa-solid fa-file"></i>
+                </button>
             </div>
-            
+
         </div>
         <div class="main-logo">
-             <a href="#" class="logo">SkillHance</a>
+            <a href="#" class="logo">SkillHance</a>
         </div>
         <div class="preheader-right">
             <div class="search-bar">
@@ -59,7 +63,7 @@
             </div>
             <div class="buttons-wrap">
                 <button id="theme-toggle" title="Toggle Theme"><i class="fa-solid fa-circle-half-stroke"></i></button>
-           </div>
+            </div>
             <div class="feedback-sec">
                 <button id="feedback-button" title="Give Feedback" onclick="to_feedbackpage()">
                     <i class="fas fa-comment-dots"></i>
@@ -71,10 +75,35 @@
                 </button>
             </div>
             <div class="user-profile-sec">
-                <button id="user-button" title="User Profile" onclick="window.location.href='../loginpage/login.html'"><i class="fa-solid fa-user"></i></button>
+                <button id="user-button" title="User Profile"
+                    onclick="window.location.href='../logincheck.html'"><i class="fa-solid fa-user"></i></button>
             </div>
         </div>
     </div>
+
+    <div class="mobiles-options">
+        <span onclick="closeM()">&times;</span>
+
+        <h3>Branches</h3>
+        <a href="../CSE/main.html">CSE</a>
+        <a href="../ECE/main.html">ECE</a>
+        <a href="../EEE/main.html">EEE</a>
+        <a href="../MECH/main.html">MECH</a>
+        <a href="../CIVIL/main.html">CIVIL</a>
+
+        <h3>Technologies</h3>
+        <a href="./technologiescontent/smartgridpage.html">Renewable Energy Integration</a>
+        <a href="./technologiescontent/powerpage.html">Energy Storage Systems</a>
+        <a href="./technologiescontent/evpage.html">Charging Infrastructure</a>
+        <a href="./technologiescontent/automationpage.html">Robotics, and Control Systems</a>
+
+        <hr class="sidebar-hr">
+
+        <button onclick="to_resourcespage()">Resources</button>
+        <button onclick="to_feedbackpage()">Feedback</button>
+        <button onclick="to_dashboardpage()">Dashboard</button>
+    </div>
+
     <div class="intro-matter">
         <p>Explore the Core Areas of EEE</p>
     </div>
@@ -118,8 +147,13 @@
             </div>
         </div>
     </div>
-
-    <!-- Footer Section -->
+    <hr>
+    <h2 class="h2-title">Explore the paths Abroad</h2>
+    <div class="tech-card new-pathways-card">
+        <i class="fas fa-globe icon"></i>
+        <h3>International Engineering Pathways</h3>
+        <button onclick="window.location.href='../abroadplans/demoeee.html'">Explore</button>
+    </div>
     <div class="footer">
         <div class="footer1">
             <div class="footer-text">
@@ -149,9 +183,8 @@
         </div>
     </div>
 
-    
-    <!-- ✅ Floating Chatbot Button -->
-<div id="open-chatbot-button" style="
+
+    <div id="open-chatbot-button" style="
   position: fixed;
   bottom: 25px;
   right: 25px;
@@ -166,11 +199,10 @@
   cursor: pointer;
   z-index: 9998;
 ">
-  <i class="fas fa-robot" style="color: white; font-size: 24px;"></i>
-</div>
+        <i class="fas fa-robot" style="color: white; font-size: 24px;"></i>
+    </div>
 
-<!-- ✅ Chatbot Container -->
-<div id="webchat" style="
+    <div id="webchat" style="
   position: fixed;
   bottom: 100px;
   right: 25px;
@@ -180,37 +212,38 @@
   z-index: 9999;
 "></div>
 
-<script src="https://cdn.botpress.cloud/webchat/v3.1/inject.js" defer></script>
+    <script src="https://cdn.botpress.cloud/webchat/v3.1/inject.js" defer></script>
 
-<script defer>
-  document.addEventListener("DOMContentLoaded", function () {
-    let botInitialized = false;
-    const chatbotBtn = document.getElementById("open-chatbot-button");
-    const chatbotWindow = document.getElementById("webchat");
+    <script defer>
+        document.addEventListener("DOMContentLoaded", function () {
+            let botInitialized = false;
+            const chatbotBtn = document.getElementById("open-chatbot-button");
+            const chatbotWindow = document.getElementById("webchat");
 
-    chatbotBtn.addEventListener("click", function () {
-      if (!botInitialized) {
-        window.botpress.init({
-          botId: "4ce4e113-c704-49fb-80fe-4b49c78fbfb7",
-          clientId: "befc4948-9589-4dc6-a34b-47145a1adffe",
-          selector: "#webchat",
-          configuration: {
-            botName: "Friday",
-            themeMode: "dark",
-            headerVariant: "glass",
-            color: "#1a2a3a",
-            fontFamily: "Poppins",
-            radius: 4, 
-          }
+            chatbotBtn.addEventListener("click", function () {
+                if (!botInitialized) {
+                    window.botpress.init({
+                        botId: "4ce4e113-c704-49fb-80fe-4b49c78fbfb7",
+                        clientId: "befc4948-9589-4dc6-a34b-47145a1adffe",
+                        selector: "#webchat",
+                        configuration: {
+                            botName: "Friday",
+                            themeMode: "dark",
+                            headerVariant: "glass",
+                            color: "#1a2a3a",
+                            fontFamily: "Poppins",
+                            radius: 4,
+                        }
+                    });
+                    botInitialized = true;
+                    chatbotWindow.style.display = "block";
+                } else {
+                    chatbotWindow.style.display = (chatbotWindow.style.display === "none" ? "block" : "none");
+                }
+            });
         });
-        botInitialized = true;
-        chatbotWindow.style.display = "block";
-      } else {
-        chatbotWindow.style.display = (chatbotWindow.style.display === "none" ? "block" : "none");
-      }
-    });
-  });
-</script>
-<script src="main.js" defer></script>
+    </script>
+    <script src="main.js" defer></script>
 </body>
+
 </html>

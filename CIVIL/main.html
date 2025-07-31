@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,11 +10,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="main.css">
 </head>
-
 <body>
     <canvas id="dots-bg"></canvas>
     <div class="preheader">
         <div class="left-actions">
+            <div class="bars" onclick="openM()">
+                <i class="fa-solid fa-bars"></i>
+            </div>
             <div class="dropdown">
                 <button class="dropbtn">CIVIL<i class="fa-solid fa-chevron-down"
                         style="font-size: 12px; margin-left: 8px;"></i></button>
@@ -30,7 +31,8 @@
             <div class="dropdown-container">
                 <div class="dropdown">
                     <button class="dropbtn">Technologies
-                        <i class="fa-solid fa-chevron-down" style="font-size: 12px; margin-left: 8px;"></i>
+                        <i class="fa-solid fa-chevron-down"
+                        style="font-size: 12px; margin-left: 8px;"></i>
                     </button>
                     <div class="dropdown-content">
                         <a href="./technologiescontent/bimpage.html">BIM & Digital Twins</a>
@@ -45,10 +47,8 @@
                     <i class="fa-solid fa-file"></i>
                 </button>
             </div>
-
         </div>
         <div class="main-logo">
-            <!-- <img src="" alt=""> -->
             <a href="#" class="logo">SkillHance</a>
         </div>
         <div class="preheader-right">
@@ -71,12 +71,33 @@
                 </button>
             </div>
             <div class="user-profile-sec">
-                <button id="user-button" title="User Profile"
-                    onclick="window.location.href='../loginpage/login.html'"><i class="fa-solid fa-user"></i></button>
+                <button id="user-button" title="User Profile" onclick="window.location.href='../logincheck.html'"><i class="fa-solid fa-user"></i></button>
             </div>
         </div>
     </div>
 
+    <div class="mobiles-options">
+        <span onclick="closeM()">&times;</span>
+
+        <h3>Branches</h3>
+        <a href="../CSE/main.html">CSE</a>
+        <a href="../ECE/main.html">ECE</a>
+        <a href="../EEE/main.html">EEE</a>
+        <a href="../MECH/main.html">MECH</a>
+        <a href="../CIVIL/main.html">CIVIL</a>
+
+        <h3>Technologies</h3>
+        <a href="./technologiescontent/bimpage.html">BIM & Digital Twins</a>
+        <a href="./technologiescontent/materialsconstruction.html">Advanced Materials</a>
+        <a href="./technologiescontent/dronesensing.html">Drones & Remote Sensing</a>
+        <a href="./technologiescontent/aiconstruction.html">AI in Construction</a>
+
+        <hr class="sidebar-hr">
+
+        <button onclick="to_resourcespage()">Resources</button>
+        <button onclick="to_feedbackpage()">Feedback</button>
+        <button onclick="to_dashboardpage()">Dashboard</button>
+        </div>
 
     <div class="intro-matter">
         <p>Explore the Core Areas of Civil Engineering</p>
@@ -121,8 +142,12 @@
             </div>
         </div>
     </div>
-
-    <!-- Footer Section -->
+    <hr>
+        <h2 class="h2-title">Explore the paths Abroad</h2>
+        <div class="tech-card new-pathways-card">
+            <i class="fas fa-globe icon"></i> <h3>International Engineering Pathways</h3>
+            <button onclick="window.location.href='../abroadplans/democivil.html'">Explore</button>
+        </div>
     <div class="footer">
         <div class="footer1">
             <div class="footer-text">
@@ -151,7 +176,6 @@
             <p class="copy-right">&copy; 2025 Learn Tech. All rights reserved.</p>
         </div>
     </div>
-    <!-- ✅ Floating Chatbot Button -->
     <div id="open-chatbot-button" style="
   position: fixed;
   bottom: 25px;
@@ -167,11 +191,10 @@
   cursor: pointer;
   z-index: 9998;
 ">
-        <i class="fas fa-robot" style="color: white; font-size: 24px;"></i>
-    </div>
+  <i class="fas fa-robot" style="color: white; font-size: 24px;"></i>
+</div>
 
-    <!-- ✅ Chatbot Container -->
-    <div id="webchat" style="
+<div id="webchat" style="
   position: fixed;
   bottom: 100px;
   right: 25px;
@@ -181,37 +204,36 @@
   z-index: 9999;
 "></div>
 
-    <script src="https://cdn.botpress.cloud/webchat/v3.1/inject.js" defer></script>
+<script src="https://cdn.botpress.cloud/webchat/v3.1/inject.js" defer></script>
+<script defer>
+  document.addEventListener("DOMContentLoaded", function () {
+    let botInitialized = false;
+    const chatbotBtn = document.getElementById("open-chatbot-button");
+    const chatbotWindow = document.getElementById("webchat");
 
-    <script defer>
-        document.addEventListener("DOMContentLoaded", function () {
-            let botInitialized = false;
-            const chatbotBtn = document.getElementById("open-chatbot-button");
-            const chatbotWindow = document.getElementById("webchat");
-
-            chatbotBtn.addEventListener("click", function () {
-                if (!botInitialized) {
-                    window.botpress.init({
-                        botId: "4ce4e113-c704-49fb-80fe-4b49c78fbfb7",
-                        clientId: "befc4948-9589-4dc6-a34b-47145a1adffe",
-                        selector: "#webchat",
-                        configuration: {
-                            botName: "Friday",
-                            themeMode: "dark",
-                            headerVariant: "glass",
-                            color: "#1a2a3a",
-                            fontFamily: "Poppins",
-                            radius: 4,
-                        }
-                    });
-                    botInitialized = true;
-                    chatbotWindow.style.display = "block";
-                } else {
-                    chatbotWindow.style.display = (chatbotWindow.style.display === "none" ? "block" : "none");
-                }
-            });
+    chatbotBtn.addEventListener("click", function () {
+      if (!botInitialized) {
+        window.botpress.init({
+          botId: "4ce4e113-c704-49fb-80fe-4b49c78fbfb7",
+          clientId: "befc4948-9589-4dc6-a34b-47145a1adffe",
+          selector: "#webchat",
+          configuration: {
+            botName: "Friday",
+            themeMode: "dark",
+            headerVariant: "glass",
+            color: "#1a2a3a",
+            fontFamily: "Poppins",
+            radius: 4, 
+          }
         });
-    </script>
+        botInitialized = true;
+        chatbotWindow.style.display = "block";
+      } else {
+        chatbotWindow.style.display = (chatbotWindow.style.display === "none" ? "block" : "none");
+      }
+    });
+  });
+</script>
     <script src="main.js" defer></script>
 
 </body>

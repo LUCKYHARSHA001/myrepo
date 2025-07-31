@@ -14,7 +14,7 @@ function to_languagepage() {
     window.location.href = "languages/cpage.html";
 }
 function to_resourcespage() {
-    window.location.href = "../resources/MECHresource.html";
+    window.location.href = "../resources/ECEresource.html";
 }
 
 // Mobile Menu Functions

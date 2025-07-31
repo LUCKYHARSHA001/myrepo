@@ -12,27 +12,18 @@
     <link rel="stylesheet" href="main1.css">
 
     <script src="https://cdn.botpress.cloud/webchat/v3.1/inject.js"></script>
-
-    <style>
-        #dots-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-            display: block;
-        }
-    </style>
 </head>
 
 <body>
     <canvas id="dots-bg"></canvas>
     <div class="preheader">
         <div class="left-actions">
+            <div class="bars" onclick="openM()">
+                <i class="fa-solid fa-bars"></i>
+            </div>
             <div class="dropdown">
                 <button class="dropbtn">ECE<i class="fa-solid fa-chevron-down"
-                        style="font-size: 12px; margin-left: 8px;"></i></button>
+                            style="font-size: 12px; margin-left: 8px;"></i></button>
                 <div class="dropdown-content">
                     <a href="../CSE/main.html">CSE</a>
                     <a href="../ECE/main.html">ECE</a>
@@ -44,7 +35,8 @@
             <div class="dropdown-container">
                 <div class="dropdown">
                     <button class="dropbtn">Technologies
-                        <i class="fa-solid fa-chevron-down" style="font-size: 12px; margin-left: 8px;"></i>
+                        <i class="fa-solid fa-chevron-down"
+                        style="font-size: 12px; margin-left: 8px;"></i>
                     </button>
                     <div class="dropdown-content">
                         <a href="./technologiescontent/5gpage.html">5G and Beyond</a>
@@ -55,8 +47,7 @@
                 </div>
             </div>
             <div class="resource-icon">
-                <button id="resources-button" title="Resources"
-                    onclick="window.location.href='../resources/ECEresource.html';">
+                <button id="resources-button" title="Resources" onclick="to_resourcespage()">
                     <i class="fa-solid fa-file"></i>
                 </button>
             </div>
@@ -84,9 +75,32 @@
             </div>
             <div class="user-profile-sec">
                 <button id="user-button" title="User Profile"
-                    onclick="window.location.href='../loginpage/login.html'"><i class="fa-solid fa-user"></i></button>
+                    onclick="window.location.href='../logincheck.html'"><i class="fa-solid fa-user"></i></button>
             </div>
         </div>
+    </div>
+
+    <div class="mobiles-options">
+        <span onclick="closeM()">&times;</span>
+
+        <h3>Branches</h3>
+        <a href="../CSE/main.html">CSE</a>
+        <a href="../ECE/main.html">ECE</a>
+        <a href="../EEE/main.html">EEE</a>
+        <a href="../MECH/main.html">MECH</a>
+        <a href="../CIVIL/main.html">CIVIL</a>
+
+        <h3>Technologies</h3>
+        <a href="./technologiescontent/5gpage.html">5G and Beyond</a>
+        <a href="./technologiescontent/aimlpage.html">Aiml Hardware</a>
+        <a href="./technologiescontent/iotpage.html">Embedded Systems</a>
+        <a href="./technologiescontent/vlsipage.html">VLSI Design</a>
+
+        <hr class="sidebar-hr">
+
+        <button onclick="to_resourcespage()">Resources</button>
+        <button onclick="to_feedbackpage()">Feedback</button>
+        <button onclick="to_dashboardpage()">Dashboard</button>
     </div>
 
     <div class="intro-matter">
@@ -134,7 +148,6 @@
         <h3>International Engineering Pathways</h3>
         <button onclick="window.location.href='../abroadplans/demoece.html'">Explore</button>
     </div>
-    <!-- Footer Section -->
     <div class="footer">
         <div class="footer1">
             <div class="footer-text">
@@ -164,73 +177,6 @@
         </div>
     </div>
 
-    <script>
-        // Moving white dots background
-        function to_registerpage() {
-            window.location.href = "../loginpage/login.html";
-        }
-        function to_feedbackpage() {
-            window.location.href = "feedback/feedback.html";
-        }
-        function to_dashboardpage() {
-            window.location.href = "dashboard/dashboard.html";
-        }
-        function to_cheatsheet() {
-            window.location.href = "cheatsheets/intro.html";
-        }
-        function to_languagepage() {
-            window.location.href = "languages/cpage.html";
-        }
-        const canvas = document.getElementById('dots-bg');
-        const ctx = canvas.getContext('2d');
-        let dots = [];
-        const DOTS_COUNT = 60;
-        const DOT_RADIUS = 2;
-        const SPEED = 0.3;
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-
-        function initDots() {
-            dots = [];
-            for (let i = 0; i < DOTS_COUNT; i++) {
-                dots.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    dx: (Math.random() - 0.5) * SPEED,
-                    dy: (Math.random() - 0.5) * SPEED
-                });
-            }
-        }
-        initDots();
-
-        function animateDots() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let dot of dots) {
-                dot.x += dot.dx;
-                dot.y += dot.dy;
-                // Bounce off edges
-                if (dot.x < 0 || dot.x > canvas.width) dot.dx *= -1;
-                if (dot.y < 0 || dot.y > canvas.height) dot.dy *= -1;
-                ctx.beginPath();
-                ctx.arc(dot.x, dot.y, DOT_RADIUS, 0, Math.PI * 2);
-                ctx.fillStyle = 'white';
-                ctx.globalAlpha = 0.8;
-                ctx.fill();
-                ctx.globalAlpha = 1;
-            }
-            requestAnimationFrame(animateDots);
-        }
-        animateDots();
-    </script>
-
-
-
-    <!-- ✅ Floating Chatbot Button -->
     <div id="open-chatbot-button" style="
   position: fixed;
   bottom: 25px;
@@ -249,7 +195,6 @@
         <i class="fas fa-robot" style="color: white; font-size: 24px;"></i>
     </div>
 
-    <!-- ✅ Chatbot Container -->
     <div id="webchat" style="
   position: fixed;
   bottom: 100px;
@@ -291,6 +236,7 @@
             });
         });
     </script>
+    <script src="main.js" defer></script>
 </body>
 
 </html>
