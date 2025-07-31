@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SkillHance - Your Career Pathway</title>
 
-    <!-- Google Fonts: Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -21,8 +19,25 @@
             --accent-color: #6ed3cf;
             --glass-bg: rgba(26, 42, 58, 0.6);
             --glass-border: rgba(110, 211, 207, 0.3);
-            --glow-shadow: 0 0 25px rgba(110, 211, 207, 0.5);
+            --glow-shadow: 0 0 2.5rem rgba(110, 211, 207, 0.5); /* Converted to rem */
             --card-bg: rgba(225, 232, 240, 0.05);
+            font-size: 16px; /* Define base font size for rem units */
+
+            /* Dark theme variables - These will be overridden when .dark-theme is active */
+            --dark-primary-bg: #0b132b;
+            --dark-primary-text: #e0f2f7;
+            --dark-glass-bg: rgba(11, 19, 43, 0.6);
+            --dark-glass-border: rgba(110, 211, 207, 0.1);
+            --dark-card-bg: rgba(224, 242, 247, 0.05);
+        }
+
+        /* Dark theme styles */
+        body.dark-theme {
+            --primary-bg: var(--dark-primary-bg);
+            --primary-text: var(--dark-primary-text);
+            --glass-bg: var(--dark-glass-bg);
+            --glass-border: var(--dark-glass-border);
+            --card-bg: var(--dark-card-bg);
         }
 
         * {
@@ -40,7 +55,8 @@
             background-color: var(--primary-bg);
             color: var(--primary-text);
             overflow-x: hidden;
-            padding-top: 80px; /* Added padding for fixed header */
+            padding-top: 5rem; /* Converted from 80px */
+            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth theme transition */
         }
 
         /* --- Animated Background --- */
@@ -59,35 +75,54 @@
             top: 0;
             left: 0;
             width: 100%;
-            padding: 20px 5%;
+            padding: 1.25rem 5%; /* Converted from 20px */
             background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--glass-border);
+            backdrop-filter: blur(0.625rem); /* Converted from 10px */
+            border-bottom: 0.0625rem solid var(--glass-border); /* Converted from 1px */
             z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
+        .logo-container {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Updated Small Logo Styling */
+        .small-logo {
+            position: absolute;
+            left: 0;
+            height: 4rem; /* Increased size (was 2.5rem) */
+            border-radius: 1rem; /* Added rounded corners */
+            margin-right: 1rem;
+            filter: drop-shadow(0 0 0.625rem rgba(110, 211, 207, 0.6)); /* Subtle background glow */
+            transition: all 0.3s ease-in-out; /* Smooth transition for any potential hover effects */
+        }
+
         .logo {
-            font-size: 1.8rem;
+            font-size: 1.8rem; /* Kept as rem, relative to root */
             font-weight: 700;
             color: #fff;
-            text-shadow: 0 0 10px var(--accent-color);
+            text-shadow: 0 0 0.625rem var(--accent-color); /* Converted from 10px */
             text-decoration: none;
         }
 
         .container {
             width: 90%;
-            max-width: 1200px;
+            max-width: 75rem; /* Converted from 1200px */
             margin: 0 auto;
-            padding: 100px 0;
+            padding: 6.25rem 0; /* Converted from 100px */
         }
 
         /* --- Section Animation --- */
         .section {
             opacity: 0;
-            transform: translateY(50px);
+            transform: translateY(3.125rem); /* Converted from 50px */
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
 
@@ -139,10 +174,39 @@
             opacity: 0.9;
             margin-bottom: 30px;
         }
+        
+        .hero-image:hover {
+            transform: scale(1.03) rotate(3deg); /* Slightly larger and rotated on hover */
+        }
+
+        @keyframes heroImagePop {
+            0% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.05) rotate(5deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+
+        .hero-content {
+            flex: 1.2;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.2;
+            margin-bottom: 1.25rem; /* Converted from 20px */
+            text-shadow: 0 0 0.9375rem var(--accent-color); /* Converted from 15px */
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            margin-bottom: 1.875rem; /* Converted from 30px */
+        }
 
         .cta-button {
-            padding: 15px 30px;
-            border-radius: 10px;
+            padding: 0.9375rem 1.875rem; /* Converted from 15px 30px */
+            border-radius: 0.625rem; /* Converted from 10px */
             border: none;
             background: var(--accent-color);
             color: var(--primary-bg);
@@ -150,13 +214,13 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(110, 211, 207, 0.2);
+            box-shadow: 0 0.3125rem 0.9375rem rgba(110, 211, 207, 0.2); /* Converted from 0 5px 15px */
             text-decoration: none;
             display: inline-block;
         }
 
         .cta-button:hover {
-            transform: translateY(-3px);
+            transform: translateY(-0.1875rem); /* Converted from -3px */
             box-shadow: var(--glow-shadow);
         }
         
@@ -164,7 +228,7 @@
         .section-title {
             text-align: center;
             font-size: 2.8rem;
-            margin-bottom: 60px;
+            margin-bottom: 3.75rem; /* Converted from 60px */
             color: var(--accent-color);
             text-shadow: var(--glow-shadow);
         }
@@ -172,7 +236,7 @@
         /* --- Staggered Card Animation --- */
         .animated-card {
             opacity: 0;
-            transform: translateY(30px) scale(0.95);
+            transform: translateY(1.875rem) scale(0.95); /* Converted from 30px */
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
         .section.visible .animated-card {
@@ -183,18 +247,35 @@
         /* --- Branches Section --- */
         .branches-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 30px;
+            /* Default for larger screens: 3 columns */
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 1.875rem; /* Converted from 30px */
             align-items: stretch; 
         }
 
+        /* Media Query for screens where you want 2 columns in the second row (e.g., medium screens) */
+        @media (max-width: 75rem) { /* Example breakpoint, adjust as needed, converted from 1200px */
+            .branches-grid {
+                /* When there are only 5 cards, this will naturally push the last two to the second row */
+                grid-template-columns: repeat(auto-fit, minmax(13.75rem, 1fr)); 
+            }
+        }
+
+        /* For smaller screens, revert to 2 columns (or 1 if preferred) */
+        @media (max-width: 56.25rem) { /* Converted from 900px */
+            .branches-grid {
+                grid-template-columns: repeat(auto-fit, minmax(13.75rem, 1fr)); /* Ensures at least 2 columns if space, otherwise 1 */
+            }
+        }
+
+
         .branch-card {
             background: var(--card-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 15px;
-            padding: 30px 20px;
+            border: 0.0625rem solid var(--glass-border); /* Converted from 1px */
+            border-radius: 0.9375rem; /* Converted from 15px */
+            padding: 1.875rem 1.25rem; /* Converted from 30px 20px */
             text-align: center;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(0.625rem); /* Converted from 10px */
             cursor: pointer;
             overflow: hidden;
             transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
@@ -203,15 +284,15 @@
         }
 
         .branch-card:hover {
-            transform: translateY(-10px) !important;
+            transform: translateY(-0.625rem) !important; /* Converted from -10px */
             border-color: var(--accent-color);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            box-shadow: 0 0.625rem 1.875rem rgba(0,0,0,0.4); /* Converted from 0 10px 30px */
         }
 
         .branch-card i {
-            font-size: 3rem;
+            font-size: 3rem; /* Kept as rem, relative to root */
             color: var(--accent-color);
-            margin-bottom: 15px;
+            margin-bottom: 0.9375rem; /* Converted from 15px */
             text-shadow: var(--glow-shadow);
             transition: all 0.4s ease;
         }
@@ -221,23 +302,23 @@
         }
 
         .branch-card h3 {
-            font-size: 1.3rem;
+            font-size: 1.3rem; /* Kept as rem, relative to root */
             font-weight: 600;
             color: #fff;
-            margin-bottom: 10px;
+            margin-bottom: 0.625rem; /* Converted from 10px */
         }
         
         .card-intro {
-            font-size: 0.9rem;
+            font-size: 0.9rem; /* Kept as rem, relative to root */
             opacity: 0.7;
-            margin-bottom: 20px;
+            margin-bottom: 1.25rem; /* Converted from 20px */
             transition: all 0.4s ease;
             flex-grow: 1; 
         }
         
         .branch-card:hover .card-intro {
             opacity: 0;
-            transform: translateY(-10px);
+            transform: translateY(-0.625rem); /* Converted from -10px */
         }
 
         .expanded-content {
@@ -248,30 +329,29 @@
         }
         
         .branch-card:hover .expanded-content {
-            max-height: 200px; /* Adjust as needed */
+            max-height: 12.5rem; /* Converted from 200px */
             opacity: 1;
         }
         
         .expanded-content p {
-            font-size: 0.95rem;
+            font-size: 0.95rem; /* Kept as rem, relative to root */
             line-height: 1.5;
         }
-
 
         /* --- Resources Section --- */
         .resources-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr)); /* Converted from 280px */
+            gap: 1.875rem; /* Converted from 30px */
             align-items: stretch; 
         }
         
         .resource-card {
             background: var(--card-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 15px;
-            padding: 30px;
-            backdrop-filter: blur(10px);
+            border: 0.0625rem solid var(--glass-border); /* Converted from 1px */
+            border-radius: 0.9375rem; /* Converted from 15px */
+            padding: 1.875rem; /* Converted from 30px */
+            backdrop-filter: blur(0.625rem); /* Converted from 10px */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -279,45 +359,45 @@
         }
         
         .resource-card i {
-            font-size: 2.5rem;
+            font-size: 2.5rem; /* Kept as rem, relative to root */
             color: var(--accent-color);
-            margin-bottom: 15px;
+            margin-bottom: 0.9375rem; /* Converted from 15px */
         }
         
         .resource-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.5rem; /* Kept as rem, relative to root */
             color: var(--accent-color);
-            margin-bottom: 10px;
+            margin-bottom: 0.625rem; /* Converted from 10px */
         }
         
         .resource-card p {
-            font-size: 1rem;
+            font-size: 1rem; /* Kept as rem, relative to root */
             flex-grow: 1;
-            margin-bottom: 20px;
+            margin-bottom: 1.25rem; /* Converted from 20px */
             opacity: 0.8;
         }
 
         /* --- International Pathways Section --- */
         .pathways-container {
             background: var(--card-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 15px;
-            padding: 40px;
-            backdrop-filter: blur(10px);
+            border: 0.0625rem solid var(--glass-border); /* Converted from 1px */
+            border-radius: 0.9375rem; /* Converted from 15px */
+            padding: 2.5rem; /* Converted from 40px */
+            backdrop-filter: blur(0.625rem); /* Converted from 10px */
             text-align: center;
         }
 
         .pathways-selector {
             display: flex;
-            gap: 20px;
+            gap: 1.25rem; /* Converted from 20px */
             align-items: center;
             justify-content: center;
-            margin-bottom: 40px;
+            margin-bottom: 2.5rem; /* Converted from 40px */
             flex-wrap: wrap;
         }
 
         .pathways-selector label {
-            font-size: 1.2rem;
+            font-size: 1.2rem; /* Kept as rem, relative to root */
             font-weight: 600;
         }
 
@@ -332,7 +412,7 @@
             font-family: 'Font Awesome 6 Free';
             font-weight: 900;
             position: absolute;
-            right: 20px;
+            right: 1.25rem; /* Converted from 20px */
             top: 50%;
             transform: translateY(-50%);
             color: var(--accent-color);
@@ -340,12 +420,12 @@
         }
         
         #branch-select {
-            padding: 12px 45px 12px 20px; 
+            padding: 0.75rem 2.8125rem 0.75rem 1.25rem; /* Converted from 12px 45px 12px 20px */
             background: rgba(0,0,0,0.3);
-            border: 1px solid var(--glass-border);
-            border-radius: 8px;
+            border: 0.0625rem solid var(--glass-border); /* Converted from 1px */
+            border-radius: 0.5rem; /* Converted from 8px */
             color: var(--primary-text);
-            font-size: 1rem;
+            font-size: 1rem; /* Kept as rem, relative to root */
             outline: none;
             cursor: pointer;
             -webkit-appearance: none; 
@@ -361,78 +441,106 @@
         #pathways-results {
             display: flex;
             justify-content: center;
-            gap: 25px;
+            gap: 1.5625rem; /* Converted from 25px */
             flex-wrap: wrap;
-            margin-bottom: 40px;
+            margin-bottom: 2.5rem; /* Converted from 40px */
         }
         
         .country-advert-card {
-            background: var(--primary-bg);
-            border-radius: 10px;
-            padding: 20px;
-            border: 1px solid var(--glass-border);
-            width: 150px;
+            background: var(--card-bg); /* Changed from primary-bg to card-bg for consistency */
+            border-radius: 0.625rem; /* Converted from 10px */
+            padding: 1.25rem; /* Converted from 20px */
+            border: 0.0625rem solid var(--glass-border); /* Converted from 1px */
+            width: 9.375rem; /* Converted from 150px */
             text-align: center;
+            flex-shrink: 0; /* Prevent shrinking if space is tight */
+            flex-grow: 0; /* Prevent growing */
         }
         
         .country-advert-card i {
-            font-size: 2.5rem;
+            font-size: 2.5rem; /* Kept as rem, relative to root */
             color: var(--accent-color);
-            margin-bottom: 15px;
+            margin-bottom: 0.9375rem; /* Converted from 15px */
         }
         
         .country-advert-card h3 {
-            font-size: 1.2rem;
+            font-size: 1.2rem; /* Kept as rem, relative to root */
         }
+
+        /* Toggle switch specific styles */
         .toggle-checkbox {
             display: none; /* Hide the default checkbox */
         }
 
         .toggle-label {
             background-color: var(--primary-bg);
-            border-radius: 50px;
+            border-radius: 3.125rem; /* Converted from 50px */
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 5px;
+            padding: 0.3125rem; /* Converted from 5px */
             position: relative;
-            height: 26px;
-            width: 50px;
+            height: 1.625rem; /* Converted from 26px */
+            width: 3.125rem; /* Converted from 50px */
             transform: scale(1.5);
-            border: 1px solid var(--accent-color);
+            border: 0.0625rem solid var(--accent-color); /* Converted from 1px */
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
 
         .toggle-label .ball {
             background-color: #fff;
             border-radius: 50%;
             position: absolute;
-            top: 2px;
-            left: 2px;
-            height: 20px;
-            width: 20px;
+            top: 0.125rem; /* Converted from 2px */
+            left: 0.125rem; /* Converted from 2px */
+            height: 1.25rem; /* Converted from 20px */
+            width: 1.25rem; /* Converted from 20px */
             transition: transform 0.2s linear;
         }
 
         .toggle-checkbox:checked + .toggle-label .ball {
-            transform: translateX(24px);
+            transform: translateX(1.5rem); /* Converted from 24px */
         }
 
+        /* Icons for the toggle switch */
+        .toggle-label .fa-moon,
+        .toggle-label .fa-sun {
+            font-size: 0.8rem; /* Adjusted for scale */
+            position: absolute;
+            left: 0.4rem;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: opacity 0.2s ease;
+        }
+        .toggle-label .fa-sun {
+            left: unset;
+            right: 0.4rem;
+            opacity: 0; /* Hidden by default in light mode */
+        }
+
+        .toggle-checkbox:checked + .toggle-label .fa-moon {
+            opacity: 0;
+        }
+        .toggle-checkbox:checked + .toggle-label .fa-sun {
+            opacity: 1;
+        }
+
+        /* Light/Dark Mode Specific Icon Colors */
         .fa-moon {
-            color: #f1c40f;
+            color: #f1c40f; /* Yellow for moon */
         }
 
         .fa-sun {
-            color: #f39c12;
+            color: #f39c12; /* Orange for sun */
         }
         
-
         /* --- Responsive Design --- */
-        @media (max-width: 900px) {
+        @media (max-width: 56.25rem) { /* Converted from 900px */
             .hero-section {
                 flex-direction: column;
                 text-align: center;
-                padding-top: 50px; 
+                padding-top: 3.125rem; /* Converted from 50px */
                 min-height: auto;
             }
             .hero-content h1 {
@@ -444,15 +552,284 @@
             .section-title {
                 font-size: 2.2rem;
             }
+            .site-header {
+                flex-direction: column;
+                padding: 0.9375rem 5%; /* Converted from 15px */
+                gap: 0.625rem; /* Converted from 10px */
+            }
+            .logo-container {
+                width: 100%;
+                justify-content: center; /* Center main logo */
+            }
+            .small-logo {
+                position: static; /* Remove absolute positioning on small screens */
+                margin-right: 0.625rem; /* Converted from 10px */
+                height: 3rem; /* Adjusted for smaller screens */
+                border-radius: 0.8rem;
+            }
         }
+
+        /* Media Query for 2560 x 1808px and larger screens */
+        @media (min-width: 125rem) { /* This targets screens 2000px and wider */
+            :root {
+                font-size: 20px; /* Increased from 18px to 20px for a larger global font size */
+            }
+            body {
+                font-size: 1em; /* This remains relative to the new root font size (20px) */
+            }
+            .site-header {
+                padding: 1.5625rem 7%;
+            }
+            .logo {
+                font-size: 2.2rem;
+            }
+            /* Small logo specifically for this large breakpoint */
+            .small-logo {
+                height: 5rem; 
+                border-radius: 1.2rem;
+                margin-right: 1.2rem;
+                filter: drop-shadow(0 0 0.8rem rgba(110, 211, 207, 0.6));
+            }
+            .hero-content h1 {
+                font-size: 4.5rem;
+            }
+            .hero-content p {
+                font-size: 1.8rem;
+            }
+            .cta-button {
+                padding: 1.125rem 2.1875rem;
+                font-size: 1.3rem;
+            }
+            .section-title {
+                font-size: 3.5rem;
+                margin-bottom: 5rem;
+            }
+            .branch-card, .resource-card, .pathways-container {
+                padding: 2.5rem;
+            }
+            .branch-card h3 {
+                font-size: 1.6rem;
+            }
+            .branch-card i {
+                font-size: 4rem;
+            }
+            .card-intro, .expanded-content p {
+                font-size: 1.1rem;
+            }
+            .resource-card h3 {
+                font-size: 1.8rem;
+            }
+            .resource-card i {
+                font-size: 3.5rem;
+            }
+            .resource-card p {
+                font-size: 1.2rem;
+            }
+            .pathways-selector label {
+                font-size: 1.4rem;
+            }
+            #branch-select {
+                padding: 0.9375rem 3.125rem 0.9375rem 1.5625rem;
+                font-size: 1.1rem;
+            }
+            .country-advert-card {
+                width: 11.25rem;
+                padding: 1.5625rem;
+            }
+            .country-advert-card i {
+                font-size: 3rem;
+            }
+            .country-advert-card h3 {
+                font-size: 1.4rem;
+            }
+        }
+
+
+
+        /* Media Query for 768px x 904px */
+@media (min-width: 768px) and (max-width: 904px) and (min-height: 904px) {
+    .site-header {
+        flex-direction: row; /* Ensure elements are in a row */
+        justify-content: space-between; /* Push logo left, toggle right */
+        padding: 1.25rem 5%; /* Keep original padding, or adjust as needed */
+    }
+
+    .logo-container {
+        justify-content: flex-start; /* Align logo to the start (left) */
+        flex-grow: 0; /* Prevent it from taking extra space */
+        width: auto; /* Allow content to dictate width */
+    }
+
+    .small-logo {
+        display: none; /* Hide the small logo image */
+    }
+
+    .logo {
+        margin-left: 0; /* Remove any previous margin */
+        font-size: 1.8rem; /* Keep original font size or adjust */
+    }
+
+    .toggle-container {
+        margin-left: auto; /* Push to the right if not already there */
+    }
+
+    .toggle-label {
+        transform: scale(1.2); /* Make toggle button slightly smaller than default 1.5, adjust as needed */
+        height: 1.4rem; /* Adjusted based on scale */
+        width: 2.7rem; /* Adjusted based on scale */
+    }
+
+    .toggle-checkbox:checked + .toggle-label .ball {
+        transform: translateX(1.3rem); /* Adjust ball position for smaller size */
+    }
+}
+
+
+
+/* --- Responsive Design --- */
+
+/* Existing smaller screen media query (adjusted to hide small-logo) */
+@media (max-width: 56.25rem) { /* Converted from 900px */
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 3.125rem; /* Converted from 50px */
+        min-height: auto;
+    }
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+    .section-title {
+        font-size: 2.2rem;
+    }
+    .site-header {
+        flex-direction: column; /* Keep as column for this general breakpoint */
+        padding: 0.9375rem 5%; /* Converted from 15px */
+        gap: 0.625rem; /* Converted from 10px */
+    }
+    .logo-container {
+        width: 100%;
+        justify-content: center; /* Center main logo */
+    }
+    .small-logo {
+        display: none; /* Hide the small logo image on all smaller screens */
+    }
+    /* No need to set toggle styles here if the next media query handles it */
+}
+
+/* Media Query for 768px x 904px */
+@media (min-width: 768px) and (max-width: 904px) and (min-height: 904px) {
+    .site-header {
+        flex-direction: row; /* Ensure elements are in a row */
+        justify-content: space-between; /* Push logo left, toggle right */
+        padding: 1.25rem 5%; /* Keep original padding, or adjust as needed */
+    }
+
+    .logo-container {
+        justify-content: flex-start; /* Align logo to the start (left) */
+        flex-grow: 0; /* Prevent it from taking extra space */
+        width: auto; /* Allow content to dictate width */
+    }
+
+    .small-logo {
+        display: none; /* Hide the small logo image */
+    }
+
+    .logo {
+        margin-left: 0; /* Remove any previous margin */
+        font-size: 1.8rem; /* Keep original font size or adjust */
+    }
+
+    .toggle-container {
+        margin-left: auto; /* Push to the right if not already there */
+    }
+
+    .toggle-label {
+        transform: scale(1.2); /* Make toggle button slightly smaller than default 1.5, adjust as needed */
+        height: 1.4rem; /* Adjusted based on scale */
+        width: 2.7rem; /* Adjusted based on scale */
+    }
+
+    .toggle-checkbox:checked + .toggle-label .ball {
+        transform: translateX(1.3rem); /* Adjust ball position for smaller size */
+    }
+}
+
+
+/* NEW: Media Query for 425px, 375px, 320px and below */
+@media (max-width: 425px) { /* This will apply to 425px, 375px, 320px, and anything smaller */
+    .site-header {
+        flex-direction: row; /* Make sure it's row for left/right alignment */
+        justify-content: space-between; /* Push logo left, toggle right */
+        padding: 0.9375rem 4%; /* Slightly less padding for very small screens */
+    }
+
+    .logo-container {
+        justify-content: flex-start; /* Align logo to the start (left) */
+        flex-grow: 0;
+        width: auto;
+    }
+
+    .small-logo {
+        display: none; /* Explicitly hide the small logo */
+    }
+
+    .logo {
+        margin-left: 0;
+        font-size: 1.5rem; /* Make SkillHance text a bit smaller for very small screens */
+    }
+
+    .toggle-container {
+        margin-left: auto;
+    }
+
+    .toggle-label {
+        transform: scale(1); /* Even smaller toggle button, back to original scale */
+        height: 1.3rem; /* Adjusted size */
+        width: 2.5rem; /* Adjusted size */
+    }
+
+    .toggle-checkbox:checked + .toggle-label .ball {
+        transform: translateX(1.2rem); /* Adjust ball position */
+    }
+
+    /* Further adjustments for very small screens (optional) */
+    .hero-content h1 {
+        font-size: 2.2rem; /* Smaller hero title */
+    }
+    .hero-content p {
+        font-size: 1rem; /* Smaller hero paragraph */
+    }
+    .cta-button {
+        padding: 0.75rem 1.5rem; /* Smaller CTA button */
+        font-size: 1rem;
+    }
+    .section-title {
+        font-size: 1.8rem; /* Smaller section titles */
+        margin-bottom: 2.5rem;
+    }
+    .branches-grid, .resources-grid {
+        grid-template-columns: 1fr; /* Stack cards vertically on very small screens */
+    }
+    .branch-card, .resource-card, .pathways-container {
+        padding: 1.5rem;
+    }
+}
+
+
     </style>
 </head>
 <body>
     <canvas id="particle-canvas"></canvas>
 
-    <!-- Header -->
     <header class="site-header">
-        <a href="#" class="logo">SkillHance</a>
+        <div class="logo-container">
+            <img src="Skillhance-Logo.png" alt="SH Logo" class="small-logo"> 
+            <a href="#" class="logo">SkillHance</a>
+        </div>
         <div class="toggle-container">
             <input type="checkbox" id="theme-toggle" class="toggle-checkbox">
             <label for="theme-toggle" class="toggle-label">
@@ -464,7 +841,6 @@
     </header>
 
     <main>
-        <!-- Hero Section -->
         <section id="hero-section" class="hero-section section">
             <div class="hero-image-container">
                 <img src="Mathematics-bro.svg" alt="A student with a backpack and cap, ready for their career journey" class="hero-image">
@@ -476,7 +852,6 @@
             </div>
         </section>
 
-        <!-- Branches Section -->
         <section id="branches-section" class="section">
             <div class="container">
                 <h2 class="section-title">One Platform, Every Branch.</h2>
@@ -525,7 +900,6 @@
             </div>
         </section>
 
-        <!-- Resources Section -->
         <section id="resources-section" class="section">
             <div class="container">
                 <h2 class="section-title">Unlock Your Potential.</h2>
@@ -552,12 +926,11 @@
             </div>
         </section>
 
-        <!-- International Pathways Section -->
         <section id="international-section" class="section">
             <div class="container">
                 <h2 class="section-title">Go Global. Your Dream Awaits.</h2>
                 <div class="pathways-container">
-                    <p style="max-width: 600px; margin: -20px auto 40px; opacity: 0.8;">Select your branch to discover the top international destinations for your higher education, complete with college insights and cost estimates.</p>
+                    <p style="max-width: 37.5rem; margin: -1.25rem auto 2.5rem; opacity: 0.8;">Select your branch to discover the top international destinations for your higher education, complete with college insights and cost estimates.</p>
                     <div class="pathways-selector">
                         <label for="branch-select">I am a student of:</label>
                         <div class="custom-select-wrapper">
@@ -571,104 +944,163 @@
                         </div>
                     </div>
                     <div id="pathways-results">
-                        <!-- Dynamic content will be injected here by JS -->
                     </div>
-                     <a href="abroadplans/democse.html" class="cta-button" style="margin-top: 20px;">Unlock Full Country Reports</a>
+                    <a href="abroadplans/democse.html" class="cta-button" style="margin-top: 1.25rem;">Unlock Full Country Reports</a>
                 </div>
             </div>
         </section>
     </main>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // --- Particle Canvas Animation ---
-            const canvas = document.getElementById('particle-canvas');
-            const ctx = canvas.getContext('2d');
+        // --- Particle Canvas Animation Script ---
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let particlesArray;
+
+        class Particle {
+            constructor(x, y, directionX, directionY, size, color) {
+                this.x = x; this.y = y; this.directionX = directionX; this.directionY = directionY; this.size = size; this.color = color;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+            update() {
+                if (this.x > canvas.width || this.x < 0) { this.directionX = -this.directionX; }
+                if (this.y > canvas.height || this.y < 0) { this.directionY = -this.directionY; }
+                this.x += this.directionX;
+                this.y += this.directionY;
+                this.draw();
+            }
+        }
+
+        function init() {
+            particlesArray = [];
+            let numberOfParticles = (canvas.height * canvas.width) / 9000;
+            for (let i = 0; i < numberOfParticles; i++) {
+                let size = (Math.random() * 2) + 1;
+                let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
+                let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
+                let directionX = (Math.random() * .4) - .2;
+                let directionY = (Math.random() * .4) - .2;
+                let color = 'rgba(110, 211, 207, 0.5)';
+                particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
+            }
+        }
+
+        function connect() {
+            let opacityValue = 1;
+            for (let a = 0; a < particlesArray.length; a++) {
+                for (let b = a; b < particlesArray.length; b++) {
+                    let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+                    if (distance < (canvas.width / 7) * (canvas.height / 7)) {
+                        opacityValue = 1 - (distance / 20000);
+                        ctx.strokeStyle = `rgba(110, 211, 207, ${opacityValue})`;
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, innerWidth, innerHeight);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+            }
+            connect();
+        }
+
+        window.addEventListener('resize', () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-            let particlesArray;
+            init();
+        });
 
-            class Particle {
-                constructor(x, y, dirX, dirY, size, color) {
-                    this.x = x; this.y = y; this.directionX = dirX; this.directionY = dirY; this.size = size; this.color = color;
+        init();
+        animate();
+
+
+        // --- Section Visibility Animation ---
+        const sections = document.querySelectorAll('.section');
+
+        const observerOptions = {
+            root: null, // viewport
+            rootMargin: '0px',
+            threshold: 0.1 // 10% of the section must be visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Optional: Stop observing once visible if animation should only run once
+                    // observer.unobserve(entry.target);
+                } else {
+                    // Optional: Remove 'visible' class if you want animation to re-run on scroll back up
+                    // entry.target.classList.remove('visible');
                 }
-                draw() {
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-                    ctx.fillStyle = this.color; ctx.fill();
-                }
-                update() {
-                    if (this.x > canvas.width || this.x < 0) { this.directionX = -this.directionX; }
-                    if (this.y > canvas.height || this.y < 0) { this.directionY = -this.directionY; }
-                    this.x += this.directionX; this.y += this.directionY;
-                    this.draw();
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+
+        // --- Theme Toggle Switch Logic ---
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+            const currentTheme = localStorage.getItem('theme');
+
+            // Apply stored theme on load
+            if (currentTheme) {
+                body.classList.add(currentTheme);
+                if (currentTheme === 'dark-theme') {
+                    themeToggle.checked = true;
                 }
             }
 
-            function initParticles() {
-                particlesArray = [];
-                let num = (canvas.height * canvas.width) / 9000;
-                for (let i = 0; i < num; i++) {
-                    let size = (Math.random() * 2) + 1;
-                    let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
-                    let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
-                    let dirX = (Math.random() * .4) - .2;
-                    let dirY = (Math.random() * .4) - .2;
-                    particlesArray.push(new Particle(x, y, dirX, dirY, size, 'rgba(110, 211, 207, 0.5)'));
+            // Listen for changes on the toggle switch
+            themeToggle.addEventListener('change', function() {
+                body.classList.toggle('dark-theme'); // Toggle the dark-theme class on the body
+                if (body.classList.contains('dark-theme')) {
+                    localStorage.setItem('theme', 'dark-theme'); // Save preference
+                } else {
+                    localStorage.setItem('theme', ''); // Clear preference for light theme
                 }
-            }
-
-            function animateParticles() {
-                requestAnimationFrame(animateParticles);
-                ctx.clearRect(0, 0, innerWidth, innerHeight);
-                for (let i = 0; i < particlesArray.length; i++) {
-                    particlesArray[i].update();
-                }
-            }
-            initParticles();
-            animateParticles();
-            window.addEventListener('resize', () => {
-                canvas.width = innerWidth;
-                canvas.height = innerHeight;
-                initParticles();
             });
 
-            // --- Hero Image Hover Effect ---
-            const heroSection = document.querySelector('.hero-section');
+            // --- Hero Image Click Animation Logic ---
             const heroImage = document.querySelector('.hero-image');
-            heroSection.addEventListener('mousemove', (e) => {
-                const { clientX, clientY } = e;
-                const { offsetWidth, offsetHeight } = heroSection;
-                const x = (clientX / offsetWidth) - 0.5;
-                const y = (clientY / offsetHeight) - 0.5;
-                
-                // UPDATED: Increased the multiplier for a stronger "bend" effect
-                const rotateY = x * 40;
-                const rotateX = -y * 40;
-                
-                heroImage.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
-            });
-            heroSection.addEventListener('mouseleave', () => {
-                heroImage.style.transform = 'rotateX(0) rotateY(0) scale(1)';
-            });
-
-            // --- Section Scroll Animation ---
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        const children = entry.target.querySelectorAll('.animated-card');
-                        children.forEach((child, index) => {
-                            child.style.transitionDelay = `${index * 100}ms`;
-                        });
-                    }
+            if (heroImage) {
+                heroImage.addEventListener('click', function() {
+                    // Add the 'clicked' class to trigger the animation
+                    this.classList.add('clicked');
+                    // Remove the 'clicked' class after the animation completes
+                    // This allows the animation to be re-triggered on subsequent clicks
+                    this.addEventListener('animationend', () => {
+                        this.classList.remove('clicked');
+                    }, { once: true }); // Use { once: true } to remove the listener after it runs once
                 });
-            }, { threshold: 0.1 });
-            document.querySelectorAll('.section').forEach(section => observer.observe(section));
+            }
+        });
 
-            // --- International Pathways Logic ---
+        // --- International Pathways Dynamic Content ---
+        document.addEventListener('DOMContentLoaded', () => {
             const branchSelect = document.getElementById('branch-select');
-            const resultsContainer = document.getElementById('pathways-results');
+            const pathwaysResults = document.getElementById('pathways-results');
+
             const pathwaysData = {
                 cse: [
                     { country: 'USA', icon: 'fas fa-flag-usa' },
@@ -707,33 +1139,73 @@
                 ]
             };
 
-            function updatePathways(branch) {
-                resultsContainer.innerHTML = '';
-                const data = pathwaysData[branch];
-                if (!data) return;
+            function updatePathways() {
+                const selectedBranch = branchSelect.value;
+                const countries = pathwaysData[selectedBranch];
+                pathwaysResults.innerHTML = ''; // Clear previous results
 
-                data.forEach((country, index) => {
-                    const card = document.createElement('div');
-                    card.className = 'country-advert-card animated-card';
-                    // Trigger animation
-                    setTimeout(() => card.classList.add('visible'), 10);
-                    card.style.transitionDelay = `${index * 100}ms`;
-                    card.innerHTML = `
-                        <i class="${country.icon}"></i>
-                        <h3>${country.country}</h3>
-                    `;
-                    resultsContainer.appendChild(card);
-                });
+                if (countries) {
+                    countries.forEach(data => {
+                        const card = document.createElement('div');
+                        card.classList.add('country-advert-card', 'animated-card'); 
+                        card.innerHTML = `
+                            <i class="${data.icon}"></i>
+                            <h3>${data.country}</h3>
+                        `;
+                        pathwaysResults.appendChild(card);
+                    });
+                }
             }
 
-            branchSelect.addEventListener('change', (e) => {
-                updatePathways(e.target.value);
+            // Initial load
+            updatePathways();
+
+            // Update on branch change
+            branchSelect.addEventListener('change', updatePathways);
+        });
+
+
+
+            document.addEventListener('DOMContentLoaded', () => {
+        const heroImage = document.querySelector('.hero-image');
+        const heroImageContainer = document.querySelector('.hero-image-container'); // Or the parent that defines the perspective
+
+        if (heroImage && heroImageContainer) {
+            heroImageContainer.addEventListener('mousemove', (e) => {
+                const rect = heroImageContainer.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+
+                const mouseX = e.clientX;
+                const mouseY = e.clientY;
+
+                // Calculate tilt angles based on mouse position relative to the center of the container
+                // Adjust sensitivity by dividing by a larger number
+                const tiltX = (mouseY - centerY) / 20; // Invert for more natural up/down tilt
+                const tiltY = (mouseX - centerX) / 20;
+
+                heroImage.style.transform = `
+                    perspective(1000px)
+                    rotateX(${tiltX}deg)
+                    rotateY(${tiltY}deg)
+                    scale(1.02) /* Slight scale on hover for extra pop */
+                `;
             });
 
-            // Initial load
-            updatePathways(branchSelect.value);
-            
-        });
+            heroImageContainer.addEventListener('mouseleave', () => {
+                // Reset transform when mouse leaves the container
+                heroImage.style.transform = `
+                    perspective(1000px)
+                    rotateX(0deg)
+                    rotateY(0deg)
+                    scale(1)
+                `;
+            });
+        }
+    });
+
+
+
     </script>
 </body>
 </html>
