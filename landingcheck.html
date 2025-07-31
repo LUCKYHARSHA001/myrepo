@@ -441,23 +441,32 @@
             pointer-events: none; 
         }
         
-        #branch-select {
+       #branch-select {
             padding: 0.75rem 2.8125rem 0.75rem 1.25rem; /* Converted from 12px 45px 12px 20px */
             background: rgba(0,0,0,0.3);
             border: 0.0625rem solid var(--glass-border); /* Converted from 1px */
             border-radius: 0.5rem; /* Converted from 8px */
-            color: var(--primary-text);
+            color: var(--accent-color);
             font-size: 1rem; /* Kept as rem, relative to root */
             outline: none;
             cursor: pointer;
-            -webkit-appearance: none; 
-            -moz-appearance: none; 
-            appearance: none; 
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
             transition: border-color 0.3s ease;
         }
 
-        #branch-select:hover, #branch-select:focus {
-            border-color: var(--accent-color);
+        /* Styles for the options within the dropdown */
+        #branch-select option {
+            background-color: #1a2a3a;
+            color: #ffffff; /* Black text */
+        }
+
+        /* Style for hovered/focused options (some browsers might apply this) */
+        #branch-select option:hover,
+        #branch-select option:focus {
+            background-color: #003366; /* Slightly lighter dark blue on hover */
+            color: #FFFFFF; /* White text on hover for better contrast */
         }
 
         #pathways-results {
