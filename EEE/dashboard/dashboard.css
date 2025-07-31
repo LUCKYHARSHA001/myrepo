@@ -192,6 +192,7 @@ body {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     padding: 25px;
+    padding-bottom: 60px; /* Increased padding to make space for percentage at bottom */
     border-radius: 12px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(225, 232, 240, 0.2);
@@ -200,12 +201,15 @@ body {
     font-weight: 500;
     color: #FFFFFF;
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    
+    /* Perfect alignment with Flexbox */
     display: flex;
-    flex-direction: column; /* Allow content and heatmap overlay */
-    justify-content: center;
-    align-items: center;
-    min-height: 120px;
-    position: relative; /* For heatmap overlay positioning */
+    flex-direction: column;
+    justify-content: space-between; /* Pushes content to top, percentage to bottom */
+    align-items: center; /* Centers items horizontally */
+    
+    min-height: 140px; /* Slightly increase min-height to accommodate percentage comfortably */
+    position: relative; /* For heatmap overlay and percentage positioning */
     overflow: hidden; /* Ensure heatmap doesn't spill out */
 }
 
@@ -214,6 +218,18 @@ body {
     box-shadow: 0 0 20px rgba(110, 211, 207, 0.3), 0 10px 30px rgba(0, 0, 0, 0.4);
     border-color: #6ed3cf;
 }
+
+/* Ensures content in card flexes properly */
+.card-content-wrapper {
+    flex-grow: 1; /* Allows content to take up available space */
+    display: flex; /* Centers text if multi-line */
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Important for centering */
+    text-align: center; /* Fallback for text alignment */
+    padding-bottom: 10px; /* Small buffer from bottom elements */
+}
+
 
 /* Heatmap Overlay Styling */
 .heatmap-overlay {
@@ -233,9 +249,10 @@ body {
     mix-blend-mode: screen; /* Blends nicely with the dark background */
 }
 
-.dashboard-card > *:not(.heatmap-overlay) {
+/* Ensure direct text content within card is also correctly layered */
+.dashboard-card > *:not(.heatmap-overlay):not(.card-percentage) {
     position: relative;
-    z-index: 2; /* Keep content above heatmap overlay */
+    z-index: 2; /* Keep primary content above heatmap overlay */
     background: transparent; /* Ensure content background is transparent */
 }
 
@@ -245,6 +262,34 @@ body {
     50% { transform: scale(1.05); opacity: 0.3; }
     100% { transform: scale(0.9); opacity: 0.1; }
 }
+
+/* Percentage Display Styling */
+.card-percentage {
+    position: absolute; /* Relative to .dashboard-card */
+    bottom: 15px; /* Distance from the bottom of the card */
+    right: 15px; /* Distance from the right of the card */
+    font-size: 0.9em;
+    font-weight: 600;
+    color: #6ed3cf; /* Use accent color */
+    background-color: rgba(110, 211, 207, 0.15); /* Slightly more prominent background */
+    padding: 6px 10px; /* Increased padding for better visual */
+    border-radius: 8px; /* Slightly more rounded */
+    border: 1px solid rgba(110, 211, 207, 0.4); /* Stronger border for definition */
+    z-index: 3; /* Ensure it's above other elements */
+    transition: all 0.3s ease;
+    min-width: 60px; /* Ensure consistent width */
+    text-align: center; /* Center percentage text */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Subtle shadow */
+}
+
+.dashboard-card:hover .card-percentage {
+    color: #1a2a3a; /* Darker text on hover */
+    background-color: #6ed3cf; /* Solid accent color background on hover */
+    border-color: #06e9e2; /* Accent border on hover */
+    transform: translateY(-3px) scale(1.05); /* Slight lift and scale on hover */
+    box-shadow: 0 4px 10px rgba(110, 211, 207, 0.4); /* Enhanced shadow on hover */
+}
+
 
 /* For progress items, a simpler, less intrusive heatmap */
 .progress-item .heatmap-overlay.small {
@@ -428,8 +473,15 @@ body {
         font-size: 2rem;
     }
     .dashboard-card {
-        min-height: 100px;
+        min-height: 120px; /* Adjusted min-height */
         font-size: 1rem;
+        padding-bottom: 50px; /* Adjusted padding for percentage */
+    }
+    .card-percentage {
+        font-size: 0.8em;
+        bottom: 10px;
+        right: 10px;
+        padding: 4px 8px;
     }
 }
 
@@ -480,6 +532,16 @@ body {
     .progress-container {
         padding: 20px;
     }
+    .dashboard-card {
+        min-height: 110px; /* Adjusted min-height for smaller screens */
+        padding-bottom: 40px; /* Adjusted padding */
+    }
+    .card-percentage {
+        font-size: 0.75em;
+        bottom: 10px;
+        right: 10px;
+        padding: 3px 6px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -498,6 +560,12 @@ body {
     }
     .dashboard-card {
         font-size: 0.9rem;
-        padding: 20px;
+        padding-bottom: 35px; /* Adjusted padding */
+    }
+    .card-percentage {
+        font-size: 0.65em;
+        bottom: 8px;
+        right: 8px;
+        padding: 3px 6px;
     }
 }
