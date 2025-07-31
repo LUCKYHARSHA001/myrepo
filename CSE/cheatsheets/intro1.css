@@ -26,6 +26,16 @@ body {
   text-shadow: 0 0 20px rgba(110, 211, 207, 0.5);
 }
 
+#dots-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  display: block;
+}
+
 hr {
     border: 0;
     height: 1px;

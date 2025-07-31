@@ -6,10 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="intro1.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
   <title>Document</title>
 </head>
 
 <body>
+  <canvas id="dots-bg"></canvas>
   <h1 class="main-head">Cheat-Sheets</h1>
   <hr>
   <div class="in-courses">
@@ -31,6 +33,53 @@
   </div>
   <a href="../main.html" class="home-button" title="Go to Home">
     <i class="fas fa-home"></i>
+    <script>
+      const canvas = document.getElementById('dots-bg');
+            const ctx = canvas.getContext('2d');
+            let dots = [];
+            const DOTS_COUNT = 60;
+            const DOT_RADIUS = 2;
+            const SPEED = 0.3;
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            function initDots() {
+                dots = [];
+                for (let i = 0; i < DOTS_COUNT; i++) {
+                    dots.push({
+                        x: Math.random() * canvas.width,
+                        y: Math.random() * canvas.height,
+                        dx: (Math.random() - 0.5) * SPEED,
+                        dy: (Math.random() - 0.5) * SPEED
+                    });
+                }
+            }
+            initDots();
+
+            function animateDots() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (let dot of dots) {
+                    dot.x += dot.dx;
+                    dot.y += dot.dy;
+                    // Bounce off edges
+                    if (dot.x < 0 || dot.x > canvas.width) dot.dx *= -1;
+                    if (dot.y < 0 || dot.y > canvas.height) dot.dy *= -1;
+                    ctx.beginPath();
+                    ctx.arc(dot.x, dot.y, DOT_RADIUS, 0, Math.PI * 2);
+                    ctx.fillStyle = 'white';
+                    ctx.globalAlpha = 0.8;
+                    ctx.fill();
+                    ctx.globalAlpha = 1;
+                }
+                requestAnimationFrame(animateDots);
+            }
+            animateDots();
+    </script>
 </body>
 
 </html>
