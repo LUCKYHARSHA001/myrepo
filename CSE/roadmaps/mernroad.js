@@ -20,3 +20,14 @@ function setEqualHeights(el) {
     el[i].style.height = `${counter}px`;
   }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const timelineOl = document.querySelector('.timeline ol');
+
+    if (timelineOl) {
+        timelineOl.addEventListener('wheel', (event) => {
+            event.preventDefault();
+            timelineOl.scrollLeft += event.deltaY;
+        });
+    }
+});
