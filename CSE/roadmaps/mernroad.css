@@ -1,290 +1,316 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
 
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+    *,
+    *::before,
+    *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
 
-button {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  outline: none;
-}
+    button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    }
 
-a {
-  color: inherit;
-}
+    a {
+    color: inherit;
+    }
 
-img {
-  max-width: 100%;
-  height: auto;
-}
+    img {
+    max-width: 100%;
+    height: auto;
+    }
 
-body {
-  font: normal 16px/1.5 "Inter", sans-serif;
-  background: #1a2a3a;
-  color: #e1e8f0;
-  margin-bottom: 50px;
-  font-family: 'Poppins';
-}
+    body {
+    font: normal 16px/1.5 "Inter", sans-serif;
+    background: #1a2a3a;
+    color: #e1e8f0;
+    margin-bottom: 50px;
+    font-family: 'Poppins';
+    }
 
-.section {
-  padding: 50px 0;
-}
+    .section {
+    padding: 50px 0;
+    }
 
-.section .container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-  text-align: center;
-}
+    .section .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    }
 
-.section h1 {
-  font-size: 2.5rem;
-  line-height: 1.25;
-  text-shadow: 0 0 15px rgba(110, 211, 207, 0.5);
-}
+    .section h1 {
+    font-size: 2.5rem;
+    line-height: 1.25;
+    text-shadow: 0 0 15px rgba(110, 211, 207, 0.5);
+    }
 
-.section h2 {
-  font-size: 1.3rem;
-}
+    .section h2 {
+    font-size: 1.3rem;
+    }
 
-.timeline {
-  position: relative;
-  white-space: nowrap;
-  max-width: 1400px;
-  padding: 0 10px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 320px auto;
-  grid-gap: 20px;
-}
+    .timeline {
+    position: relative;
+    white-space: nowrap;
+    max-width: 1400px;
+    padding: 0 10px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 320px auto;
+    grid-gap: 20px;
+    }
 
-.timeline::before,
-.timeline::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 30px;
-  width: 100px;
-  z-index: 2;
-}
+    .timeline::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 30px;
+    width: 100px;
+    z-index: 2;
+    right: 0;
+    background: linear-gradient(270deg, #1a2a3a 0%, #1a2a3a 50%, rgba(26, 42, 58, 0) 100%);
+    }
 
-.timeline::after {
-  right: 0;
-  background: linear-gradient(270deg, #1a2a3a 0%, #1a2a3a 50%, rgba(26, 42, 58, 0) 100%);
-}
+    .timeline .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px 40px;
+    color: #e1e8f0;
+    background: rgba(225, 232, 240, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(225, 232, 240, 0.2);
+    white-space: normal;
+    border-radius: 10px;
+    }
 
-.timeline::before {
-  left: 340px;
-  background: linear-gradient(90deg, #1a2a3a 0%, #1a2a3a 50%, rgba(26, 42, 58, 0) 100%);
-}
+    .timeline .info img {
+    margin-bottom: 20px;
+    }
 
-.timeline .info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 20px 40px;
-  color: #e1e8f0;
-  background: rgba(225, 232, 240, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(225, 232, 240, 0.2);
-  white-space: normal;
-  border-radius: 10px;
-}
+    .timeline .info p {
+    margin-top: 10px;
+    color: #e1e8f0;
+    }
 
-.timeline .info img {
-  margin-bottom: 20px;
-}
+    .timeline .info a {
+    text-decoration: none;
+    color: #6ed3cf;
+    font-weight: bold;
+    }
 
-.timeline .info p {
-  margin-top: 10px;
-  color: #e1e8f0;
-}
+    .timeline ol::-webkit-scrollbar {
+    height: 12px;
+    }
 
-.timeline .info a {
-  text-decoration: none;
-  color: #6ed3cf;
-  font-weight: bold;
-}
+    .timeline ol::-webkit-scrollbar-thumb,
+    .timeline ol::-webkit-scrollbar-track {
+    border-radius: 92px;
+    }
 
-.timeline ol::-webkit-scrollbar {
-  height: 12px;
-}
+    .timeline ol::-webkit-scrollbar-thumb {
+    background: #6ed3cf;
+    }
 
-.timeline ol::-webkit-scrollbar-thumb,
-.timeline ol::-webkit-scrollbar-track {
-  border-radius: 92px;
-}
+    .timeline ol::-webkit-scrollbar-track {
+    background: rgba(225, 232, 240, 0.1);
+    }
 
-.timeline ol::-webkit-scrollbar-thumb {
-  background: #6ed3cf;
-}
+    .timeline ol {
+    font-size: 0;
+    padding: 250px 0;
+    transition: all 1s;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    scrollbar-color: #6ed3cf rgba(225, 232, 240, 0.1);
+    }
 
-.timeline ol::-webkit-scrollbar-track {
-  background: rgba(225, 232, 240, 0.1);
-}
+    .timeline ol li {
+    position: relative;
+    display: inline-block;
+    list-style-type: none;
+    width: 160px;
+    height: 5px;
+    background: rgba(225, 232, 240, 0.2);
+    scroll-snap-align: start;
+    }
 
-.timeline ol {
-  font-size: 0;
-  padding: 250px 0;
-  transition: all 1s;
-  overflow-x: scroll;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  scrollbar-color: #6ed3cf rgba(225, 232, 240, 0.1);
-}
+    .timeline ol li:last-child {
+    width: 340px;
+    }
 
-.timeline ol li {
-  position: relative;
-  display: inline-block;
-  list-style-type: none;
-  width: 160px;
-  height: 5px;
-  background: rgba(225, 232, 240, 0.2);
-  scroll-snap-align: start;
-}
+    .timeline ol li:not(:first-child) {
+    margin-left: 14px;
+    }
 
-.timeline ol li:last-child {
-  width: 340px;
-}
+    .timeline ol li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: calc(100% + 1px);
+    bottom: 0;
+    width: 16px;
+    height: 16px;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background: #6ed3cf;
+    z-index: 1;
+    }
 
-.timeline ol li:not(:first-child) {
-  margin-left: 14px;
-}
+    .timeline ol li div {
+    position: absolute;
+    left: calc(100% + 7px);
+    width: 280px;
+    padding: 15px;
+    font-size: 1rem;
+    white-space: normal;
+    color: #e1e8f0;
+    background: rgba(26, 42, 58, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(225, 232, 240, 0.2);
+    border-radius: 0 10px 10px 10px;
+    }
 
-.timeline ol li:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: calc(100% + 1px);
-  bottom: 0;
-  width: 16px;
-  height: 16px;
-  transform: translateY(-50%);
-  border-radius: 50%;
-  background: #6ed3cf;
-  z-index: 1;
-}
-
-.timeline ol li div {
-  position: absolute;
-  left: calc(100% + 7px);
-  width: 280px;
-  padding: 15px;
-  font-size: 1rem;
-  white-space: normal;
-  color: #e1e8f0;
-  background: rgba(26, 42, 58, 0.8);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(225, 232, 240, 0.2);
-  border-radius: 0 10px 10px 10px;
-}
-
-.timeline ol li div::before {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 0;
-  height: 0;
-  border-style: solid;
-}
-
-.timeline ol li:nth-child(odd) div {
-  top: -16px;
-  transform: translateY(-100%);
-  border-radius: 10px 10px 10px 0;
-}
-
-.timeline ol li:nth-child(odd) div::before {
-  top: 100%;
-  border-width: 8px 8px 0 0;
-  border-color: rgba(26, 42, 58, 0.8) transparent transparent transparent;
-}
-
-.timeline ol li:nth-child(even) div {
-  top: calc(100% + 16px);
-}
-
-.timeline ol li:nth-child(even) div::before {
-  top: -8px;
-  border-width: 8px 0 0 8px;
-  border-color: transparent transparent transparent rgba(26, 42, 58, 0.8);
-}
-
-.timeline time {
-  display: block;
-  font-size: 1.4rem;
-  font-weight: bold;
-  margin-bottom: 8px;
-  color: #6ed3cf;
-}
-
-@media screen and (max-width: 800px) {
-  .timeline {
-    display: block;
-  }
-
-  .timeline::before,
-  .timeline::after {
-    width: 50px;
-  }
-
-  .timeline::before {
+    .timeline ol li div::before {
+    content: "";
+    position: absolute;
+    top: 100%;
     left: 0;
-  }
+    width: 0;
+    height: 0;
+    border-style: solid;
+    }
 
-  .timeline .info {
-    display: none;
-  }
-}
+    .timeline ol li:nth-child(odd) div {
+    top: -16px;
+    transform: translateY(-100%);
+    border-radius: 10px 10px 10px 0;
+    }
 
-.home-button {
-  font-size: 28px;
-  text-decoration: none;
-  color: #6ed3cf;
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: rgba(225, 232, 240, 0.1);
-  border: 1px solid rgba(225, 232, 240, 0.2);
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    .timeline ol li:nth-child(even) div {
+    top: calc(100% + 16px);
+    }
 
-.home-button:hover {
-  background: #6ed3cf;
-  color: #1a2a3a;
-  transform: scale(1.1);
-  box-shadow: 0 0 15px #6ed3cf;
-}
+    .timeline ol li:nth-child(even) div::before {
+    top: -8px;
+    border-width: 8px 0 0 8px;
+    border-color: transparent transparent transparent rgba(26, 42, 58, 0.8);
+    }
 
-.timeline button {
-  background-color: #6ed3cf;
-  padding: 8px 16px;
-  color: #1a2a3a;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  margin-top: 10px;
-}
+    .timeline time {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #6ed3cf;
+    }
 
-.timeline button:hover {
-  background-color: #FFFFFF;
-  box-shadow: 0 0 15px #FFFFFF;
-  transform: translateY(-2px);
-}
+    .home-button {
+    font-size: 28px;
+    text-decoration: none;
+    color: #6ed3cf;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(225, 232, 240, 0.1);
+    border: 1px solid rgba(225, 232, 240, 0.2);
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+
+    .home-button:hover {
+    background: #6ed3cf;
+    color: #1a2a3a;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px #6ed3cf;
+    }
+
+    .timeline button {
+    background-color: #6ed3cf;
+    padding: 8px 16px;
+    color: #1a2a3a;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    }
+
+    .timeline button:hover {
+    background-color: #FFFFFF;
+    box-shadow: 0 0 15px #FFFFFF;
+    transform: translateY(-2px);
+    }
+
+    /* --- Media Queries for screens less than or equal to 768px --- */
+    @media screen and (max-width: 768px) {
+    .timeline {
+        display: block; /* Overrides the grid layout on mobile */
+    }
+
+    /*
+        * This entire ol block handles the transition from horizontal to vertical.
+        * It uses flex-direction: column to stack the items.
+        * The horizontal line and circle pseudo-elements are also removed here.
+        */
+    .timeline ol {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        overflow-x: visible;
+        white-space: normal;
+    }
+    .timeline ol::before {
+        content: none;
+    }
+    .timeline ol::after {
+        content: none;
+    }
+    .timeline ol::-webkit-scrollbar {
+        display: none;
+    }
+
+    .timeline ol li {
+        width: 100%;
+        height: auto;
+        padding: 0;
+        padding-left: 0;
+        margin-bottom: 1rem;
+        text-align: left;
+        background: none;
+    }
+    .timeline ol li:not(:first-child) {
+        margin-left: 0;
+    }
+
+    /* This specifically removes the circles */
+    .timeline ol li::after {
+        content: none;
+    }
+
+    .timeline ol li div {
+        position: relative; /* Changes position for mobile stacking */
+        left: 0;
+        width: auto;
+        border-radius: 8px;
+        transform: none !important; /* Forces all divs to be in a single column */
+    }
+
+    /* This removes the small triangles on mobile */
+    .timeline ol li div::before {
+        display: none;
+    }
+    }
