@@ -1,0 +1,257 @@
+:root {
+        --primary-bg: #1a2a3a;
+        --primary-text: #e1e8f0;
+        --accent-color: #6ed3cf;
+        --glass-bg: rgba(26, 42, 58, 0.6);
+        --glass-border: rgba(110, 211, 207, 0.3);
+        --glow-shadow: 0 0 25px rgba(110, 211, 207, 0.5);
+        --error-color: #e74c3c;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: var(--primary-bg);
+        color: var(--primary-text);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        overflow: hidden;
+        position: relative;
+    }
+
+    /* --- Animated Background --- */
+    #particle-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+    }
+
+    /* --- Login Card Styling --- */
+    .login-card {
+        background: var(--glass-bg);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border: 1px solid var(--glass-border);
+        border-radius: 20px;
+        padding: 40px;
+        width: 100%;
+        max-width: 500px; /* Increased width for side-by-side inputs */
+        z-index: 1;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        animation: slideUpFadeIn 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    @keyframes slideUpFadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .login-card-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .login-card-header h1 {
+        font-size: 2.5rem;
+        color: #fff;
+        margin-bottom: 10px;
+        text-shadow: 0 0 10px var(--accent-color);
+    }
+
+    .login-card-header p {
+        font-size: 1rem;
+        color: var(--primary-text);
+        opacity: 0.8;
+    }
+
+    /* --- Form Styling --- */
+    .login-form {
+        display: flex;
+        flex-direction: column;
+        gap: 25px; /* Increased gap */
+    }
+
+    /* --- Side-by-Side Input Group --- */
+    .dual-input-group {
+        display: flex;
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid var(--glass-border);
+        background: rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+    }
+
+    .dual-input-group:focus-within {
+        border-color: var(--accent-color);
+        box-shadow: var(--glow-shadow);
+    }
+
+    .input-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        /* UPDATED: Changed to 'all' for a more complete transition */
+        transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    
+    .input-wrapper:first-child::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 25%;
+        height: 50%;
+        width: 1px;
+        background-color: var(--glass-border);
+        transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    
+    /* NEW: Make the divider glow when either input is active */
+    .dual-input-group:focus-within .input-wrapper:first-child::after {
+        background-color: var(--accent-color);
+        box-shadow: 0 0 4px var(--accent-color);
+    }
+
+    /* UPDATED: When email input expands, the divider now fades and moves out */
+    .input-wrapper.expanded-width:first-child::after {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    .input-field {
+        width: 100%;
+        padding: 15px 20px 15px 45px;
+        background: transparent;
+        border: none;
+        color: var(--primary-text);
+        font-size: 1rem;
+        outline: none;
+    }
+
+    .input-field::placeholder {
+        color: rgba(225, 232, 240, 0.5);
+    }
+
+    .input-wrapper i {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: rgba(225, 232, 240, 0.5);
+        transition: color 0.3s ease;
+    }
+
+    .input-field:focus + i {
+        color: var(--accent-color);
+    }
+    
+    /* Classes for JS to control width */
+    .input-wrapper.default-width { width: 50%; }
+    .input-wrapper.expanded-width { width: 65%; }
+    .input-wrapper.shrunk-width { width: 35%; }
+
+
+    .form-options {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.9rem;
+    }
+
+    .remember-me {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+    }
+    
+    .remember-me input { display: none; }
+
+    .remember-me .checkbox {
+        width: 18px;
+        height: 18px;
+        background: rgba(0,0,0,0.3);
+        border: 1px solid var(--glass-border);
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+
+    .remember-me .checkbox i {
+        color: var(--accent-color);
+        font-size: 12px;
+        opacity: 0;
+        transform: scale(0.5);
+        transition: all 0.3s ease;
+    }
+    
+    .remember-me input:checked + .checkbox {
+        background: var(--accent-color);
+        border-color: var(--accent-color);
+    }
+
+    .remember-me input:checked + .checkbox i {
+        opacity: 1;
+        transform: scale(1);
+        color: var(--primary-bg);
+    }
+
+    .forgot-password {
+        color: var(--accent-color);
+        text-decoration: none;
+        transition: text-shadow 0.3s ease;
+    }
+
+    .forgot-password:hover { text-shadow: var(--glow-shadow); }
+
+    .signin-button {
+        padding: 15px;
+        border-radius: 10px;
+        border: none;
+        background: var(--accent-color);
+        color: var(--primary-bg);
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(110, 211, 207, 0.2);
+    }
+
+    .signin-button:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--glow-shadow);
+    }
+    
+    .signin-button:active { transform: translateY(0); }
+
+    .signup-link {
+        text-align: center;
+        font-size: 0.9rem;
+        margin-top: 10px;
+    }
+
+    .signup-link a {
+        color: var(--accent-color);
+        font-weight: 600;
+        text-decoration: none;
+        transition: text-shadow 0.3s ease;
+    }
+
+    .signup-link a:hover { text-shadow: var(--glow-shadow); }

@@ -82,6 +82,7 @@ body {
 .sidebar a.active {
   background-color: #6ed3cf;
   color: #1a2a3a;
+  text-decoration: none;
 }
 
 .container {
@@ -250,7 +251,10 @@ body {
   display: flex;
 }
 
-.hamburger-menu a {
+a{
+  text-decoration: none;
+}
+.hamburger-menu  a {
   padding: 10px;
   color: #bdc3c7;
   text-decoration: none;
@@ -260,6 +264,8 @@ body {
 .hamburger-menu a:hover {
   background-color: rgba(110, 211, 207, 0.2);
 }
+
+
 
 @media (min-width: 768px) and (max-width: 1023px) {
 
@@ -319,6 +325,9 @@ body {
     font-size: 20px;
     margin-left: 0;
     padding: 0 10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    
   }
 
   .hamburger-container {
