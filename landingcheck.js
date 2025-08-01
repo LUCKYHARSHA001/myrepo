@@ -1,5 +1,5 @@
 
-    // --- Particle Canvas Animation Script ---
+    //  Particle Canvas Animation Script 
     const canvas = document.getElementById('particle-canvas');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
@@ -77,25 +77,20 @@
     animate();
 
 
-    // --- Section Visibility Animation ---
+    //  Section Visibility Animation 
     const sections = document.querySelectorAll('.section');
 
     const observerOptions = {
-        root: null, // viewport
+        root: null, 
         rootMargin: '0px',
-        threshold: 0.1 // 10% of the section must be visible
+        threshold: 0.1
     };
 
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                // Optional: Stop observing once visible if animation should only run once
-                // observer.unobserve(entry.target);
-            } else {
-                // Optional: Remove 'visible' class if you want animation to re-run on scroll back up
-                // entry.target.classList.remove('visible');
-            }
+            } 
         });
     }, observerOptions);
 
@@ -107,10 +102,9 @@
     document.addEventListener('DOMContentLoaded', function() {
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
-    const themeIcon = document.getElementById('theme-icon'); // Get the theme icon element
+    const themeIcon = document.getElementById('theme-icon');
     const currentTheme = localStorage.getItem('theme');
 
-    // Function to set the theme and icon
     function setThemeAndIcon(theme) {
     if (theme === 'dark-theme') {
         body.classList.remove('light-theme');
@@ -128,15 +122,12 @@
     localStorage.setItem('theme', theme);
     }
 
-    // Apply stored theme on load
     if (currentTheme) {
     setThemeAndIcon(currentTheme);
     } else {
-    // Default to light theme if no theme is stored
     setThemeAndIcon('light-theme');
     }
 
-    // You'll also need an event listener to handle the actual toggling
     themeToggle.addEventListener('change', function() {
     if (themeToggle.checked) {
         setThemeAndIcon('dark-theme');
@@ -146,17 +137,14 @@
     });
     });
 
-        // --- Hero Image Click Animation Logic ---
         const heroImage = document.querySelector('.hero-image');
         if (heroImage) {
             heroImage.addEventListener('click', function() {
-                // Add the 'clicked' class to trigger the animation
+
                 this.classList.add('clicked');
-                // Remove the 'clicked' class after the animation completes
-                // This allows the animation to be re-triggered on subsequent clicks
                 this.addEventListener('animationend', () => {
                     this.classList.remove('clicked');
-                }, { once: true }); // Use { once: true } to remove the listener after it runs once
+                }, { once: true }); 
             });
         }
 
@@ -206,7 +194,7 @@
         function updatePathways() {
             const selectedBranch = branchSelect.value;
             const countries = pathwaysData[selectedBranch];
-            pathwaysResults.innerHTML = ''; // Clear previous results
+            pathwaysResults.innerHTML = '';
 
             if (countries) {
                 countries.forEach(data => {
@@ -221,10 +209,8 @@
             }
         }
 
-        // Initial load
         updatePathways();
 
-        // Update on branch change
         branchSelect.addEventListener('change', updatePathways);
     });
 
@@ -232,7 +218,7 @@
 
         document.addEventListener('DOMContentLoaded', () => {
     const heroImage = document.querySelector('.hero-image');
-    const heroImageContainer = document.querySelector('.hero-image-container'); // Or the parent that defines the perspective
+    const heroImageContainer = document.querySelector('.hero-image-container');
 
     if (heroImage && heroImageContainer) {
         heroImageContainer.addEventListener('mousemove', (e) => {
@@ -243,9 +229,7 @@
             const mouseX = e.clientX;
             const mouseY = e.clientY;
 
-            // Calculate tilt angles based on mouse position relative to the center of the container
-            // Adjust sensitivity by dividing by a larger number
-            const tiltX = (mouseY - centerY) / 20; // Invert for more natural up/down tilt
+            const tiltX = (mouseY - centerY) / 20;
             const tiltY = (mouseX - centerX) / 20;
 
             heroImage.style.transform = `
@@ -257,7 +241,6 @@
         });
 
         heroImageContainer.addEventListener('mouseleave', () => {
-            // Reset transform when mouse leaves the container
             heroImage.style.transform = `
                 perspective(1000px)
                 rotateX(0deg)
